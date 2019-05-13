@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://symfony.com/schema/routing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+    <route id="app_basket_security_login" path="/shop/login">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:basketLogin</default>
+    </route>
+    <route id="app_basket_security_registration" path="/shop/registration">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:basketRegister</default>
+    </route>
+    <route id="app_basket_element_delete" path="/element/{elementId}/basket/{basketId}">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:deleteBasketBasketElements</default>
+        <default key="elementId">null</default>
+        <default key="basketId">null</default>
+    </route>
+    <route id="app_basket_delivery" path="/shop/delivery">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:delivery</default>
+        <default key="basketId">null</default>
+        <default key="elementId">null</default>
+    </route>
+    <route id="app_basket_payment" path="/shop/payment">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:payment</default>
+    </route>
+    <route id="app_basket_final" path="/shop/review">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:finalReview</default>
+    </route>
+    <route id="app_basket_update" path="/update">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:update</default>
+    </route>
+    <route id="app_basket_success" path="/shop/success">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:orderSuccess</default>
+    </route>
+    <route id="app_payment_callback" path="/paymentcallback">
+        <default key="_controller">EcommerceBundleSonataBasketBundle:Basket:paymentCallback</default>
+    </route>
+</routes>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="SonataOrderBundle.en">
+    <unit id="C7sQDZ3">
+      <segment>
+        <source>form.label_vat_rate</source>
+        <target>VAT</target>
+      </segment>
+    </unit>
+    <unit id="eKa5BYU">
+      <segment>
+        <source>list.label_quantity</source>
+        <target>Quantity of Vines</target>
+      </segment>
+    </unit>
+    <unit id="Lor_Px0">
+      <segment>
+        <source>list.label_advanced_quantity</source>
+        <target>Quantity of Bottles</target>
+      </segment>
+    </unit>
+    <unit id="CE5Hd5m">
+      <segment>
+        <source>form.label_advanced_quantity</source>
+        <target>Quantity of Bottles</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

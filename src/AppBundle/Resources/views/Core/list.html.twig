@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+{% block side_bar_after_nav %}
+    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px">
+        {% block side_bar_after_nav_content %}
+            {#{{ parent() }}#}
+            <a href="https://lenal.eu/" rel="noreferrer" target="_blank">LENAL TM</a>
+        {% endblock %}
+    </p>
+{% endblock %}

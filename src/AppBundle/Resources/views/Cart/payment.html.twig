@@ -1,0 +1,214 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('external/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/jquery.rateyo.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/custom_payment.css') }}" rel="stylesheet"/>
+
+{% endblock %}
+
+{% block main %}
+    <section class="become-content">
+        <div class="profile-header-topbar">
+            <a class="back-trigger" href="{{ path(routeData.route, {id: routeData.id }) }}">
+                {{ 'payment.page.link.back'|trans }}
+            </a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="">
+                    <div id="payment-form-wrapper">
+                        <div class="basic-text text-center payment-step-description">
+                            <h3>{{ 'payment.page.title'|trans }}</h3>
+                            {{ description }} <br>
+                            {{ amount }}
+                        </div>
+                        {{ form_start(form, {attr: {id: form.vars.id}}) }}
+                            <div class="group-holder">
+                                <div class="group group-top">
+                                    <label class="group-top__row">
+                                        <div class="field" id="card-number-element"></div>
+                                        <span class="brand"><i class="pf pf-credit-card" id="brand-icon"></i></span>
+                                    </label>
+                                    <label class="group-top__row">
+                                        <div class="field" id="card-expiry-element"></div>
+                                    </label>
+                                    <label class="group-top__row">
+                                        <input class="field" id="card_holder" name="card_holder" placeholder="{{ 'payment.form.field.cardholder'|trans }}" required>
+                                    </label>
+                                </div>
+                                <div class="group group-bottom">
+                                    <div class="cvc-holder">
+                                        <label class="group-bottom__cvc">
+                                            <div class="field" id="card-cvc-element"></div>
+                                        </label>
+                                        <div class="cvc-holder__text">{{ 'payment.form.field.cvv_hint'|trans }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_widget(form.token) }}
+                            {{ form_widget(form.winery) }}
+                            {{ form_widget(form.wineryStep) }}
+                            {{ form_widget(form.stepDecide) }}
+                            {{ form_widget(form.stepType) }}
+                            <div class="text-center">
+                                {{ form_widget(form.submit, {'attr': {'class': 'payment-button'}}) }}
+                            </div>
+                            <div class="outcome">
+                                <div class="error"></div>
+                                <div class="success">Success! Your payment done <span class="token"></span></div>
+                            </div>
+                            {% for message in app.flashes('payment-error') %}
+                                <div class="payment-error outcome">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                            {% for message in app.flashes('payment-success') %}
+                                <div class="payment-success outcome">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+        var paymentForm = document.getElementById('{{ form.vars.id }}');
+        var errors = document.getElementById('card-errors');
+
+        var stripe = Stripe('{{ stripe_public_key }}');
+        var elements = stripe.elements();
+
+        var style = {
+            base: {
+                iconColor: "#666EE8",
+                color: "#31325F",
+                lineHeight: "40px",
+                fontWeight: 300,
+                fontFamily: "Helvetica Neue",
+                fontSize: "15px",
+
+                "::placeholder": {
+                    color: "#CFD7E0"
+                }
+            }
+        };
+
+        var cardNumberElement = elements.create("cardNumber", {
+            style: style,
+            placeholder: "{{ 'payment.form.field.cardnumber'|trans }}"
+        });
+        cardNumberElement.mount("#card-number-element");
+
+        var cardExpiryElement = elements.create("cardExpiry", {
+            style: style,
+            placeholder: "{{ 'payment.form.field.cardexpdate'|trans }}"
+        });
+        cardExpiryElement.mount("#card-expiry-element");
+
+        var cardCvcElement = elements.create("cardCvc", {
+            style: style,
+            placeholder: "CVV"
+        });
+        cardCvcElement.mount("#card-cvc-element");
+
+        function setOutcome(result) {
+            var successElement = document.querySelector(".success");
+            var errorElement = document.querySelector(".error");
+            successElement.classList.remove("visible");
+            errorElement.classList.remove("visible");
+
+            if (result.token) {
+                // In this example, we're simply displaying the token
+                /*successElement.querySelector(".token").textContent =
+                    result.token.id;
+                successElement.classList.add("visible");*/
+
+                document.getElementById('{{ form.children.token.vars.id }}').setAttribute('value', result.token.id);
+                paymentForm.submit();
+
+            } else if (result.error) {
+                errorElement.textContent = result.error.message;
+                errorElement.classList.add("visible");
+            }
+        }
+
+        var cardBrandToPfClass = {
+            visa: "pf-visa",
+            mastercard: "pf-mastercard",
+            amex: "pf-american-express",
+            discover: "pf-discover",
+            diners: "pf-diners",
+            jcb: "pf-jcb",
+            unknown: "pf-credit-card"
+        };
+
+        function setBrandIcon(brand) {
+            var brandIconElement = document.getElementById("brand-icon");
+            var pfClass = "pf-credit-card";
+            if (brand in cardBrandToPfClass) {
+                pfClass = cardBrandToPfClass[brand];
+            }
+            for (var i = brandIconElement.classList.length - 1; i >= 0; i--) {
+                brandIconElement.classList.remove(brandIconElement.classList[i]);
+            }
+            brandIconElement.classList.add("pf");
+            brandIconElement.classList.add(pfClass);
+        }
+
+        cardNumberElement.on("change", function(event) {
+            // Switch brand logo
+            if (event.brand) {
+                setBrandIcon(event.brand);
+            }
+
+            setOutcome(event);
+        });
+
+        document
+            .querySelector("#payment-form")
+            .addEventListener("submit", function(e) {
+                e.preventDefault();
+                $('.payment-button').text('{{ 'payment.form.submit.loading'|trans }}')
+                    .attr('readonly', true).prop('readonly', true);
+                var options = {
+                    name: document.getElementById("card_holder").value
+                };
+                stripe.createToken(cardNumberElement, options).then(setOutcome);
+            });
+
+        $("#payment-form-wrapper").appendTo(".epayment-card");
+
+
+        /*var card = elements.create('card');
+        card.mount('#card-element');
+        card.addEventListener('change', function(event) {
+            if (event.error) {
+                errors.textContent = event.error.message;
+                paymentForm.classList.add('has-error');
+            } else {
+                errors.textContent = '';
+                paymentForm.classList.remove('has-error');
+            }
+        });
+
+        paymentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    errors.textContent = result.error.message;
+                    paymentForm.classList.add('has-error');
+                } else {
+                    document.getElementById('{{ form.children.token.vars.id }}').setAttribute('value', result.token.id);
+                    paymentForm.submit();
+                }
+            });
+        });*/
+    </script>
+{% endblock %}

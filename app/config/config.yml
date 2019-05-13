@@ -1,0 +1,471 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: sonata/sonata_admin.yml }
+    - { resource: sonata/sonata_block.yml }
+    - { resource: sonata/sonata_product.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
+    - { resource: php_translation/php_translation.yml }
+    - { resource: knp/knp_doctrine.yml }
+    - { resource: a2lix/a2lix_translation_form.yml }
+    - { resource: ../../src/AppBundle/Resources/config/services.yml }
+#    - { resource: ./../src/EcommerceBundle/BasketBundle/Resources/config/product.yml' }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+
+parameters:
+    locale: en
+    upload_directory: '%kernel.project_dir%/web/upload'
+    message_attachment_directory: '%kernel.project_dir%/web/upload/attachment'
+    payment:
+      currency: USD
+      decimal: true
+      amount: 1
+    stripe_public_key: pk_test_iKX5amhzoYT9rqLaDn63JuEN
+    stripe_secret_key: sk_test_ghr2RT8Vujk4pZORd4tY2vEe
+
+framework:
+    #esi: ~
+#    translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: [en] }
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+#    validation: { enable_annotations: false }
+    validation: { enable_annotations: true }
+    serializer: { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+#        handler_id: session.storage.native
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'SonataCoreBundle:Form:datepicker.html.twig'
+        - form/fields.html.twig
+        - form/form_div_layout.html.twig
+    globals:
+        notificationService: "@app.notification.service"
+#    globals:
+#        basket: "@sonata.basket"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+#         unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
+#         unix_socket: /tmp/mysql.sock
+#         unix_socket: /var/run/mysqld/mysqld.sock
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+        types:
+            currency: Sonata\Component\Currency\CurrencyDoctrineType
+#        types:
+#            json: Sonata\Doctrine\Types\JsonType
+        server_version: 5.7.18
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+#        naming_strategy: doctrine.orm.naming_strategy.underscore
+        entity_managers:
+#            naming_strategy: doctrine.orm.naming_strategy.default
+            default:
+                auto_mapping: true
+                mappings:
+                    FOSUserBundle: ~
+                    AppBundle: ~
+                    SonataInvoiceBundle: ~
+                    SonataPageBundle: ~
+                    SonataCustomerBundle: ~
+                    SonataBasketBundle: ~
+                    SonataDeliveryBundle: ~
+                    SonataOrderBundle: ~
+                    SonataMediaBundle: ~
+                    SonataClassificationBundle: ~
+                    EcommerceBundleSonataInvoiceBundle: ~
+                    EcommerceBundleSonataPageBundle: ~
+                    EcommerceBundleSonataCustomerBundle: ~
+                    EcommerceBundleSonataBasketBundle: ~
+                    EcommerceBundleSonataProductBundle: ~
+                    EcommerceBundleSonataOrderBundle: ~
+                    EcommerceBundleSonataMediaBundle: ~
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    port: 587
+    encryption: tls
+    spool: {type: memory}
+#    spool:
+#        type: file
+#        path: '%kernel.project_dir%/app/spool'
+
+
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/DoctrineMigrations"
+    namespace: Application\Migrations
+    table_name: migration_versions
+    name: Application Migrations
+    organize_migrations: false # Version >=1.2 Possible values are: "BY_YEAR", "BY_YEAR_AND_MONTH", false
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+
+monolog:
+    handlers:
+        file_log:
+            type: stream
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    use_username_form_type: true
+    from_email:
+        address: info@2make.wine.com
+        sender_name: 2MakeWine
+
+    group:
+        group_class: AppBundle\Entity\Group
+#        group_manager:  fos_user.group_manager.default
+#        form:
+#            type:               FOS\UserBundle\Form\Type\GroupFormType # or 'fos_user_group' on Symfony < 2.8
+#            name:               fos_user_group_form
+#            validation_groups:  [Registration, Default]
+
+    profile:
+        form:
+            type:               AppBundle\Form\ProfileFormType
+#            name:               fos_user_profile_form
+#            validation_groups:  [Profile, Default, User]
+
+    change_password:
+        form:
+            type:               AppBundle\Form\ChangePasswordFormType
+#            name:               fos_user_change_password_form
+#            validation_groups:  [ChangePassword, Default]
+
+    registration:
+        confirmation:
+            enabled:    true # change to true for required email confirmation
+            template:   FOSUserBundle:Registration:email.txt.twig
+            from_email:
+                address: info@2make.wine.com
+                sender_name: 2MakeWine
+        form:
+            type:               AppBundle\Form\RegistrationFormType
+#            handler:            app.security.register_form_registrator
+#            type:               FOS\UserBundle\Form\Type\RegistrationFormType
+#            name:               fos_user_registration_form
+#            name:               fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+
+    service:
+#        mailer:  fos_user.mailer.twig_swift
+        mailer:  app.user.mailer
+
+
+    resetting:
+        token_ttl: 86400
+        email:
+            template:   FOSUserBundle:Resetting:email.txt.twig
+        form:
+            type:               app_user_resetting
+#            name:               fos_user_resetting_form
+#            validation_groups:  [ResetPassword, Default]
+
+
+jms_i18n_routing:
+    default_locale: en
+    locales: [en, it]
+    strategy: prefix_except_default
+
+# Nelmio CORS Configuration
+nelmio_cors:
+    defaults:
+        allow_credentials: false
+        allow_origin: ['*']
+        allow_headers: ['*']
+        allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+        max_age: 3600
+        hosts: []
+        origin_regex: false
+
+# FOSRest Configuration
+#fos_rest:
+#    body_listener: true
+#    format_listener:
+#        rules:
+#          - { path: '^/wine', priorities: ['json'], fallback_format: html, prefer_extension: true }
+#          - { path: '^/', priorities: [ 'html', '*/*'], fallback_format: ~, prefer_extension: true }
+#    param_fetcher_listener: true
+#    view:
+#        view_response_listener: 'force'
+#        formats:
+#            json: true
+
+fos_js_routing:
+    routes_to_expose: [ chat_message, chat_conversation, create_conversation, app_basket_element_delete ]
+
+a2lix_auto_form:
+    excluded_fields: [id, locale, translatable]       # [1]
+
+vich_uploader:
+    db_driver: orm
+
+#    storage:    vich_uploader.storage.file_system
+    mappings:
+        user_avatar:
+            uri_prefix:         /upload/user/avatar
+            upload_destination: '%kernel.root_dir%/../web/upload/user/avatar'
+            namer: vich_uploader.namer_uniqid
+        message_attachment:
+            uri_prefix:         /upload/attachment
+            upload_destination: '%kernel.root_dir%/../web/upload/attachment'
+            namer: vich_uploader.namer_uniqid
+        flavor_preview:
+            uri_prefix:         /upload/flavor
+            upload_destination: '%kernel.root_dir%/../web/upload/flavor'
+#            namer: vich_uploader.namer_origname
+            namer: vich_uploader.namer_uniqid
+        wineproduct_preview:
+            uri_prefix:         /upload/wineproduct
+            upload_destination: '%kernel.root_dir%/../web/upload/wineproduct'
+#            namer: vich_uploader.namer_origname
+            namer: vich_uploader.namer_uniqid
+        winery_field_step_preview:
+            uri_prefix:         /upload/wineryfield/step
+            upload_destination: '%kernel.root_dir%/../web/upload/wineryfield/step'
+            namer: vich_uploader.namer_uniqid
+        winery_cellar_step_preview:
+            uri_prefix:         /upload/winerycellar/step
+            upload_destination: '%kernel.root_dir%/../web/upload/winerycellar/step'
+            namer: vich_uploader.namer_uniqid
+        step_decide_preview:
+            uri_prefix:         /upload/stepdecide
+            upload_destination: '%kernel.root_dir%/../web/upload/stepdecide'
+            namer: vich_uploader.namer_uniqid
+
+sonata_media:
+    class:
+        gallery:              EcommerceBundle\MediaBundle\Entity\Gallery
+        media:                EcommerceBundle\MediaBundle\Entity\Media
+        gallery_has_media:    EcommerceBundle\MediaBundle\Entity\GalleryHasMedia
+    db_driver: doctrine_orm
+    # if you don't use default namespace configuration
+    #class:
+    #    media:        MyVendor\MediaBundle\Entity\Media
+    #    gallery:      MyVendor\MediaBundle\Entity\Gallery
+    #    gallery_item: MyVendor\MediaBundle\Entity\GalleryItem
+    force_disable_category: true
+    category_manager:       null
+    default_context: default # you need to set a context
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+#                - sonata.media.provider.dailymotion
+#                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+#                - sonata.media.provider.file
+#                - sonata.media.provider.vimeo
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  "%kernel.root_dir%/../web/uploads/media"
+            create:     false
+
+sonata_payment:
+    selector:             sonata.payment.selector.simple
+    generator:            sonata.payment.generator.mysql
+    transformers:
+        basket:               sonata.payment.transformer.basket     # The service to transform a basket into an order
+        order:                sonata.payment.transformer.order      # The service to transform an order into a basket
+    services:
+        # Which payment methods are enabled?
+        paypal:
+            name:                 Paypal
+            code:                 paypal
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            options:
+                shop_secret_key:      whiterabbit
+                web_connector_name:   curl
+                account:              yura.kralya-facilitator@gmail.com
+                cert_id:              5009806BAFFDF7000A3658AACB26383D
+                debug:                true
+                paypal_cert_file:     %kernel.root_dir%/secure/paypal_cert_pem.txt
+                url_action:           https://www.sandbox.paypal.com/cgi-bin/webscr
+                class_order:          EcommerceBundle\OrderBundle\Entity\Order
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+                method:               encryptViaBuffer
+                key_file:             %kernel.root_dir%/secure/my-private-key.pem
+                cert_file:            %kernel.root_dir%/secure/my-public-certificate.pem
+                openssl:              /Applications/MAMP/Library/bin/openssl
+        pass:
+            name:                 Pass
+            code:                 pass
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            browser:              sonata.payment.browser.curl
+            options:
+                shop_secret_key:      clue
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+        check:
+            name:                 Check
+            code:                 check
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            browser:              sonata.payment.browser.curl
+            options:
+                shop_secret_key:      clue
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+
+    class:
+        order:                EcommerceBundle\OrderBundle\Entity\Order
+        transaction:          EcommerceBundle\PaymentBundle\Entity\Transaction
+
+    # Here you will enable the payment methods you wish to provide
+    # and add your custom ones
+    methods:
+        stripe: sonata.payment.method.stripe   # Custom payment method, we specify the service id
+#        paypal: ~     # This is a provided method, we don't need to specify its service id
+
+cmf_routing:
+    chain:
+        routers_by_id:
+            # enable the DynamicRouter with high priority to allow overwriting configured routes with content
+            #symfony_cmf_routing_extra.dynamic_router: 200
+            # enable the symfony default router with a lower priority
+            sonata.page.router: 150
+            router.default: 100
+
+sonata_page:
+    multisite: host_with_path
+    use_streamed_response: true # set the value to false in debug mode or if the reverse proxy does not handle streamed response
+    # Generates a snapshot when a page is saved (from the admin)
+    direct_publication: false # or %kernel.debug% if you want to publish in dev mode (but not in prod)
+    is_inline_edition_on: true
+    slugify_service:      sonata.core.slugify.native
+    ignore_route_patterns:
+        - ^(.*)admin(.*)   # ignore admin route, ie route containing 'admin'
+        - ^_(.*)          # ignore symfony routes
+        - ^(about-us|learn|contact-us|partnership)
+        - ^sonata_basket_(.*)
+        - ^app_basket_(.*)
+        - ^fos_user_profile_(.*)
+        - ^app_user_profile_(.*)
+        - ^product_all
+        - ^chat(.*)
+        - ^index
+        - ^_profiler_home(.*)
+        - ^_profiler_search(.*)
+        - ^_profiler_search_bar(.*)
+        - ^_profiler_phpinfo(.*)
+        - ^_profiler_search_results(.*)
+        - ^_profiler_open_file(.*)
+        - ^_profiler(.*)
+        - ^_profiler_router(.*)
+        - ^_profiler_exception(.*)
+        - ^_profiler_exception_css(.*)
+        - ^_twig_error_test(.*)
+        - ^_wdt(.*)
+        - ^fos_user_(.*)
+        - ^app_user_shop_(.*)
+
+    ignore_routes:
+        - sonata_page_esi_cache
+        - sonata_page_ssi_cache
+        - sonata_page_js_sync_cache
+        - sonata_page_js_async_cache
+        - sonata_cache_esi
+        - sonata_cache_ssi
+        - sonata_cache_js_async
+        - sonata_cache_js_sync
+        - sonata_cache_apc
+        - security_login
+        - security_logout
+        - security_logout
+        - make-wine
+        - vineyard-map
+        - wine
+        - payment_order
+        - notification_all
+        - product_page
+        - field_page
+        - cellar_page
+        - approve_winery_decide
+        - approve_winery_cellar_decide
+        - app_user_registration_check_email
+        - app_user_shop_registration_check_email
+        - app_user_registration_confirmed
+        - fos_user_registration_register
+        - app_payment_callback
+        - fbshare
+        - wine-completed
+        - payment
+
+    ignore_uri_patterns:
+        - ^/admin(.*)   # ignore admin route, ie route containing 'admin'
+
+    default_page_service:  sonata.page.service.default
+    page_defaults:
+        homepage: {decorate: false} # disable decoration for homepage, key - is a page route
+
+    default_template: default # template key from templates section, used as default for pages
+    templates:
+        default: {path: 'SonataPageBundle::layout.html.twig', name: default }
+
+    # manage the http errors
+#    catch_exceptions:
+#        not_found: [404]    # render 404 page with "not_found" key (name generated: _page_internal_error_{key})
+#        fatal:     [500]    # so you can use the same page for different http errors or specify specific page for each error

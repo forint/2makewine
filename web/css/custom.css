@@ -1,0 +1,1816 @@
+header {
+    z-index: 10;
+}
+
+#controls {
+    z-index: 8;
+}
+
+#openControls {
+    z-index: 7;
+}
+
+.cart-drop {
+    z-index: 10000;
+}
+
+.cart-drop:hover {
+    display: block !important;
+}
+
+.header__cart-link .quantity-top-circle {
+    text-align: center;
+    right: 20px;
+    bottom: 30px;
+    position: absolute;
+    padding: 0px 5px;
+    font-size: 11px;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #9a5155;
+    /*min-width: 1em;*/
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.header__cart-link .quantity-top-circle:before {
+    content: '';
+    float: left;
+    width: auto;
+    padding-bottom: 100%;
+}
+
+.preload__background {
+    position: fixed;
+    background: #000;
+    opacity: .6;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.preload__wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.preload__wrap-inner__wrap {
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    display: table;
+    vertical-align: middle;
+}
+
+.preload__background .preloader {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    background: url(../images/preload.png) no-repeat 50% 50%;
+}
+
+.pageScroll {
+    z-index: 6;
+}
+
+#example-form .actions ul a {
+    padding: 0px !important;
+}
+
+.next-step {
+    background: #fff;
+    display: block !important;
+    min-width: 150px;
+    width: auto !important;
+    border-radius: 0 !important;
+    border: 2px solid #000;
+    color: #000;
+    margin: 35px auto 0 !important;
+    padding: 10px 30px !important;
+}
+
+.next-step:focus {
+    outline: none;
+}
+
+.next-step:hover {
+    border-radius: 0 !important;
+    color: #fff;
+    outline: none;
+}
+
+/* Basket */
+.basket_is_empty {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    padding: 15px 30px;
+}
+
+/* Basket */
+
+/* Flash */
+.flash-notice {
+    color: green;
+}
+
+.flash-error {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: red;
+}
+
+/* Flash */
+.preload {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    background: url(../images/preload.png) no-repeat 50% 50%;
+}
+
+.preload-mini {
+    display: none;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+.preload-mini img {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden__field {
+    position: absolute;
+    display: block;
+    left: -999px;
+}
+
+#fos-form input.mybtn[type=submit] {
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: calc(10px + 3 * ((100vw - 420px) / 860));
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border: 2px solid #fff;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 30px;
+    color: white;
+    outline: none !important;
+    -webkit-transition: all 100ms ease-out;
+    transition: all 100ms ease-out;
+}
+
+#fos-form input.mybtn[type=submit] {
+    width: auto;
+    background: #fff;
+    margin: 6px auto;
+    padding: 10px 30px;
+    color: #282828;
+    border-color: #282828;
+}
+
+#fos-form input.mybtn[type=submit]:hover {
+    background: #000;
+    color: #fff;
+}
+
+.user-dialog-photo {
+    height: 100%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.chat-user {
+    max-width: 32px !important;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.profile-account__flex .profile-account__flex-item-single {
+    margin-bottom: 0 !important;
+}
+
+.profile-account__update-photo img,
+.profile-header__figure img {
+    object-fit: cover !important;
+}
+
+.user-dialog.active {
+    background: #edf1f2;
+}
+
+.user-dialog-photo {
+    width: 40px;
+    height: 40px;
+    object-fit: cover !important;
+}
+
+.chat-dialogs-tab__content .tab-pane {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.user-dialog.flex-container {
+    padding-top: 25px;
+    max-height: 80px;
+}
+
+.user-dialog-photo {
+    height: 100%;
+}
+
+.chat-user {
+    width: 45px;
+    height: 45px;
+    max-width: none !important;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-account__flex .profile-account__flex-item-single {
+    margin-bottom: 0 !important;
+}
+
+.profile-account__update-photo img,
+.profile-header__figure img {
+    object-fit: cover !important;
+}
+
+a.steps-list-text_name {
+    color: #282828;
+}
+
+/*SEARCH START*/
+.s-results {
+    width: 444px;
+    margin: 50px auto 15px;
+    font-size: 12px;
+    color: #2c2d2d;
+    letter-spacing: 1.2px;
+}
+
+.s-results__title {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+}
+
+.s-results__title span {
+    font-weight: bold;
+}
+
+.s-results__body {
+    margin-top: 40px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.s-results-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    -webkit-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
+.s-results-row:hover {
+    background-color: #e0e0e0;
+}
+
+.s-results-row:hover {
+    background-color: #e0e0e0;
+}
+
+.s-results-row__name {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.s-results-row__figure {
+    padding: 10px;
+    width: 62px;
+    height: 62px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #eef1f2;
+    margin-right: 33px;
+}
+
+.s-results-row__img {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.s-results-row__title {
+    color: #2c2d2d;
+    font-family: "Source Serif Pro", serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.s-results-row__desc {
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    color: #2c2d2d;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+}
+
+/*SEARCH END*/
+
+.steps-search form.s-results-row {
+    cursor: pointer;
+}
+
+#controls .vineyard-info__img-wrapper .vineyard-info__bottle {
+    max-height: 20px;
+}
+
+.steps-item__figure img {
+    max-height: 233px;
+}
+
+/*SEARCH END*/
+.chat-dialogs-tab__content .tab-pane {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 20px;
+}
+
+.user-dialog.flex-container {
+    padding-top: 0;
+    max-height: 80px;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog-unread .user-dialog-photo-wrapper:after {
+    top: 12px;
+    right: -20px;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog .user-dialog-photo-wrapper > img {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    left: 15px;
+    bottom: 15px;
+}
+
+.chat-dialogs-tab__content.tab__content {
+    padding: 0;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog {
+    margin-bottom: 0;
+}
+
+.user-dialog-photo-wrapper {
+    border-bottom: 1px solid gainsboro;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog-text-wrapper {
+    margin-left: 0px;
+}
+
+.error__flex {
+    text-align: center;
+    padding: 120px 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-text {
+    margin-bottom: 60px;
+    font-size: calc(16px + 4 * ((100vw - 420px) / 860));
+}
+
+@media screen and (min-width: 1280px) {
+
+    .error-text {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+
+    .error-text {
+        font-size: 16px;
+    }
+}
+
+.error-title {
+    margin-bottom: 10px;
+    font-size: calc(36px + 14 * ((100vw - 420px) / 860));
+}
+
+@media screen and (min-width: 1280px) {
+
+    .error-title {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+
+    .error-title {
+        font-size: 36px;
+    }
+}
+
+.error-img {
+    margin-bottom: 50px;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog-text-wrapper {
+    margin-left: 0;
+    padding-top: 15px;
+}
+
+.chat-message__conversation-create {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.chat-msg #typeArea label[for="app_conversation_attachmentFile_file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.chat-msg #typeArea label[for="typeFile"] img {
+    display: block;
+}
+
+.chat-msg #typeArea input[type="file"] {
+    display: none;
+}
+
+.profile-account__tab-content .profile-account__flex #updateForm {
+    display: block;
+}
+
+.chat-msg #msgArea > .msg-container {
+    height: 100%;
+}
+
+.chat-msg #msgArea .flash-notice,
+.chat-msg #msgArea .flash-error {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog.active .user-dialog-photo-wrapper::after {
+    background: green;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog .user-dialog-photo-wrapper {
+    padding-top: 30px;
+}
+
+.edit-link {
+    color: #282828;
+    border: 2px solid #282828;
+    background-color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 30px;
+}
+
+.edit-link:hover {
+    color: #fff;
+    -webkit-transition: .25s;
+    transition: .25s;
+    border: 2px solid #fff;
+    background-color: #282828;
+}
+
+.aboutVineyard .mybtn.transition {
+    background-color: transparent;
+}
+
+.aboutVineyard .vineyard-card .flex-end > div .flex-side #makeVineyard {
+    padding: 10px 0px !important;
+}
+
+.wine-card .wine-card__flex-item img {
+    max-width: 130px;
+    max-height: 580px;
+}
+
+.flex-cart-item__square img {
+    max-height: 80%;
+}
+
+.chat-msg .msg-container .chat-conversation__unread-message {
+    /*background: #f9a2a6;*/
+    background: #a14e56;
+
+}
+
+.chat-msg .msg-container .chat-conversation__unread-message p {
+    color: #fff;
+}
+
+.chat-msg .msg-container .your-msg.chat-conversation__unread-message p:after {
+    border-left: 12px solid #a14e56;
+}
+
+.chat-msg .msg-container .not-your-msg.chat-conversation__unread-message p:after {
+    border-right: 12px solid #a14e56;
+}
+
+.wine-card .wine-card__flex-item img.wine-card-taste-icon {
+    max-height: 25px;
+    max-width: 25px;
+}
+
+.rate-wine-form [type=submit] {
+    margin-right: 15px;
+    border: 2px solid gainsboro;
+    background: transparent;
+    color: #8c8c8c;
+    padding: 8px 50px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.rate-wine__bottle-wrapper img {
+    max-height: 90px;
+}
+
+.rate-wine__bottle-wrapper h3 {
+    text-align: center;
+}
+
+.steps-main-wrapper {
+    transition: opacity 300ms ease;
+}
+
+.steps-main-wrapper.is-loaded {
+    opacity: 0;
+}
+
+.steps--btn {
+    display: inline-block;
+}
+
+.without-content {
+    margin-bottom: 40px;
+}
+
+/*section[data-confirm="0"]:not(#steps-uid-0-p-0) {*/
+/*pointer-events: none;*/
+/*}*/
+
+/*section[data-confirm="0"]:not(#steps-uid-0-p-0) .intro-mybtn {*/
+/*display: none;*/
+/*}*/
+
+.profile-account__info input[disabled] {
+    background: rgb(238, 238, 238)
+}
+
+.content .waitDecision .intro-wrapper .intro-mybtn {
+    display: none;
+}
+
+section[data-confirm="1"] .countdownHolder.time-for-decision, section[data-confirm="1"] .mybtn.intro-mybtn {
+    display: none;
+}
+
+section[data-confirm="1"] .mybtn.intro-mybtn.share-mybtn {
+    display: inline-block;
+}
+
+.content > .waitDecision.currentDecision .intro-wrapper .intro-mybtn {
+    display: block;
+}
+
+.countDays {
+    font-family: "Montserrat", sans-serif;
+    background: url(./../images/bg-timer.png) no-repeat;
+    background-size: cover;
+    padding: 15px;
+}
+
+.countDays-empty {
+    margin-top: 20px;
+}
+
+.chat-dialogs-tab__content .tab-pane .user-dialog-name {
+    margin-top: 12px;
+}
+
+.chat-message-submit {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    cursor: pointer;
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: transparent;
+    color: #9a5155;
+    border: none;
+}
+
+/*
+.fa,
+.fas,
+.far,
+.fal,
+.fab {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1; }
+.fa-paper-plane:before {
+    content: "\f1d8";
+}*/
+.back-trigger--winecard {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 14px;
+    color: white;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjEwIiB2aWV3Qm94PSIwIDAgOCAxMCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTQtM2gxNnYxNkgtNHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNy41IDEwTDQgNWwzLjUtNS03IDUiLz48L2c+PC9zdmc+);
+}
+
+.back-trigger--winecard:hover {
+    color: #fff;
+    text-decoration: underline;
+
+}
+
+.steps-items-wrapper {
+    min-height: 545px;
+}
+
+#p_prldr {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 30000000;
+}
+
+.contpre small {
+    font-size: 25px;
+}
+
+.contpre {
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    margin-left: -125px;
+    margin-top: -75px;
+    color: red;
+    font-size: 40px;
+    letter-spacing: -2px;
+    text-align: center;
+    line-height: 35px;
+}
+
+#p_prldr .svg_anm {
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    background: center center no-repeat;
+    background-size: 41px;
+    margin: -16px 0 0 -16px;
+}
+
+.profile-header__link {
+    position: relative;
+}
+
+/* Customize Select with Country Code */
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+.select-hidden {
+    display: none;
+    visibility: hidden;
+    padding-right: 10px;
+}
+
+.select {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    width: 278px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.select-styled {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #d0d0d0;
+    color: #282828;
+    border-radius: 3px;
+    background-color: #fff;
+    padding: 8px 15px;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.select-styled:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-color: #282828 transparent transparent transparent;
+    position: absolute;
+    top: 16px;
+    right: 10px;
+}
+
+.select-styled:hover {
+    background-color: transparent;
+}
+
+.select-styled:active, .select-styled.active {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #fff;
+}
+
+.select-styled:active:after, .select-styled.active:after {
+    top: 8px;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    /*border-color: transparent transparent #fff transparent;*/
+}
+
+.select-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #fff;
+}
+
+.select-options li:first-child {
+    border-top: 0;
+}
+
+.select-options li:last-child {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.select-options li {
+    margin: 0;
+    padding: 8px 0;
+    text-indent: 15px;
+    border-top: 1px solid #d0d0d0;
+    border-left: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+    -moz-transition: all 0.15s ease-in;
+    -o-transition: all 0.15s ease-in;
+    -webkit-transition: all 0.15s ease-in;
+    transition: all 0.15s ease-in;
+    color: #000;
+}
+
+.select-options li:hover {
+    color: #000;
+    background: #DFDDDC;
+}
+
+.select-options li[rel="hide"] {
+    display: none;
+}
+
+.profile-account__flex-item-single.contact__form-wrapper {
+    min-width: 100%;
+    margin-right: 0;
+}
+
+.profile-account__info.contact__form-wrapper {
+    min-width: 278px;
+}
+
+.profile-account__info.contact__form-wrapper input {
+    width: 100%;
+}
+
+.profile-account__flex-item-single .profile-account__info {
+    /* margin: 0;*/
+    max-width: none !important;
+}
+
+.profile-account__flex-item-single .profile-account__info .panel-body {
+    padding: 0;
+    width: 100%;
+}
+
+#app_basket_shipping_deliveryMethod {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+#app_basket_shipping_deliveryMethod input,
+#app_basket_payment_form_paymentMethod input {
+    max-height: 10px;
+    margin-top: 12px;
+}
+
+#app_basket_shipping_deliveryMethod label,
+#app_basket_payment_form_paymentMethod label {
+    padding-top: 3px;
+    height: 100%;
+    color: #000;
+    font-weight: normal;
+}
+
+.choice-widget__expanded-wrap {
+    flex-basis: 50%;
+    align-items: center;
+}
+
+.choice-widget__expanded-wrap input {
+    float: left;
+}
+
+.choice-widget__expanded-wrap label {
+    padding-left: 8px;
+}
+
+label.basic-text {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+/* Payment Styles */
+#app_basket_payment_form_paymentMethod {
+    display: flex;
+    min-width: 400px;
+}
+
+/*.become-content-step3{
+    flex-basis: 220px;
+}*/
+.sonata-basket__final-review-flex {
+    margin-left: 180px;
+    flex-flow: wrap;
+}
+
+.sonata-basket__final-review {
+    flex-basis: 50%;
+}
+
+#example-form .actions ul {
+    margin-bottom: 30px;
+}
+
+.profile-account__info input,
+.profile-account__info select {
+    width: 100%;
+}
+
+.my-container-item .winemaker-photo {
+    width: 100%;
+}
+
+.tab__conten-preload {
+    display: none;
+}
+
+#msg-container-empty-content {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#msg-container-empty-content .user-dialog-photo-wrapper {
+    display: none;
+}
+
+.steps-item {
+    cursor: pointer;
+}
+
+#msg-container-empty-content #msg-container-empty-content-text {
+    font-size: 27px;
+    font-family: "Source Serif Pro", serif;
+}
+
+.msg-container-notify .user-dialog-photo-wrapper {
+    border: 0;
+    position: absolute;
+    left: -70px;
+}
+
+.msg-container-notify {
+    margin-top: 40px;
+}
+
+.msg-container-notify h3 {
+    margin: 10px 0 20px;
+}
+
+.msg-container-notify h3 a {
+    color: #000;
+    font-family: "SerlioLTStd", serif;
+    font-size: calc(28px + 12 * ((100vw - 420px) / 860));
+    line-height: 1;
+}
+
+@media screen and (min-width: 1280px) {
+
+    .msg-container-notify h3 a {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+
+    .msg-container-notify h3 a {
+        font-size: 28px;
+    }
+}
+
+.msg-container-notify > * {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.msg-container-msg-leftday {
+    background: #edf1f2;
+    padding: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    float: right;
+}
+
+.msg-container-msg-leftday span {
+    color: #000;
+}
+
+.sign-link .user-icon {
+    display: block;
+    margin-right: 5px;
+}
+
+.user-icon-wrap {
+    position: relative;
+}
+
+.is-active-number-user:after {
+    content: '';
+    display: flex;
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    background-color: #9a5155;
+    top: 0;
+    right: 0;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+}
+
+.header--white .user-icon {
+    fill: #000;
+}
+
+.user-icon {
+    fill: #fff;
+}
+
+.profile-login-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-login-form > div {
+    width: 50%;
+}
+
+.profile-login-form input {
+    width: 100%;
+}
+
+.cart .step2-auth-form .contact__form-wrapper {
+    min-width: 610px;
+}
+
+.profile-form-wrapper input {
+    width: -webkit-calc(295 / 610 * 100%);
+    width: 100%;
+    height: 45px;
+    border: 2px solid #d1d1d1;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding-left: 15px;
+    margin-bottom: 11px;
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.ui-spinner-wrapper__quantity {
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #282828 !important;
+    margin: 12px 0 8px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    background: #fff;
+    line-height: 36px;
+
+}
+
+.basket-white-header {
+    height: 48px;
+}
+
+.basket-form-new-input-wrapper {
+    flex-basis: 50%;
+    padding-top: 22px;
+    position: relative;
+}
+
+.basket-form-new-input-wrapper input {
+    width: 95%;
+}
+
+.basket-form-new-input-wrapper ul {
+    position: absolute;
+    top: 0;
+}
+
+.basket-form-new-input-wrapper li {
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    color: red;
+}
+
+.basic-text.step2-auth-text {
+    text-align: center;
+}
+
+.delivery-checkers {
+    border-top: 1px solid #cfcfcf;
+    padding: 20px 0 55px;
+    margin-top: 20px;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    width: 295px;
+}
+
+.radiobox__label__value {
+    margin-left: auto;
+    font-weight: 400;
+}
+
+.radiobox {
+    margin: 10px 0 10px 0;
+}
+
+.radiobox__input {
+    display: none;
+}
+
+.radiobox__label {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: "Source Serif Pro", serif;
+}
+
+.radiobox__label__value {
+    font-size: 12px;
+}
+
+.radiobox__label__value--price {
+    font-family: "SerlioLTStd", serif;
+    font-size: 24px;
+    line-height: 1;
+    position: relative;
+    top: 5px;
+}
+
+.radiobox__label:before {
+    content: '';
+    background: white;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid #3b3d3c;
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 1em;
+    cursor: pointer;
+    text-align: center;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+
+.radiobox__input:checked + .radiobox__label:before {
+    background-color: #a45b5f;
+    -webkit-box-shadow: inset 0 0 0 2px #f4f4f4;
+    box-shadow: inset 0 0 0 2px #f4f4f4;
+}
+
+.radiobox__label__tag {
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.delivery-checkers {
+    border-top: 1px solid #cfcfcf;
+    padding: 20px 0 55px;
+    margin-top: 20px;
+    align-self: flex-start;
+    width: 295px;
+}
+
+.choice-widget__expanded-wrap {
+    margin: 5px 0;
+}
+
+.delivery-checkers input[type="radio"] {
+    /*display: none;*/
+    opacity: 0;
+    pointer-events: none;
+    position: relative;
+    left: 35px;
+}
+
+.delivery-checkers label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-family: "Source Serif Pro", serif;
+    padding-left: 0;
+}
+
+.delivery-checkers label:before {
+    content: '';
+    background: white;
+    border-radius: 100%;
+    border: 2px solid #3b3d3c;
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 1em;
+    cursor: pointer;
+    text-align: center;
+    transition: all 200ms linear;
+}
+
+.delivery-checkers input:checked + label:before {
+    background-color: #a45b5f;
+    box-shadow: inset 0 0 0 2px #f4f4f4;
+}
+
+.delivery-checkers #app_basket_shipping_deliveryMethod {
+    flex-direction: column;
+    margin-left: -30px;
+}
+
+.e-delivery-method {
+    font-size: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.drop-form .preload__wrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+}
+
+.drop-form__box {
+    position: relative;
+}
+
+.drop-form__box .preload__wrap-inner__wrap {
+    width: 20px;
+    height: 100%;
+}
+
+.drop-form__box .preload__wrap-inner__wrap .preload {
+    background-size: contain;
+}
+
+.fb-hide {
+    /*display: none !important;*/
+}
+
+.modal .modal-footer .mybtn {
+    padding: 10px 30px !important;
+}
+
+.modal .modal-footer .mybtn:hover {
+    color: #fff !important;
+}
+
+@media (max-width: 480px) {
+    .profile-account #updateForm {
+        position: relative !important;
+        margin-right: 15px;
+    }
+
+    .profile-account .profile-account__update-photo label {
+        position: absolute !important;
+    }
+
+    .contact .contact__form-input-wrapper {
+        width: 100% !important;
+    }
+
+    #example-form section.current {
+        padding: 0 10px !important;
+    }
+
+    #app_basket_payment_form_paymentMethod .choice-widget__expanded-wrap {
+        -webkit-flex-basis: 100% !important;
+        -ms-flex-preferred-size: 100% !important;
+        flex-basis: 100% !important;
+    }
+
+    #app_basket_payment_form_paymentMethod {
+        min-width: 100% !important;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    #personal .profile-account__info > p.basic-text {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cart .step2-auth-form .contact__form-wrapper {
+        min-width: 100% !important;
+    }
+
+    #personal .profile-account__flex-item {
+        margin-left: 0 !important;
+    }
+
+    .profile-account__flex {
+        width: 100% !important;
+    }
+
+    .s-results {
+        width: auto;
+        max-width: 444px;
+        padding: 0 10px;
+    }
+
+    .choose-steps .steps-topbar {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .drop-form__submit {
+        -ms-flex-negative: 0;
+        flex-shrink: 0
+    }
+
+    .drop-form__input {
+        text-align: left;
+    }
+
+}
+
+.profile-header__link.is-active-number:after {
+    content: attr(data-value);
+    display: flex;
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    background-color: #9a5155;
+    top: 30%;
+    right: 30%;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 9px;
+    border: 1px solid;
+}
+
+.profile-header__link.is-active-message-number:after {
+    content: attr(data-value);
+    display: flex;
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    background-color: #9a5155;
+    top: 30%;
+    right: 30%;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 9px;
+    border: 1px solid;
+}
+
+.profile-header__link.is-active-message-number.admin-related-conversation:after {
+    content: attr(data-value);
+    display: flex;
+    position: absolute;
+    height: 21px;
+    width: 21px;
+    background-color: #9a5155;
+    top: 22%;
+    right: 22%;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 9px;
+    border: 1px solid;
+    z-index: 1;
+}
+
+.active-process {
+    min-height: 790px;
+    height: 100% !important;
+}
+
+.active-process__tab-content {
+    margin-bottom: 58px;
+}
+
+.ui-spinner > input {
+    padding: 6px;
+}
+
+.aboutVineyard .ui-spinner-span {
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #282828 !important;
+    margin: 0 8px 0 26px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    background: #fff;
+    padding: 6px;
+    display: inline-block;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 940px) {
+    .header-wine-card {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1093px) {
+    .header-wine-card .my-container {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1277px) {
+    .ui-spinner-module img {
+        display: none;
+    }
+
+    .header-wine-card-item.flex-container {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        -webkit-box-pack: end;
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .header-wine-card-item .mybtn {
+        padding: 10px;
+    }
+}
+
+.file-indicator-class {
+    position: relative;
+    z-index: 1;
+}
+
+.file-indicator-class:after {
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    right: -4px;
+    /*content: '<i class="fas fa-times"></i>';*/
+    content: '';
+    background: url(./../images/icons/cross.png) no-repeat;
+    width: 8px;
+    height: 8px;
+    z-index: 2;
+}
+
+@media screen and (max-width: 1320px) {
+    #controls .vineyard-info__title {
+        padding-top: 0 !important;
+        margin-bottom: 10px;
+        text-align: left;
+        line-height: 1;
+    }
+
+    #cpntrols .vineyard-info__img-wrapper .vineyard-info__descr {
+        line-height: 1.1;
+    }
+}
+
+@media screen and (max-width: 527px) {
+    #controls .vineyard-info .vineyard-info__rate {
+        margin-top: 0 !important;
+    }
+}
+
+/* Share button override classes */
+.modal-footer {
+    border: 0;
+    padding: 40px 0;
+}
+
+.modal-footer .mybtn {
+    margin: 0px 10px;
+    color: #272727;
+    border-color: #272727;
+    cursor: pointer;
+}
+
+.modal-footer .mybtn.facebook {
+    border-color: #314d96;
+    background: #314d96;
+    color: #fff;
+}
+
+.modal-footer .mybtn.facebook > a {
+    padding-left: 25px;
+    background: url("./../images/fb.png") no-repeat;
+    background-size: contain;
+}
+
+.modal-footer .mybtn.facebook:hover {
+    background: #253a71;
+    border-color: #253a71;
+    -webkit-transition: .25s;
+    transition: .25s;
+}
+
+.modal-footer .mybtn.twitter {
+    border-color: #4e81c8;
+    background: #4e81c8;
+    color: #fff;
+}
+
+.modal-footer .mybtn.twitter > a {
+    padding-left: 30px;
+    background: url("./../images/twitter.png") no-repeat;
+    background-size: contain;
+}
+
+.modal-footer .mybtn.twitter:hover {
+    border-color: #3b6196;
+    background: #3b6196;
+    -webkit-transition: .25s;
+    transition: .25s;
+}
+
+.modal-footer .mybtn.cancel {
+    border-color: #dbdbdb;
+}
+
+.modal-footer .mybtn.cancel:hover {
+    border-color: #272727;
+    color: #272727 !important;
+}
+
+.choose__bottle > .flex-end {
+    -webkit-flex-basis: 20%;
+    -ms-flex-preferred-size: 20%;
+    flex-basis: 20%;
+    display: block;
+}
+
+.ui-spinner > input {
+    padding: 0;
+}
+
+.modal-block .modal-footer .mybtn-confirm:hover {
+    color: #000 !important;
+}
+
+.wine-card-description {
+    max-width: 500px;
+}
+
+@media screen and (max-width: 480px) {
+    #example-form .become-content-step2 input {
+        display: block;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #decision-cellar-form .wizard .content > section, #decision-field-form .wizard .content > section {
+        -webkit-box-orient: horizontal !important;
+        -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+        flex-direction: row !important;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+
+    #decision-cellar-form .wizard .content > section > .intro, #decision-field-form .wizard .content > section > .intro {
+        -webkit-box-orient: horizontal !important;
+        -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+        flex-direction: row !important;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    #decision-cellar-form .wizard, #decision-field-form .wizard {
+        -webkit-box-orient: horizontal !important;
+        -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+        flex-direction: row !important;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+
+    .flex-container.flex-side.content-learn-flex {
+        -webkit-box-orient: horizontal !important;
+        -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+        flex-direction: row !important;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .user-dialog-photo {
+        min-width: 45px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .active-process__nav-tabs {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body .header--white header.header-white .cart:hover .cart-drop {
+        display: none !important;
+    }
+
+    .steps-list-text {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: relative;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .steps-list-text_icon {
+        position: static;
+    }
+
+    .steps-list__item:after {
+        left: 100%;
+        top: 0;
+        -webkit-transform: translateX(-50%) rotate(90deg);
+        transform: translateX(-50%) rotate(90deg);
+    }
+}
+
+@media screen and (max-width: 1090px) {
+    .flex-container.flex-side.content-learn-flex, #decision-cellar-form .wizard, #decision-field-form .wizard {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    #decision-cellar-form .wizard .content, #decision-field-form .wizard .content {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
+
+    .flex-container.flex-side.content-learn-flex > *, #decision-cellar-form .wizard > *, #decision-field-form .wizard > * {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #decision-cellar-form .wizard .steps, #decision-field-form .wizard .steps {
+        width: 100%;
+    }
+}
+
+.flex-cart-item .mb0 {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-wrapper-1 + .intro-wrapper-7 {
+    margin-top: 45px;
+}
+
+@media (max-width: 480px) {
+    header .header__logo-wrapper {
+        margin: 0 auto;
+    }
+}
+
+.wine__bottle {
+    max-height: 300px;
+    padding: 0 20px;
+}
+
+.bubble {
+    display: block;
+}
+
+.team .features__wrapper img {
+    width: 60% !important;
+}
+
+#controls .basic-text .star {
+
+    margin-right: 5px;
+    padding-right: 0;
+
+}
+
+#decision-field-form .wizard .content .intro-mybtn {
+    color: #2d2d2d;
+    border-color: #2d2d2d;
+}
+
+#decision-field-form .wizard .content .intro-mybtn:hover {
+    color: white;
+    background: #2d2d2d;
+}
+
+#decision-field-form .wizard .content .intro-mybtn.share-mybtn svg {
+    fill: #2d2d2d
+}
+
+#decision-field-form .wizard .content .intro-mybtn:hover svg {
+    fill: white;
+}
+
+.openProfile-wrapper {
+    display: none;
+}
+
+#decision-field-form .wizard .content .intro-wrapper-4 .decision-wrapper .decision-item-price-wrapper {
+    position: relative;
+}
+
+@media screen and (max-width: 660px) {
+    .openProfile-wrapper--inside {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #decision-field-form .wizard .content .intro-wrapper-4 .decision-wrapper .decision-item-price-wrapper,
+    #decision-field-form .wizard .content .intro-wrapper-4 .decision-wrapper .decision-item-btn-wrapper {
+        top: 0
+    }
+}
+
+.ui-spinner-wrapper--without-margin a {
+    margin: 0;
+}
+
+.ui-spinner-wrapper--without-margin span {
+    margin-left: 14px;
+}
+
+.mybtn--track {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    display: inline-block;
+    color: #282828
+}
+
+.mybtn--track:hover {
+    color: white;
+    background: #282828
+}
+
+.wine-card-title {
+    line-height: 0.7;
+}
+
+.modal-text{
+    max-width: 320px;
+}

@@ -1,0 +1,70 @@
+{#{% extends '@App/layout.html.twig' %}#}
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block main %}
+    <section class="profile-account flex-container flex-column flex-center">
+        <div class="tab-content profile-account__tab-content">
+            <div class="tab-pane active" role="tabpanel" id="account">
+                <div class="flex-container flex-center profile-account__flex flex-wrap">
+                    <div class="flex-container flex-center  profile-account__flex-item">
+                        <div class="flex-container flex-column profile-account__update-photo">
+                            <p class="basic-text text-center">{{ 'page.profile.edit.profile.photo'|trans }}</p>
+                            {% if  user.avatar %}
+                                <img class="uploadPhoto" src="{{ asset('upload/user/avatar/' ~ user.avatar) }}"
+                                     alt="updatePhoto" title="updatePhoto" width="95" height="95">
+                            {% else %}
+                                <img class="uploadPhoto" src="{{ asset('images/updatePhoto.png') }}" alt="updatePhoto"
+                                     title="updatePhoto" width="95" height="95">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="flex-container profile-account__flex-item profile-account__flex-item-single">
+                        <div class="flex-container flex-column profile-account__info">
+                            <p class="basic-text">{{ 'page.profile.info'|trans }}</p>
+                            <input disabled placeholder="{{ 'page.profile.info.username'|trans }}"
+                                   value="{{ app.user.firstname }}">
+                            <input disabled type="email" placeholder="{{ 'page.profile.info.email'|trans }}"
+                                   value="{{ app.user.email }}">
+                        </div>
+                        <div class="flex-container flex-column profile-account__info">
+                            <input disabled placeholder="{{ 'page.profile.info.lastname'|trans }}"
+                                   value="{{ app.user.lastname }}">
+                            <input disabled type="tel" placeholder="{{ 'page.profile.info.phone'|trans }}"
+                                   value="{{ app.user.phone }}">
+                        </div>
+                    </div>
+                    <div class="flex-container profile-account__flex-item profile-account__flex-item-single">
+                        <div class="flex-container flex-column profile-account__info">
+                            <p class="basic-text">{{ 'page.profile.address'|trans }}</p>
+                            <input disabled placeholder="{{ 'page.profile.info.country'|trans }}"
+                                   value="{{ app.user.countryTitle }}">
+                            <input disabled placeholder="{{ 'page.profile.info.state'|trans }}"
+                                   value="{{ app.user.state }}">
+                        </div>
+                        <div class="flex-container flex-column profile-account__info">
+                            <input disabled placeholder="{{ 'page.profile.info.city'|trans }}"
+                                   value="{{ app.user.city }}">
+                            <input disabled placeholder="{{ 'page.profile.info.zipCode'|trans }}"
+                                   value="{{ app.user.zipCode }}">
+                        </div>
+                    </div>
+                    <div class="flex-container profile-account__flex-item profile-account__flex-item-single"
+                         style="margin-top:0;">
+                        <div class="flex-container flex-column profile-account__info"
+                             style="max-width:100%; margin-bottom:18px;">
+                            <input disabled style="width:100%;" placeholder="{{ 'page.profile.info.address'|trans }}"
+                                   value="{{ app.user.address }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container profile-account__flex-item profile-account__flex-item-single flex-center">
+                <div class="flex-container flex-column profile-account__info flex-center">
+                    <a class="edit-link" href="{{ path('app_user_profile_edit') }}">
+                        EDIT
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

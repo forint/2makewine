@@ -1,0 +1,16 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block profilemenu %}{% endblock %}
+
+{% block main %}
+
+    <section class="flex-container flex-center flex-column cart login-page" style="margin-top: 60px;">
+        <div class="done-wrapper flex-container flex-center"><img class="done" src="{{ asset('images/done.png') }}"></div>
+        <div class="flex-container flex-center flex-column become-content-step3">
+            <h2 class="user-name">{{ user.firstname }} {{ user.lastname }}</h2>
+            <h3 class="thx-title title">{{ 'app.registration.page.confirmed.success.message'|trans }}</h3>
+            <a class="mybtn" href="{{ path('app_basket_delivery') }}" style="border-color:#282828;color:#282828;">Delivery</a>
+        </div>
+    </section>
+
+{% endblock main %}

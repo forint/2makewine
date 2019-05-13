@@ -1,0 +1,16 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{#{% extends 'base.html.twig' %}#}
+{% extends '@App/layout.html.twig' %}
+
+{% block main %}
+    <section class="error">
+        <div class="container">
+            <div class="row">
+                <div class="error__flex"><img class="error-img" src="{{ asset('images/405.png') }}" title="error" alt="error">
+                    <h2 class="title error-title">Not Allowed</h2>
+                    <p class="basic-text error-text">Maybe you have set incorrect address </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

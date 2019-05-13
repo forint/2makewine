@@ -1,0 +1,16 @@
+{# AppBundle:CRUD:list__action_attachment.html.twig #}
+{% extends '@App/CRUD/base_list_flat_inner_row.html.twig' %}
+
+{% block row %}
+
+    <div class="sonata__admin-message_list__thumbnail_wrapper">
+        {% if asset_is_image(value) %}
+            <img src="{{ vich_uploader_asset(object, 'attachmentFile') }}" alt=""/>
+        {% else %}
+            {% if value is not null %}
+                <a href="{{ vich_uploader_asset(object, 'attachmentFile') }}">Download file</a>
+            {% endif %}
+        {% endif %}
+    </div>
+
+{% endblock %}

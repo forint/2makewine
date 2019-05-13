@@ -1,0 +1,86 @@
+{% block add_product_form_content %}
+
+    <div class="wine-card__flex-item flex-container flex-column">
+
+        {% if provider.getOption('product_add_modal') %}
+            {{ form_start(form, {'method': 'POST', 'action': url('sonata_basket_add_product'), 'attr': {'id':'form_add_basket','class': 'form-horizontal','data-target': "#add_basket_modal_" ~ wine.id }}) }}
+        {% else %}
+            {{ form_start(form, {'method': 'POST', 'action': url('sonata_basket_add_product'), 'attr': {'id':'form_add_basket','class': 'form-horizontal'}}) }}
+        {% endif %}
+        {#<form id="form_add_basket" class="form-horizontal" action="{{ url('sonata_basket_add_product') }}" method="POST">
+#}
+            {% set quantityAttrs = {'min': 1} %}
+
+            {#{{ form_row(form.quantity, {'label': 'form_label_quantity'|trans({}, 'SonataBasketBundle'), 'attr': quantityAttrs, 'horizontal_input_wrapper_class': 'col-lg-4', 'horizontal_label_class': 'control-label col-lg-8', 'render_required_asterisk': false}) }}
+#}
+            <div class="wine-card-order">
+                {% for wineId in mapWines %}
+                    <input type="hidden" name="wine[]" value="{{ wineId }}">
+                {% endfor %}
+                {#<form method="post" action="{{ path('vineyard-map') }}">
+                    {% for wineId in mapWines %}
+                        <input type="hidden" name="wine[]" value="{{ wineId }}">
+                    {% endfor %}
+                    <button type="submit">{{ "winecard.page.link.back_to_map"|trans }}</button>
+                </form>#}
+                <div class="flex-container flex-side">
+                    <h2 class="wine-card-order-title">{{ wine.title }}</h2>
+                    <p class="wine-card-order-price"><span data-base="{{ wine.price }}">{{ wine.price*(vinesCount/10) }}</span>$</p>
+                </div>
+                <p class="basic-text">{#{{ wine.wineRecipe.wineConstructor.getBreadcrumbsString }}#}</p>
+                <div class="flex-container ui-spinner-module">
+                    <img src="{{ asset('/images/vines.png') }}" alt="vines" title="vines">
+                    <div class="flex-container">
+                        <div class="ui-spinner-wrapper">
+                            <input id="add_basket_quantity" name="add_basket[quantity]" required="required" min="{{ quantityAttrs.min }}" value="{{ vinesCount }}" autocomplete="off" disabled>
+                        </div>
+                    </div>
+                    <p class="flex-cart-item-quantity__description">
+                        {{ "vineyard_map.page.sidebar.vines_hint"|trans }}
+                    </p>
+                </div>
+            </div>
+            <div class="wine-card-taste">
+                <p class="wine-card-taste-description">{{ "winecard.page.description.soil"|trans }}</p>
+                <p class="basic-text">{{ wine.vineyard.translate.soil|nl2br }}</p>
+                <p class="wine-card-taste-description">{{ "winecard.page.description.vinification"|trans }}</p>
+                <p class="basic-text">{{ wine.translate.vinification|nl2br }}</p>
+            </div>
+            <div class="wine-card-prop flex-container flex-column">
+                <div class="wine-card-prop-row flex-container">
+                    <div class="wine-card-prop-cell flex-container">
+                        <img src="{{ asset('/images/temperature.png') }}">
+                        <div class="cell-flex-item">
+                            <p class="basic-text">{{ "winecard.page.description.temperature"|trans }}</p>
+                            <p class="basic-text basic-text-b">{{ wine.translate.servingTemperature }}</p>
+                        </div>
+                    </div>
+                    <div class="wine-card-prop-cell flex-container">
+                        <img src="{{ asset('/images/age.png') }}">
+                        <div class="cell-flex-item">
+                            <p class="basic-text">{{ "winecard.page.description.age"|trans }}</p>
+                            <p class="basic-text basic-text-b">{{ wine.translate.ageingPotential }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wine-card-prop-row flex-container">
+                    <div class="wine-card-prop-cell flex-container">
+                        {% for icon in wine.tasteWithIcon %}
+                            <img class="wine-card-taste-icon" src="{{ vich_uploader_asset(icon, 'previewFile') }}">
+                        {% endfor %}
+                    </div>
+                    <div class="wine-card-prop-cell flex-container">
+                        <p class="basic-text">{{ wine.translate.tasteWithDescription }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container wine-card-for-btn">
+                <button type="submit" class="mybtn btn-second sonata_add_basket_order">{{ "winecard.page.button.order"|trans }}</button>
+                <button type="submit" class="mybtn btn-second add-product sonata_add_basket_add">{{ "winecard.page.button.cart"|trans }}</button>
+            </div>
+            <input name="add_basket[productId]" type="hidden" value="{{ wine.id }}">
+            {{ form_end(form, {'render_rest': false}) }}
+      {#  </form>#}
+    </div>
+
+{% endblock %}

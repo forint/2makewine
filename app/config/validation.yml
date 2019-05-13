@@ -1,0 +1,4 @@
+AppBundle\Entity\Wine:
+    properties:
+        translations:
+            - Valid: ~

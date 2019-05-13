@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" datatype="plaintext" original="SonataAdminBundle.en.xliff">
+        <body>
+            <trans-unit id="default">
+                <source>default</source>
+                <target>По умолчанию</target>
+            </trans-unit>
+            <trans-unit id="Category">
+                <source>Category</source>
+                <target>Категория</target>
+            </trans-unit>
+            <trans-unit id="Name">
+                <source>Name</source>
+                <target>Имя</target>
+            </trans-unit>
+            <trans-unit id="Category List">
+                <source>Category List</source>
+                <target>Список категорий</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

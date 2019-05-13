@@ -1,0 +1,15 @@
+sonata_product:
+    class:
+        product:              AppBundle\Entity\WineProduct
+        package:              EcommerceBundle\ProductBundle\Entity\Package
+        product_category:     EcommerceBundle\ProductBundle\Entity\ProductCategory
+        product_collection:   EcommerceBundle\ProductBundle\Entity\ProductCollection
+        category:             EcommerceBundle\ClassificationBundle\Entity\Category
+        collection:           EcommerceBundle\ClassificationBundle\Entity\Collection
+        delivery:             EcommerceBundle\ProductBundle\Entity\Delivery
+        media:                EcommerceBundle\MediaBundle\Entity\Media
+        gallery:              EcommerceBundle\MediaBundle\Entity\Gallery
+    products:
+         sonata.ecommerce.wine.product:
+            provider:   sonata.ecommerce.wine.product.type
+            manager:    sonata.ecommerce.wine.product.manager

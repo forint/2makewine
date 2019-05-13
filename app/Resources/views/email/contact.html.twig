@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+
+                <h1>Thank you for submit request {{ first_name }}</h1>
+
+            </div>
+
+            <div id="status">
+
+                <h2>Your email:</h2>
+
+                <p>
+                    {{ email }}
+                </p>
+
+                <h2>Comment:</h2>
+
+                <p>
+                    {{ comment }}
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

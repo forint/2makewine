@@ -1,0 +1,15 @@
+translation:
+    locales: ["en", "it"]
+    webui:
+        enabled: true
+    edit_in_place:
+#        enabled: true
+#        config_name: default # the first one or one of your configs
+#        activator: php_translation.edit_in_place.activator
+        activator: my_activator
+    configs:
+        app:
+            dirs: ["%kernel.root_dir%/Resources/views", "%kernel.root_dir%/../src"]
+            output_dir: "%kernel.root_dir%/../src/AppBundle/Resources/translations"
+            excluded_names: ["*TestCase.php", "*Test.php", "*Admin.php"]
+            excluded_dirs: [cache, data, logs]

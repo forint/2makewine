@@ -1,0 +1,27 @@
+{% block a2lix_translations_widget %}
+    {{ form_errors(form) }}
+
+    <div class="parrento" style="display: flex;justify-content: space-between;">
+
+        {% for translationsFields in form %}
+            {% set locale = translationsFields.vars.name %}
+
+            <div class="ex-50" style="flex-basis: 48%">
+                <span style="background: #eeeeee; color:steelblue; padding: 7px; display: block;">
+                    {{ locale|capitalize }}
+                    {% if form.vars.default_locale == locale %}[Default]{% endif %}
+                    {% if translationsFields.vars.required %}*{% endif %}
+                </span>
+                {{ form_errors(translationsFields) }}
+                {{ form_widget(translationsFields) }}
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+{% block a2lix_translationsForms_widget %}
+    {{ block('a2lix_translations_widget') }}
+{% endblock %}

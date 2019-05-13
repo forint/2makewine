@@ -1,0 +1,95 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block main %}
+    <div class="bc flex-container flex-center" style="background:url({{ asset('images/bc-about.jpg') }});">
+        <h2 class="bc-title title">{{ 'about.page.title'|trans }}</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="about">
+                <div class="about__text">
+                    <div class="decore-wrapper decore-grey">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px"
+                             height="6px" viewBox="0 0 16 6" version="1.1">
+                            <defs/>
+                            <g id="Spritelist" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Illustration" transform="translate(-899.000000, -1059.000000)" fill="#2C2D2D">
+                                    <path d="M905.827071,1060.73684 C903.85741,1061.89474 902.294317,1062.47368 901.139828,1062.47368 C900.596719,1062.47368 899.98534,1062.29789 899.30569,1061.94737 L899.101897,1061.94737 L899,1062.26211 C899.203793,1063.38632 900.426552,1063.94737 902.668277,1063.94737 C903.55172,1063.94737 904.825428,1063.78947 906.489399,1063.47368 C908.15337,1063.15789 909.427077,1062.99895 910.309502,1062.99895 C912.348452,1062.99895 913.707753,1063.56105 914.386384,1064.68526 L914.79397,1065 L914.997764,1064.47368 C915.066034,1060.82421 913.571211,1059 910.514314,1059 C909.359826,1059 907.797751,1059.57895 905.827071,1060.73684 Z"
+                                          id="leaf-icon"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="basic-text text-center">
+                        {{ 'abut.page.container.text'|trans }}
+                    </p>
+                    <p class="basic-text columns2">
+
+                        {{ 'abut.page.container.text.columns2'|trans }}
+                    </p>
+                    <div class="myrow myrow-white">
+                        <p class="myrow-text">{{ 'abut.page.container.label.our.team'|trans }}</p>
+                    </div>
+
+
+                    <div class="team features flex-container flex-baseline scroll-item flex-side">
+                        <div class="features__wrapper">
+                            <img class="features-img" alt="features" title="features"
+                                 src="{{ asset('images/team1.png') }}">
+                            <h3 class="features-title">
+                                {{ 'page.aboutus.team.person.one.name'|trans }}
+                            </h3>
+                            <p class="features-text basic-text red">
+                                {{ 'page.aboutus.team.person.one.position'|trans }}
+                            </p>
+                            <p class="features-text basic-text">
+                                {{ 'page.aboutus.team.person.one.descr'|trans }}
+                            </p>
+                            <p class="features-text basic-text email-text">
+                                Email: <a href="mailto:david@citywinery.com">
+                                    {{ 'page.aboutus.team.person.one.email'|trans }}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="features__wrapper">
+                            <img class="features-img" alt="features" title="features"
+                                 src="{{ asset('images/team2.png') }}">
+                            <h3 class="features-title">
+                                {{ 'page.aboutus.team.person.two.name'|trans }}
+                            </h3>
+                            <p class="features-text basic-text red">
+                                {{ 'page.aboutus.team.person.two.position'|trans }}
+                            </p>
+                            <p class="features-text basic-text">
+                                {{ 'page.aboutus.team.person.two.descr'|trans }}
+                            </p>
+                            <p class="features-text basic-text email-text">
+                                Email: <a href="mailto:david@citywinery.com">
+                                    {{ 'page.aboutus.team.person.two.email'|trans }}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="features__wrapper">
+                            <img class="features-img" alt="features" title="features"
+                                 src="{{ asset('images/team3.png') }}">
+                            <h3 class="features-title">
+                                {{ 'page.aboutus.team.person.three.name'|trans }}
+                            </h3>
+                            <p class="features-text basic-text red">
+                                {{ 'page.aboutus.team.person.two.three'|trans }}
+                            </p>
+                            <p class="features-text basic-text">
+                                {{ 'page.aboutus.team.person.thre.descr'|trans }}
+                            <p class="features-text basic-text email-text">
+                                Email: <a href="mailto:david@citywinery.com">
+                                    {{ 'page.aboutus.team.person.three.email'|trans }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

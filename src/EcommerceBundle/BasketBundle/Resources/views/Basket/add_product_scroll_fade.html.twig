@@ -1,0 +1,32 @@
+<div class="my-container-white">
+    <div class="my-container">
+        {{ form_start(form, {'method': 'POST', 'action': url('sonata_basket_add_product'), 'attr': {'id':'form_add_basket','class': 'form-horizontal'}}) }}
+        <div class="flex-container header-wine-card-flex flex-side">
+           <div class="header-wine-card-item">
+                <p class="header-wine-card-title">
+                    {{ wine.title }}
+                    <span class="basic-text">({{ wine.productionRecipe.wineConstructor.getBreadcrumbsString }})</span>
+                </p>
+            </div>
+            <div class="header-wine-card-item">
+                <div class="flex-container ui-spinner-module">
+                    <img src="{{ asset('images/vines.png') }}" alt="vines" title="vines">
+                    <div class="flex-container">
+                        <div class="ui-spinner-wrapper ui-spinner-wrapper--without-margin">
+                            <input id="add_basket_quantity" name="add_basket[quantity]" value="{{ vinesCount }}" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-wine-card-item">
+                <p class="wine-card-order-price"><span data-base="{{ wine.price }}">{{ wine.price*(vinesCount/10) }}</span>$</p>
+            </div>
+            <div class="header-wine-card-item flex-container">
+                <a class="mybtn btn-second sonata_add_basket_order">{{ "winecard.page.button.order"|trans }}</a>
+                <a class="mybtn btn-second add-product sonata_add_basket_add">{{ "winecard.page.button.cart"|trans }}</a>
+            </div>
+        </div>
+        <input name="add_basket[productId]" type="hidden" value="{{ wine.id }}">
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="sonata.payment.pool.class">Sonata\Component\Payment\Pool</parameter>
+        <parameter key="sonata.payment.handler.class">Sonata\Component\Payment\PaymentHandler</parameter>
+        <parameter key="sonata.payment.method.paypal.class">Sonata\Component\Payment\Paypal</parameter>
+        <parameter key="sonata.payment.method.check.class">Sonata\Component\Payment\CheckPayment</parameter>
+        <parameter key="sonata.payment.method.pass.class">Sonata\Component\Payment\PassPayment</parameter>
+        <parameter key="sonata.payment.method.scellius.class">Sonata\Component\Payment\Scellius\ScelliusPayment</parameter>
+        <parameter key="sonata.payment.provider.scellius.none_generator.class">Sonata\Component\Payment\Scellius\NodeScelliusTransactionGenerator</parameter>
+        <parameter key="sonata.payment.provider.scellius.order_generator.class">Sonata\Component\Payment\Scellius\OrderScelliusTransactionGenerator</parameter>
+        <parameter key="sonata.payment.method.debug.class">Sonata\Component\Payment\Debug\DebugPayment</parameter>
+        <parameter key="sonata.payment.method.ogone.class">Sonata\Component\Payment\Ogone\OgonePayment</parameter>
+        <parameter key="sonata.payment.method.stripe.class">EcommerceBundle\PaymentBundle\Payment\StripeClient</parameter>
+    </parameters>
+    <services>
+        <service id="sonata.payment.pool" class="%sonata.payment.pool.class%" public="true"/>
+        <service id="sonata.payment.method.paypal" class="%sonata.payment.method.paypal.class%">
+            <tag name="sonata.payment.method"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="translator" on-invalid="null"/>
+        </service>
+        <service id="sonata.payment.method.check" class="%sonata.payment.method.check.class%">
+            <tag name="sonata.payment.method"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="logger"/>
+            <argument/>
+        </service>
+        <service id="sonata.payment.method.pass" class="%sonata.payment.method.pass.class%">
+            <tag name="sonata.payment.method"/>
+            <argument type="service" id="router"/>
+            <argument/>
+        </service>
+        <service id="sonata.payment.method.scellius" class="%sonata.payment.method.scellius.class%">
+            <tag name="sonata.payment.method"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="logger"/>
+            <argument type="service" id="templating"/>
+            <argument/>
+            <argument>%kernel.debug%</argument>
+        </service>
+        <service id="sonata.payment.provider.scellius.none_generator" class="%sonata.payment.provider.scellius.none_generator.class%"/>
+        <service id="sonata.payment.provider.scellius.order_generator" class="%sonata.payment.provider.scellius.order_generator.class%"/>
+        <service id="sonata.payment.method.debug" class="%sonata.payment.method.debug.class%">
+            <tag name="sonata.payment.method"/>
+            <argument type="service" id="router"/>
+            <argument/>
+        </service>
+        <service id="sonata.payment.method.ogone" class="%sonata.payment.method.ogone.class%">
+            <tag name="sonata.payment.method"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="logger"/>
+            <argument type="service" id="templating"/>
+            <argument>%kernel.debug%</argument>
+        </service>
+        <service id="sonata.payment.method.stripe" class="%sonata.payment.method.stripe.class%">
+            <tag name="sonata.payment.method"/>
+            <argument>%stripe_secret_key%</argument>
+            <argument>%payment%</argument>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="logger"/>
+            <argument type="service" id="session"/>
+        </service>
+        <service id="sonata.payment.handler" class="%sonata.payment.handler.class%">
+            <argument type="service" id="sonata.order.manager"/>
+            <argument type="service" id="sonata.payment.selector"/>
+            <argument type="service" id="sonata.generator"/>
+            <argument type="service" id="sonata.transaction.manager"/>
+            <argument type="service" id="sonata.notification.backend"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+    </services>
+</container>

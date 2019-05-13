@@ -1,0 +1,35 @@
+<div class="flex-container flex-side cart-wrapper cart-wrapper-wine flex-center">
+    <div class="flex-cart-item flex-cart-item-wine flex-container flex-wrap">
+        <div class="flex-container flex-center flex-cart-item__square">
+            {#{{ asset('images/cart-item1.png') }}#}
+            <img src="{{ vich_uploader_asset(basketElement.product, 'previewFile', 'AppBundle\\Entity\\WineProduct') }}"
+                 alt="{{ basketElement.product.title }}">
+        </div>
+        <div class="flex-container flex-cart-item__description flex-column">
+            <h2 class="title">{{ basketElement.product.title }}</h2>
+            <p class="text-basic wine-features">
+                {#{{ wine.wineRecipe.wineConstructor.getBreadcrumbsString }}#}
+                {{ basketElement.product.productionRecipe.wineConstructor.getBreadcrumbsString }}
+            </p>
+        </div>
+    </div>
+    <div class="flex-cart-item flex-cart-item-quantity">
+        <div class="flex-container flex-center">
+            <div class="ui-spinner-wrapper">
+                {#<input name="value" value="{{ basketElement.quantity }}" data-unit-price="{{ basketElement.unitPrice }}"#}
+                       {#disabled>#}
+                <p class="ui-spinner-wrapper__quantity">
+                    {{ basketElement.quantity }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="flex-cart-item flex-cart-item-price">
+        <div class="flex-container flex-side flex-center">
+            <p class="mb0">$<span class="flex-cart-item-price__sum"
+                                  id="basket-element-wines-{{ basketElement.productId }}">
+                    {{ basketElement.price }}
+                </span></p>
+        </div>
+    </div>
+</div>

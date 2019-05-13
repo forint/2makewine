@@ -1,0 +1,159 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/jquery.jscrollpane.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/customSelectBox.css') }}" />
+    <!-- example.css is throwaway code for demoing -->
+    <link rel="stylesheet" href="{{ asset('css/example.css') }}" />
+
+{% endblock %}
+
+
+{% block javascripts_footer_block %}
+    {{ parent() }}
+    <script src="{{ asset('js/jScrollPane.js') }}"></script>
+    <script src="{{ asset('js/jquery.mousewheel.js') }}"></script>
+    <script src="{{ asset('js/SelectBox.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+
+    <section class="profile-account flex-container flex-column flex-center">
+        <ul class="profile-account__nav-tabs active-process__nav-tabs nav nav-tabs flex-container" role="tablist">
+            <li class="active" role="presentation"><a class="basic-text" href="#account" aria-controls="account" role="tab" data-toggle="tab">{{ 'page.profile.edit.menu.account'|trans }}</a></li>
+            <li role="presentation"><a class="basic-text" href="#personal" aria-controls="personal" role="tab" data-toggle="tab">{{ 'page.profile.edit.menu.personal'|trans }}</a></li>
+            {#<li role="presentation"><a class="basic-text" href="#billing" aria-controls="billing" role="tab" data-toggle="tab">{{ 'page.profile.edit.menu.billing'|trans }}</a></li>#}
+        </ul>
+        <div class="tab-content profile-account__tab-content">
+            <div class="tab-pane active" role="tabpanel" id="account">
+                {{ form_start(avatar, { 'action': path('app_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit flex-container flex-center profile-account__flex', style: 'width:300px;float:left;' } }) }}
+                <div class="flex-container profile-account__flex-item">
+                    <div class="flex-container flex-column profile-account__update-photo">
+                        <p class="basic-text">{{ 'page.profile.edit.profile.photo'|trans }}</p>
+                        {{ form_row(avatar._username, {'attr': {'class': 'hidden__field'}}) }}
+                        {{ form_row(avatar._email, {'attr': {'class': 'hidden__field'}}) }}
+                        {#{% if  app.user.avatar %}#}
+                            {#<img class="uploadPhoto" src="{{ asset('upload/user/avatar/' ~ app.user.avatar) }}" alt="updatePhoto" title="updatePhoto" width="95" height="95">#}
+                        {#{% else %}#}
+                            {#<img class="uploadPhoto" src="{{ asset('images/updatePhoto.png') }}" alt="updatePhoto" title="updatePhoto" width="95" height="95">#}
+                        {#{% endif %}#}
+                        <div id="updateForm">
+                            {#{{ form_row(avatar.imageFile) }}#}
+                            {{ form_label(avatar.imageFile) }}
+                            {{ form_widget(avatar.imageFile) }}
+                            <label class="mybtn transition" for="app_user_profile_avatar_imageFile_file"><span>{{ 'page.profile.edit.profile.submit.update.label'|trans }}</span></label>
+                        </div>
+                        {{ form_row(avatar._token) }}
+                    </div>
+                </div>
+                {{ form_end(avatar, {'render_rest': false}) }}
+                {{ form_start(profile, { 'action': path('app_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit flex-container flex-center profile-account__flex', style: 'width:300px;'  } }) }}
+
+                <div class="flex-container profile-account__flex-item">
+                    <div class="flex-container flex-column profile-account__info">
+                        <p class="basic-text">{{ 'page.profile.edit.profile.account.information'|trans }}</p>
+                        {{ form_row(profile._username, {'attr': {'class': 'hidden__field'}}) }}
+                        {{ form_row(profile._email, {'attr': {'class': 'hidden__field'}}) }}
+                        {#{{ form_row(profile.current_password, {'attr': {'placeholder': 'Old password'}}) }}#}
+                        {{ form_row(profile.PlainPassword.first, {'attr': {'placeholder': 'New password'}}) }}
+                        {{ form_row(profile.PlainPassword.second, {'attr': {'placeholder': 'Repeat password'}}) }}
+                        {{ form_row(profile._token) }}
+                        {# <p class="spoiler-btn">Change password</p>
+                        <div class="spoiler-block">
+                            <input type="password" placeholder="Old password">
+                            <input type="password" placeholder="New password">
+                        </div>#}
+                        <input type="submit" value="{{ 'profile.edit.submit'|trans }}">
+                    </div>
+                </div>
+                {{ form_end(profile, {'render_rest': false}) }}
+
+                <div style="clear:both"></div>
+
+                <div class="flex-container profile-account__flex-item">
+                    <div class="flex-container flex-column profile-account__info" style="padding: 30px 0 0 0; max-width: none;text-align: center;">
+                        <div class="flash-error">
+                            {{ form_errors(avatar) }}
+                        </div>
+                        {% for messages in app.flashes(['error']) %}
+                            {% for message in messages %}
+                                <div class="flash-error">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
+                        {% for messages in app.flashes((['success_app_user_profile', 'success_app_user_profile_avatar'])) %}
+                            {% for message in messages %}
+                                <div class="flash-notice">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane hasJS" role="tabpanel" id="personal">
+                {{ form_start(account, { 'action': path('app_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit flex-container flex-center profile-account__flex' } }) }}
+                <div class="flex-container profile-account__flex-item profile-account__flex-item-single">
+                    <div class="flex-container flex-column profile-account__info">
+                        <p class="basic-text">{{ 'page.profile.edit.profile.personal.information'|trans }}</p>
+                        {{ form_row(account.firstname, {'attr': {'placeholder': 'First Name'}}) }}
+                        {{ form_row(account.email, {'attr': {'placeholder': 'Email'}}) }}
+                    </div>
+                    <div class="flex-container flex-column profile-account__info">
+                        {{ form_row(account.lastname, {'attr': {'placeholder': 'Last Name'}}) }}
+                        {{ form_row(account.phone, {'attr': {'placeholder': 'Phone'}}) }}
+                    </div>
+                </div>
+                <div class="flex-container profile-account__flex-item profile-account__flex-item-single" style="margin-bottom: 0;">
+                    <div class="flex-container flex-column profile-account__info">
+                        <p class="basic-text" style="margin-bottom: 10px;">Address</p>
+                        {{ form_row(account.country, {'attr': {'placeholder': 'Country', 'class' : 'custom'}}) }}
+                        {{ form_row(account.state, {'attr': {'placeholder': 'State'}}) }}
+                    </div>
+                    <div class="flex-container flex-column profile-account__info">
+                        <p class="basic-text" style="margin-bottom: 30px;">&nbsp;</p>
+                        {{ form_row(account.city, {'attr': {'placeholder': 'City'}}) }}
+                        {{ form_row(account.zipCode, {'attr': {'placeholder': 'Zip Code'}}) }}
+                    </div>
+                </div>
+
+                <div class="flex-container profile-account__flex-item profile-account__flex-item-single" style="margin-bottom: 0;">
+                    <div class="flex-container flex-column profile-account__info" style="max-width:100%; margin-bottom:18px;">
+                        {{ form_row(account.address, {'attr': {'placeholder': 'Address', 'style' : 'width:100%;'}}) }}
+                    </div>
+                </div>
+
+                {{ form_row(account._token) }}
+                <div class="flex-container profile-account__flex-item profile-account__flex-item-single flex-center">
+                    <div class="flex-container flex-column profile-account__info flex-center">
+                        <input type="submit" value="{{ 'profile.edit.submit'|trans }}">
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+
+                <div class="flex-container profile-account__flex-item">
+                    <div class="flex-container flex-column profile-account__info" style="padding: 30px 0 0 0; max-width: none;text-align: center;">
+                        <div class="flash-error">
+                            {{ form_errors(account) }}
+                        </div>
+                        {% for messages in app.flashes((['success_app_user_account_profile'])) %}
+                            {% for message in messages %}
+                                <div class="flash-notice">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {{ form_end(account, {'render_rest': false}) }}
+            </div>
+            {#<div class="tab-pane" role="tabpanel" id="billing">{{ 'page.profile.edit.profile.billing'|trans }}</div>#}
+        </div>
+    </section>
+
+{% endblock %}

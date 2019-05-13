@@ -1,0 +1,66 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block profilemenu %}{% endblock %}
+
+{% block main %}
+
+    <section class="flex-container flex-center flex-column cart login-page" style="margin-top: 60px;">
+        <div class="flex-container flex-center flex-column become-content-step2">
+            <h2 class="title step2-auth-title">Sign up</h2>
+            <p class="basic-text step2-auth-text">For buy wine, please authorisation</p>
+            <div class="contact__block flex-container step2-auth-form" style="justify-content: center;">
+                <div class="contact__form-wrapper">
+                    <p class="step2-auth-text2">Personal information</p>
+
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'contact__form', novalidate: 'novalidate'}}) }}
+
+
+                    <div class="profile-login-form">
+                        <div>
+                            {% set usernameplaceholder =  'username_placeholder' %}
+                            {{ form_widget(form.firstname, {'attr': {'placeholder': 'firstname_placeholder'}}) }}
+                            <span class="flash-error">
+                            {{ form_errors(form.firstname) }}
+                            </span>
+                        </div>
+
+                        <div>
+                            {% set lastnameplaceholder =  'lastname_placeholder' %}
+                            {{ form_widget(form.lastname, {'attr': {'placeholder': 'lastname_placeholder'}}) }}
+                            <span class="flash-error">
+                            {{ form_errors(form.lastname) }}
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="profile-login-form">
+                        <div>
+                            {{ form_widget(form.email, {'attr': {'placeholder': 'E-mail'}}) }}
+                            <span class="flash-error">
+                            {{ form_errors(form.email) }}
+                            </span>
+                        </div>
+
+                        <div>
+                            {% set passwordplaceholder =  'password_placeholder' %}
+                            {{ form_widget(form.plainPassword, {'attr': {'placeholder': 'passwordplaceholder'}}) }}
+                            <span class="flash-error">
+                            {{ form_errors(form.plainPassword) }}
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <input class="mybtn transition" type="submit"
+                           value="{{ 'app.page.auth.registration.submit.register'|trans }}"
+                           style="display:block;width:160px;border-radius:0;background:#fff;color:#555;border:2px solid;margin:35px auto 0;"/>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <p class="log-in" style="margin-top:30px;">I already have an account <a
+                        href="{{ path('security_login') }}">{{ 'app.page.auth.registration.submit.login'|trans }}</a>
+            </p>
+        </div>
+    </section>
+
+{% endblock %}

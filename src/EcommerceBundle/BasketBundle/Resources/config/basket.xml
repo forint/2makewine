@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="sonata.basket.builder.standard" class="Sonata\Component\Basket\BasketBuilder">
+            <argument type="service" id="sonata.product.pool"/>
+            <argument type="service" id="sonata.address.manager"/>
+            <argument type="service" id="sonata.delivery.pool"/>
+            <argument type="service" id="sonata.payment.pool"/>
+        </service>
+        <service id="sonata.customer.selector" class="%sonata.customer.selector.class%">
+            <argument type="service" id="sonata.customer.manager"/>
+            <argument type="service" id="session"/>
+            <argument type="service" id="security.authorization_checker"/>
+            <argument type="service" id="security.token_storage"/>
+            <argument type="service" id="sonata.intl.locale_detector"/>
+            <argument type="service" id="sonata.basket.session.factory"/>
+        </service>
+        <service id="sonata.basket.loader.standard" class="Sonata\Component\Basket\Loader">
+            <argument type="service" id="sonata.basket.factory"/>
+            <argument type="service" id="sonata.customer.selector"/>
+        </service>
+        <service id="sonata.basket" class="Sonata\Component\Basket\Basket">
+            <factory service="sonata.basket.loader" method="getBasket" />
+        </service>
+        <service id="sonata.basket.block.nb_items" class="Sonata\BasketBundle\Block\BasketBlockService">
+            <tag name="sonata.block"/>
+            <argument>sonata.basket.block.nb_items</argument>
+            <argument type="service" id="templating"/>
+        </service>
+    </services>
+</container>

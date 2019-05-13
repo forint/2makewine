@@ -1,0 +1,127 @@
+<div class="flex-container flex-side cart-wrapper cart-wrapper-wine flex-center {% if basketElement.advancedQuantity > 0 %}active{% endif %}" product-id="{{ basketElement.productId }}">
+    <div class="flex-cart-item flex-cart-item-wine flex-container flex-wrap">
+        <div class="flex-container flex-center flex-cart-item__square">
+            {% if asset_exists(vich_uploader_asset(basketElement.product, 'previewFile', 'AppBundle\\Entity\\WineProduct')) %}
+                <img src="{{ vich_uploader_asset(basketElement.product, 'previewFile', 'AppBundle\\Entity\\WineProduct') }}"
+                     alt="{{ basketElement.product.title }}"/>
+            {% else %}
+                <img src="{{ asset('images/uploadPhoto.png') }}" alt="{{ basketElement.product.title }}"/>
+            {% endif %}
+        </div>
+        <div class="flex-container flex-cart-item__description flex-column">
+            <h2 class="title">{{ basketElement.product.title }}</h2>
+            <p class="text-basic wine-features">{{ basketElement.product.productionRecipe.getWineConstructor.getBreadcrumbsString }}</p>
+            <p class="text-basic add-test" data-target="#tasteWine-{{ basketElement.productId }}" data-toggle="modal"
+               product-id="{{ basketElement.productId }}">+ Add Testing Wine</p>
+        </div>
+        <div class="flex-container flex-center flex-cart-item__square sub-taste"></div>
+        <div class="flex-container flex-cart-item__description flex-column sub-taste">
+            <p class="text-basic wine-features">You can order the same wine for tasting from the selected vineyard from
+                the previous harvest</p>
+        </div>
+    </div>
+    <div class="flex-cart-item flex-cart-item-quantity">
+        <div class="flex-container"><img src="{{ asset('images/vines.png') }}" alt="vines" title="vines">
+            <div class="flex-container flex-center block-wrap__quantity-input">
+                <!--span.minus --->
+                <!--span.quantity-vines.flex-container.flex-center 10-->
+                <!--span.plus +-->
+                <!-- module: CART-ITEM-->
+                <div class="ui-spinner-wrapper">
+                    <input class="quantity-input"
+                           id="sonata_basket_basket_basketElements_{{ basket.positions[basketElement.product.id] }}_quantity"
+                           name="sonata_basket_basket[basketElements][{{ basket.positions[basketElement.product.id] }}][quantity]"
+                           value="{{ basketElement.quantity }}" required="required"
+                           data-unit-price="{{ basketElement.unitPrice }}"
+                           data-product-id="{{ basketElement.product.id }}" autocomplete="off" disabled>
+                </div>
+                <!-- eof-->
+            </div>
+            <p class="flex-cart-item-quantity__description">* 10 vines ~ 6 bottles of wine</p>
+        </div>
+        <div class="flex-container sub-taste"><img src="{{ asset('images/bottles.png') }}" alt="taste" title="vines"
+                                                   style="margin: 0 6px 0 7px;">
+            <div class="flex-container flex-center block-wrap__quantity-input-advanced">
+                <!-- module: CART-ITEM-->
+                <div class="ui-spinner-taste-wrapper">
+                    <input class="advanced-quantity-input"
+                           id="sonata_basket_basket_basketElements_{{ basket.positions[basketElement.product.id] }}_advancedQuantity"
+                           name="sonata_basket_basket[basketElements][{{ basket.positions[basketElement.product.id] }}][advancedQuantity]"
+                           value="{% if basketElement.advancedQuantity is null %}0{% else %}{{ basketElement.advancedQuantity }}{% endif %}"
+                           data-unit-advanced-price="{{ basketElement.product.advancedPrice }}"
+                           data-product-id="{{ basketElement.product.id }}" autocomplete="off" required="required" disabled>
+                </div>
+                <!-- eof-->
+            </div>
+            <p class="flex-cart-item-quantity__description">* testing wine from the previous harvest</p>
+        </div>
+    </div>
+    <div class="flex-cart-item flex-cart-item-price">
+        <div class="flex-container flex-side flex-center">
+            <p class="mb0">$<span class="flex-cart-item-price__sum price-wrap"
+                                  id="basket-element-wines-{{ basketElement.productId }}">{{ basketElement.price }}</span>
+            </p>
+            <a href="#" title="Remove this wine"
+               class="removeProduct">{#{{ path('app_basket_element_delete', {basketId: basket.id, elementId: basketElement.id}) }}#}
+                <img class="flex-cart-item-price__rm" src="{{ asset('images/rm.png') }}" alt="x"
+                     data-target="#removeWine-{{ basketElement.productId }}" data-toggle="modal"/>
+            </a>
+        </div>
+        <div class="flex-container flex-side flex-center sub-taste" >
+            <p class="mb0">$<span class="flex-cart-item-price__sum advanced-price-wrap" id="basket-element-bottles-{{ basketElement.productId }}">
+                    {% if basketElement.advancedQuantity is null %}
+                        {{ basketElement.product.advancedPrice|number_format }}
+                    {% else %}
+                        {{ (basketElement.product.advancedPrice*basketElement.advancedQuantity)|number_format }}
+                    {% endif %}
+                </span>
+            </p>
+            <a href="#" title="Remove this wine" class="removeAdvancedProduct" data-advanced-price="{{ basketElement.product.advancedPrice|number_format }}">
+                <img class="flex-cart-item-price__rm close-sub-taste" src="{{ asset('images/rm.png') }}" alt="x"
+                     title="remove this wine">
+            </a>
+        </div>
+    </div>
+    <div class="new-block-sub-taste"></div>
+</div>
+{#-- MODAL -- #}
+
+<div class="modal fade" id="tasteWine-{{ basketElement.productId }}" product-id="{{ basketElement.productId }}">
+    <div class="flex-container flex-center">
+        <div class="modal-block">
+            <!--.modal-close-wrapper.flex-container.flex-center-->
+            <!--    button.close(data-dismiss="modal") &times;-->
+            <img class="modal-img" title="modal" alt="modal"
+                 src="{{ asset('images/taste-wine.png') }}"/>
+            <h3 class="title modal-title">You can already taste the wine!</h3>
+            <p class="modal-text basic-text">You can appreciate the wine made earlier in the vineyard you have chosen.
+                We will<br/>send you a wine tasting for a special price.</p>
+            <div class="modal-footer flex-container flex-center">
+                <a class="mybtn add-test-handler" data-dismiss="modal">Get Wine</a>
+                <a class="mybtn cancel" data-dismiss="modal">No, thanks</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="removeWine-{{ basketElement.productId }}" product-id="{{ basketElement.productId }}">
+    <div class="flex-container flex-center">
+        <div class="modal-block">
+            <div class="modal-close-wrapper flex-container flex-center">
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <img class="modal-img" title="modal" alt="modal" src="{{ asset('images/popup-remove.png') }}"/>
+            <h3 class="title modal-title">Do you really want to remove this wine?</h3>
+            <p class="modal-text basic-text">To restore you will need to re-pass the entire wine<br/>collection
+                procedure</p>
+            <div class="modal-footer flex-container flex-center"><a class="mybtn removeWine-btn" data-dismiss="modal" data-basket-element-position="{{ basketElement.position }}" data-basket-id="{{ basket.id }}" product-id="{{ basketElement.productId }}">Delete</a>
+                <a class="mybtn cancel" data-dismiss="modal">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+
+    });
+</script>

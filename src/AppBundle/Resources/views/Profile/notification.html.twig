@@ -1,0 +1,274 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="{{ asset('external/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/jquery.rateyo.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet"/>
+
+{% endblock %}
+
+{% block main %}
+    {#{% include '@App/Profile/preloader.html.twig' %}#}
+    <section class="chat flex-container">
+        <style>
+            .no-active {
+                display: none;
+            }
+
+            .tab-pane-trigger-active {
+                background: rgba(220, 220, 220, 0.25);
+            }
+        </style>
+        <div class="chat-dialogs flex-container flex-column">
+            <p class="chat-title basic-text">
+                {{ 'page.notification.label.notification'|trans }}
+            </p>
+            <ul class="chat-dialogs__nav-tabs nav nav-tabs flex-container" role="tablist">
+                <li class="active" role="presentation">
+                    <a class="basic-text" href="#all"
+                       aria-controls="home" role="tab"
+                       data-toggle="tab">
+                        {{ 'page.notification.label.enabled'|trans }}
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a class="basic-text" href="#unread" aria-controls="profile" role="tab" data-toggle="tab">
+                        {{ 'page.notification.label.disabled'|trans }}
+                    </a>
+                </li>
+            </ul>
+            <div class="chat-dialogs-tab__content tab__content tab__conten-preload">
+                <div class="tab-pane active" role="tabpanel" id="all">
+                    {% for notification in notifications %}
+                        {% for field_step in notification.fieldStep_for_approval %}
+                            <div class="user-dialog flex-container transition tab-pane-trigger"
+                                 data-tab-id="tab-id-field-{{ field_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <div class="user-dialog-text-wrapper flex-container flex-column">
+                                    <div class="flex-container flex-side">
+                                        <div class="user-dialog-name">
+                                            {{ field_step.fieldStep.translate.stepTitle }}
+                                        </div>
+                                        <div class="user-dialog-time">
+                                            DEADLINE
+                                            <br>
+                                            {{ field_step.deadline|date("m/d/Y") }}
+                                        </div>
+                                    </div>
+                                    {#<div class="user-dialog-text">Deadline: {{ field_step.deadline|date("m/d/Y") }}</div>#}
+                                    {#{{ myentity.text|length > 50 ? myentity.text|slice(0, 50) ~ '...' : myentity.text  }}#}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% for cellar_step in notification.cellarStep_for_approval %}
+                            <div class="user-dialog flex-container transition tab-pane-trigger"
+                                 data-tab-id="tab-id-cellar-{{ cellar_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <div class="user-dialog-text-wrapper flex-container flex-column">
+                                    <div class="flex-container flex-side">
+                                        <div class="user-dialog-name">
+                                            {{ cellar_step.cellarStep.translate.stepTitle }}
+                                        </div>
+                                        <div class="user-dialog-time">
+                                            DEADLINE
+                                            <br>
+                                            {{ cellar_step.deadline|date("m/d/Y") }}
+                                        </div>
+                                    </div>
+                                    {#<div class="user-dialog-text">Deadline: {{ cellar_step.deadline|date("m/d/Y") }}</div>#}
+                                    {#{{ myentity.text|length > 50 ? myentity.text|slice(0, 50) ~ '...' : myentity.text  }}#}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <div class="tab-pane" role="tabpanel" id="unread">
+                    {% for notification in notifications %}
+                        {% for field_step in notification.fieldStep_approved %}
+                            <div class="user-dialog flex-container transition tab-pane-trigger"
+                                 data-tab-id="tab-id-field-approved-{{ field_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <div class="user-dialog-text-wrapper flex-container flex-column">
+                                    <div class="flex-container flex-side">
+                                        <div class="user-dialog-name">
+                                            {{ field_step.fieldStep.translate.stepTitle }}
+                                        </div>
+                                        <div class="user-dialog-time">
+                                            APPROVED
+                                            <br>
+                                            {{ field_step.deadline|date("m/d/Y") }}
+                                        </div>
+                                    </div>
+                                    {#<div class="user-dialog-text">Deadline: {{ field_step.deadline|date("m/d/Y") }}</div>#}
+                                    {#{{ myentity.text|length > 50 ? myentity.text|slice(0, 50) ~ '...' : myentity.text  }}#}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% for cellar_step in notification.cellarStep_approved %}
+                            <div class="user-dialog flex-container transition tab-pane-trigger"
+                                 data-tab-id="tab-id-cellar-approved-{{ cellar_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <div class="user-dialog-text-wrapper flex-container flex-column">
+                                    <div class="flex-container flex-side">
+                                        <div class="user-dialog-name">
+                                            {{ cellar_step.cellarStep.translate.stepTitle }}
+                                        </div>
+                                        <div class="user-dialog-time">
+                                            APPROVED
+                                            <br>
+                                            {{ cellar_step.deadline|date("m/d/Y") }}
+                                        </div>
+                                    </div>
+                                    {#<div class="user-dialog-text">Deadline: {{ field_step.deadline|date("m/d/Y") }}</div>#}
+                                    {#{{ myentity.text|length > 50 ? myentity.text|slice(0, 50) ~ '...' : myentity.text  }}#}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <div class="chat-msg">
+            <div id="msgArea">
+                <div class="msg-container flex-container flex-wrap">
+                    {#{% for message in app.flashes('user.notification') %}#}
+                    {#<div class="flash-notice">#}
+                    {#<div class="alert alert-danger alert-dismissable">#}
+                    {#<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>#}
+                    {#<strong>Warning!</strong> {{ message }}#}
+                    {#</div>#}
+                    {#</div>#}
+                    {#{% endfor %}#}
+                    <div id="msg-container-empty-content">
+                        <div class="user-dialog-photo-wrapper">
+                            <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                        </div>
+                        <div id="msg-container-empty-content-text">
+                            Loading notification...
+                        </div>
+                    </div>
+                    {% for notification in notifications %}
+                        {#FOR APPROVAL#}
+                        {% for field_step in notification.fieldStep_for_approval %}
+                            <div class="msg-container-msg msg-container-notify no-active"
+                                 id="tab-id-field-{{ field_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <h3>
+                                    {#<a href="{{ path('field_page', {id: notification.winery_id, _fragment: 'steps-uid-0-t-0' }) }}">#}
+                                    {#Goooooo!#}
+                                    {#</a>   #}
+                                    <a href="{{ path('field_page', {id: notification.winery_id}) }}">
+                                        {{ field_step.fieldStep.translate.stepTitle }}
+                                    </a>
+
+                                </h3>
+                                <div>
+                                    {{ field_step.fieldStep.translate.stepDescription }}
+                                </div>
+                                <div class="msg-container-msg-leftday">
+                                    You have <span>
+                                        <strong>{{ field_step.deadline|leftdays }} day(s) </strong>
+                                    </span>left before making a decision
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% for cellar_step in notification.cellarStep_for_approval %}
+                            <div class="msg-container-msg msg-container-notify no-active"
+                                 id="tab-id-cellar-{{ cellar_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <h3>
+
+                                    <a href="{{ path('cellar_page', {id: notification.winery_id}) }}">
+                                        {{ cellar_step.cellarStep.translate.stepTitle }}
+                                    </a>
+                                </h3>
+                                <div>
+                                    {{ cellar_step.cellarStep.translate.stepDescription }}
+                                </div>
+                                <div>
+                                    <div class="msg-container-msg-leftday">
+                                        You have <span>
+                                            <strong>{{ cellar_step.deadline|leftdays }} day(s) </strong>
+                                        </span>left before making a decision
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        {#APPROVED#}
+                        {% for field_step in notification.fieldStep_approved %}
+                            <div class="msg-container-msg msg-container-notify no-active"
+                                 id="tab-id-field-approved-{{ field_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <h3>
+                                    {{ field_step.fieldStep.translate.stepTitle }}
+                                </h3>
+                                <div>
+                                    {{ field_step.fieldStep.translate.stepDescription }}
+                                </div>
+                                <div style="background: #e4e4e4">
+
+                                    You selected {{ field_step.chosenSolution.translate.stepTitle }}
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% for cellar_step in notification.cellarStep_approved %}
+                            <div class="msg-container-msg msg-container-notify no-active"
+                                 id="tab-id-cellar-approved-{{ cellar_step.id }}">
+                                <div class="user-dialog-photo-wrapper">
+                                    <img class="user-dialog-photo" src="{{ asset('/images/notification.png') }}">
+                                </div>
+                                <h3>
+                                    {{ cellar_step.cellarStep.translate.stepTitle }}
+                                </h3>
+                                <div>
+                                    {{ cellar_step.cellarStep.translate.stepDescription }}
+                                </div>
+                                <div>
+                                    <div style="background: #e4e4e4">
+                                        You selected - {{ cellar_step.chosenSolution.translate.stepTitle }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts_footer_block %}
+
+    {#<script src="http://malsup.github.com/jquery.form.js"></script>#}
+    <script src="{{ asset('js/jquery.form.js') }}"></script>
+    <script src="{{ asset('js/application.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+
+    <!-- Passing Information from Twig to JavaScript -->
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <div data-app_user="{{ app.user ? app.user|json_encode|e('html_attr') : '' }}"></div>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script>
+        var assetsImageDir = "{{ asset('images/') }}";
+        var assetsBaseDir = "{{ asset('upload/') }}";
+    </script>
+{% endblock %}

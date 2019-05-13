@@ -1,0 +1,16 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/custom_sonata.css') }}">
+{% endblock %}
+
+{% block user_block %}
+
+    <li role="presentation">
+        <a href="{{ path('fos_user_profile_show') }}" title="Profile">Profile</a>
+    </li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation">
+        <a href="{{ path('security_logout') }}" title="Logout">Logout</a>
+    </li>
+
+
+{% endblock %}

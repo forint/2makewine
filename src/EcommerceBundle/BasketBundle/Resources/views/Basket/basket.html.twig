@@ -1,0 +1,144 @@
+<section class="become-content" id="basket-layout">
+    <div class="container">
+        <div class="row">
+            <form id="example-form" action="{{ path('app_basket_update') }}" method="POST">
+                <div class="cart wizard clearfix" role="application" id="steps-uid-0">
+                    <div class="steps clearfix">
+                        <ul role="tablist">
+                            <li role="tab" class="first current" aria-disabled="false" aria-selected="true"><a
+                                        id="steps-uid-0-t-0" href="{{ path('sonata_basket_index') }}"
+                                        aria-controls="steps-uid-0-p-0"><span class="current-info audible">Current step: </span><span
+                                            class="dot-step"></span><span
+                                            class="number">1</span> {{ 'ecommerce.basket.menuitem.cart'|trans }}</a>
+                            </li>
+                            <li role="tab" class="disabled" aria-disabled="true"><a id="steps-uid-0-t-1"
+                                                                                    href="{{ path('app_basket_security_login') }}"
+                                                                                    aria-controls="steps-uid-0-p-1"><span
+                                            class="dot-step"></span><span
+                                            class="number">2</span> {{ 'ecommerce.basket.menuitem.authorisation'|trans }}
+                                </a></li>
+                            <li role="tab" class="disabled" aria-disabled="true"><a id="steps-uid-0-t-2"
+                                                                                    href="{{ path('app_basket_delivery') }}"
+                                                                                    aria-controls="steps-uid-0-p-2"><span
+                                            class="dot-step"></span><span
+                                            class="number">3</span> {{ 'ecommerce.basket.menuitem.delivery'|trans }}
+                                </a></li>
+                            <li role="tab" class="disabled last" aria-disabled="true"><a id="steps-uid-0-t-3"
+                                                                                         href="{{ path('app_basket_payment') }}"
+                                                                                         aria-controls="steps-uid-0-p-3"><span
+                                            class="dot-step"></span><span
+                                            class="number">4</span> {{ 'ecommerce.basket.menuitem.payment'|trans }}
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="content clearfix">
+                        <h3 id="steps-uid-0-h-0" tabindex="-1" class="title current">Cart</h3>
+                        <section class="current flex-container flex-baseline flex-column body" id="steps-uid-0-p-0"
+                                 role="tabpanel" aria-labelledby="steps-uid-0-h-0" aria-hidden="false">
+
+                            {# WINE PRODUCT #}
+                            {% if basket.hasBasketElements %}
+
+                                {{ form_errors(form) }}
+
+                                <div class="flex-container flex-side cart-wrapper cart-wrapper-title">
+                                    <div class="flex-cart-item flex-cart-item-wine">
+                                        <p class="text-basic">{{ 'ecommerce.basket.menuitem.wine'|trans }} (<span
+                                                    id="quantity-title">{{ basket.cptElements }}</span>)</p>
+                                    </div>
+                                    <div class="flex-cart-item flex-cart-item-quantity">
+                                        <p class="text-basic">{{ 'ecommerce.basket.menuitem.quantity'|trans }}</p>
+                                    </div>
+                                    <div class="flex-cart-item flex-cart-item-price">
+                                        <p class="text-basic">{{ 'ecommerce.basket.menuitem.price'|trans }}</p>
+                                    </div>
+                                </div>
+
+                                {# call each product controller to render its own view #}
+                                {% for basketElement in basket.getBasketElements %}
+
+                                    {{ render(controller(
+                                        'AppBundle:WineProduct:renderFormBasketElement', {
+                                            'formView':       form.basketElements.children[basketElement.position],
+                                            'basketElement':  basketElement,
+                                            'basket':         basket,
+                                            'mode': 'main'
+                                        }
+                                    )) }}
+
+                                {% endfor %}
+
+                                {% set single_basket_element = basket.basketElements|last %}
+
+                                <div class="cart-total">
+                                    <p class="basic-text">{{ 'ecommerce.basket.menuitem.total'|trans }}:
+                                        <span id="total-price"
+                                              class="cart-total-price">{{ basket.getTotal(true)|number_format_currency(basket.currency.label, {}, {}, basket.locale) }}</span>
+                                    </p>
+                                </div>
+
+                            {% else %}
+
+                                <div class="flex-container flex-center become-content-step2 current"
+                                     style="margin: 0 auto;">
+                                    <div class="contact__block flex-container step2-auth-form"
+                                         style="justify-content: center;">
+                                        <div class="contact__form-wrapper">
+                                            <div class="flex-container flex-center flex-column become-content-step3">
+                                                <div class="done-wrapper flex-container flex-center"><img
+                                                            class="done" src="{{ asset('images/done.png') }}"></div>
+                                                <h2 class="user-name">{% trans from 'SonataBasketBundle' %}sonata.basket.message_basket_is_empty{% endtrans %}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#{{ sonata_block_render({'type': 'sonata.product.block.recent_products', 'settings': {'number': 4}}) }}#}
+                            {% endif %}
+                            {# WINE PRODUCT #}
+                        </section>
+                    </div>
+                    <div class="actions clearfix">
+                        <ul role="menu" aria-label="Pagination">
+                            {% if basket.hasBasketElements %}
+                                {% set basketElementsId = 'id="update_basket_before_next_step"' %}
+                            {% else %}
+                                {% set basketElementsId = '' %}
+                            {% endif %}
+                            <li {{ basketElementsId }} aria-hidden="false" aria-disabled="false"
+                                                       class="next-step mybtn">
+                                {% if basket.hasBasketElements %}
+                                    {% if app.user %}
+                                        {#<a href="{{ url('sonata_basket_delivery_address') }}" role="menuitem">{{ 'ecommerce.basket.menuitem.next'|trans }}</a>#}
+                                        <a href="{{ url('app_basket_delivery') }}"
+                                           role="menuitem">{{ 'ecommerce.basket.menuitem.next'|trans }}</a>
+                                    {% else %}
+                                        <a href="{{ path('app_basket_security_login') }}"
+                                           role="menuitem">{{ 'ecommerce.basket.menuitem.next'|trans }}</a>
+                                    {% endif %}
+                                {% else %}
+                                    <a href="{{ path('vineyard-map') }}"
+                                       role="menuitem">{% trans from 'SonataBasketBundle' %}sonata.basket.message_basket_go_back_shopping{% endtrans %}</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                    {# FLASH ERRORS #}
+                    <div class="flex-container profile-account__flex-item">
+                        <div class="flex-container flex-column profile-account__info"
+                             style="padding: 0 0 30px 0; max-width: none;text-align: center;">
+                            {% for messages in app.flashes(['error']) %}
+                                {% for message in messages %}
+                                    <div class="flash-error">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {# FLASH ERRORS #}
+                    {{ form_row(form._token) }}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

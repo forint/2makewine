@@ -1,0 +1,1 @@
+$('body').attr({'data-spy':'scroll', 'data-target':'#navbar-example', 'id':'scroll-blocks'});

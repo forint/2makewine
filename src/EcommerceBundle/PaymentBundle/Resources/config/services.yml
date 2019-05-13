@@ -1,0 +1,6 @@
+services:
+    app_basket_payment:
+        class: AppBundle\Form\AppPaymentType
+        arguments: [ "@sonata.address.manager", "@sonata.payment.pool", "@sonata.payment.selector" ]
+        tags:
+            - { name: form.type, alias: 'app_basket_payment' }

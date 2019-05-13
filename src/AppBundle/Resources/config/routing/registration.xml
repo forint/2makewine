@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="app_user_shop_registration_check_email" path="/shop/check-email" methods="GET">
+        <default key="_controller">AppBundle:Security:checkEmail</default>
+    </route>
+
+    <route id="app_user_shop_registration_confirm" path="/shop/confirm/{token}" methods="GET">
+        <default key="_controller">AppBundle:Security:confirm</default>
+    </route>
+
+    <route id="app_user_shop_registration_confirmed" path="/shop/confirmed" methods="GET">
+        <default key="_controller">AppBundle:Security:confirmed</default>
+    </route>
+
+    <route id="app_user_registration_check_email" path="/check-email" methods="GET">
+        <default key="_controller">AppBundle:Security:checkEmail</default>
+    </route>
+
+    <route id="app_user_registration_confirm" path="/confirm/{token}" methods="GET">
+        <default key="_controller">AppBundle:Security:confirm</default>
+    </route>
+
+    <route id="app_user_registration_confirmed" path="/confirmed" methods="GET">
+        <default key="_controller">AppBundle:Security:confirmed</default>
+    </route>
+
+</routes>

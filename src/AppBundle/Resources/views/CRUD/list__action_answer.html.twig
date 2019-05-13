@@ -1,0 +1,7 @@
+{# src/AppBundle/Resources/views/CRUD/list__action_answer.html.twig #}
+{# {{ admin.generateObjectUrl('answer', object) }} #}
+{# {{ path('admin_app_conversation_edit') }} #}
+<a class="btn btn-sm btn-default edit_link" href="{{ path('admin_app_conversation_edit',{'id': object.conversation.id}) }}">
+    <i class="fa fa-comment" aria-hidden="true"></i>
+    Answer
+</a>

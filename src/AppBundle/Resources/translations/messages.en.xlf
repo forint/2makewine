@@ -1,0 +1,1770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="messages.en">
+    <unit id="levIQSL">
+      <segment>
+        <source>index.page.title</source>
+        <target><![CDATA[A Journey<br>Into the vineyard of your dream]]></target>
+      </segment>
+    </unit>
+    <unit id="z2Bkal7">
+      <segment>
+        <source>index.page.menu.home</source>
+        <target>Home</target>
+      </segment>
+    </unit>
+    <unit id="ICDi.xX">
+      <segment>
+        <source>index.page.menu.about</source>
+        <target>About us</target>
+      </segment>
+    </unit>
+    <unit id="IysILfS">
+      <segment>
+        <source>index.page.menu.learn</source>
+        <target>Learn</target>
+      </segment>
+    </unit>
+    <unit id="P5Y0Keg">
+      <segment>
+        <source>index.page.menu.contact</source>
+        <target>Contact us</target>
+      </segment>
+    </unit>
+    <unit id="5YMamSo">
+      <segment>
+        <source>index.page.menu.partnership</source>
+        <target>Partnership</target>
+      </segment>
+    </unit>
+    <unit id="jJGK5VF">
+      <segment>
+        <source>index.page.menu.login</source>
+        <target>LOG IN</target>
+      </segment>
+    </unit>
+    <unit id="hM3Rj6c">
+      <segment>
+        <source>index.page.main.subtitle</source>
+        <target><![CDATA[GROW.&nbsp; EXPERIENCE.&nbsp; ENJOY.]]></target>
+      </segment>
+    </unit>
+    <unit id="QAks8rY">
+      <segment>
+        <source>index.page.main.label.make.wine</source>
+        <target>Make Wine</target>
+      </segment>
+    </unit>
+    <unit id="OlaA6kJ">
+      <segment>
+        <source>index.page.label.how-it-work</source>
+        <target>HOW IT WORK</target>
+      </segment>
+    </unit>
+    <unit id="2be9fHw">
+      <segment>
+        <source>index.page.basket.total</source>
+        <target>TOTAL</target>
+      </segment>
+    </unit>
+    <unit id="0M4faK1">
+      <segment>
+        <source>index.page.basket.checkout</source>
+        <target>CHECKOUT</target>
+      </segment>
+    </unit>
+    <unit id="E.Z2s9N">
+      <segment>
+        <source>layout.page.copyright</source>
+        <target>© 2016 Make Your wine. All rights reserved.</target>
+      </segment>
+    </unit>
+    <unit id="edm88iV">
+      <segment>
+        <source>index.page.step1.title</source>
+        <target><![CDATA[The Key is to find the balance between understanding&nbsp;<br>and enjoy the wine in good company]]></target>
+      </segment>
+    </unit>
+    <unit id="ixyfKrt">
+      <segment>
+        <source>index.page.step1.text</source>
+        <target><![CDATA[You don’t need to own a vineyard to make wine. We are able to secure<br>&nbsp;premium grapes from finest vineyards. All you need is to choose a wine that<br>you want to receive.]]></target>
+      </segment>
+    </unit>
+    <unit id="hVjdaBw">
+      <segment>
+        <source>index.page.step1.label</source>
+        <target>Choose wine</target>
+      </segment>
+    </unit>
+    <unit id="Ol8RA.b">
+      <segment>
+        <source>index.page.step2.title</source>
+        <target><![CDATA[Grapes to bottle<br>winemaking]]></target>
+      </segment>
+    </unit>
+    <unit id="LfmeqE_">
+      <segment>
+        <source>index.page.step2.text</source>
+        <target><![CDATA[We work hand-in-hand with the growers and vineyard managers to ensure<br>grapes are harvested at the optimum brix and maturity. Incoming grapes are<br>then hand-sorted so that only the ripest, most intact berries make it to our<br>crusher/destemmer. <br>Be as involved in the winemaking process as you like.]]></target>
+      </segment>
+    </unit>
+    <unit id="alQZcXb">
+      <segment>
+        <source>index.page.step2.label</source>
+        <target>Begin</target>
+      </segment>
+    </unit>
+    <unit id="sdc3ZeV">
+      <segment>
+        <source>index.page.step3.title</source>
+        <target><![CDATA[Celebrate it<br>in the vineyard]]></target>
+      </segment>
+    </unit>
+    <unit id="X..DtYv">
+      <segment>
+        <source>index.page.step3.text</source>
+        <target><![CDATA[We have developed a label individually for you and deliver your wine straight home<br>Enjoy the best wine made by yourself.]]></target>
+      </segment>
+    </unit>
+    <unit id="DKQpmdb">
+      <segment>
+        <source>index.page.step3.label</source>
+        <target>Get wine</target>
+      </segment>
+    </unit>
+    <unit id="tXxzF.o">
+      <segment>
+        <source>index.page.label.advantages</source>
+        <target>ADVANTAGES</target>
+      </segment>
+    </unit>
+    <unit id="kPsGRzk">
+      <segment>
+        <source>index.page.advantages.title</source>
+        <target>Personal Wine</target>
+      </segment>
+    </unit>
+    <unit id="xWTKwu_">
+      <segment>
+        <source>index.page.advantages.title.second</source>
+        <target>Workflow</target>
+      </segment>
+    </unit>
+    <unit id="n_jOcvA">
+      <segment>
+        <source>index.page.advantages.title.third</source>
+        <target>Quality</target>
+      </segment>
+    </unit>
+    <unit id="Fz3MyqI">
+      <segment>
+        <source>index.page.advantages.description</source>
+        <target>Individual approach to winemaking with personal advice</target>
+      </segment>
+    </unit>
+    <unit id="SYaZBPB">
+      <segment>
+        <source>index.page.advantages.description.second</source>
+        <target>Monitor the process and make key decisions Navigandolo ne accetti l'utilizzo: per avere maggiori informazioni puoi consultare</target>
+      </segment>
+    </unit>
+    <unit id="RJXaKUX">
+      <segment>
+        <source>index.page.advantages.description.third</source>
+        <target>The wine is made according to the rules of using the latest and traditional technologies</target>
+      </segment>
+    </unit>
+    <unit id="dyNsaUf">
+      <segment>
+        <source>index.page.label.making-your-wine</source>
+        <target>Making Your Own Wine with us</target>
+      </segment>
+    </unit>
+    <unit id="vrlbyXy">
+      <segment>
+        <source>index.page.label.make.wine</source>
+        <target>Make Wine</target>
+      </segment>
+    </unit>
+    <unit id="yEvxhCQ">
+      <segment>
+        <source>index.page.pageScroll.about</source>
+        <target>your dream</target>
+      </segment>
+    </unit>
+    <unit id="M5i7R1K">
+      <segment>
+        <source>index.page.pageScroll.step1</source>
+        <target>How it work: step 1</target>
+      </segment>
+    </unit>
+    <unit id="tZm_miW">
+      <segment>
+        <source>index.page.pageScroll.step2</source>
+        <target>How it work: step 2</target>
+      </segment>
+    </unit>
+    <unit id=".wbX7SZ">
+      <segment>
+        <source>index.page.pageScroll.step3</source>
+        <target>How it work: step 3</target>
+      </segment>
+    </unit>
+    <unit id="YChMR0h">
+      <segment>
+        <source>index.page.pageScroll.advantages</source>
+        <target>Advantages</target>
+      </segment>
+    </unit>
+    <unit id="iIY8vv0">
+      <segment>
+        <source>about.page.title</source>
+        <target>About us</target>
+      </segment>
+    </unit>
+    <unit id="StnhbiL">
+      <segment>
+        <source>abut.page.container.text</source>
+        <target>We take great pride in sourcing our grapes from some of the finest vineyards in the world – Cabernet Sauvignon from Bettinelli in Napa, California to Pinot Noir from Hyland Vineyards in Willamette Valley, Oregon or even Malbec from the esteemed Catena Vineyards in Agrelo, Mendoza Argentina. We are proud to focus on terroir--the French expression of certain varietals growing better in specific climates and soils. Being a winery in the middle of the city allows us the luxury to seek the most expressive and world-class fruit for our customers.</target>
+      </segment>
+    </unit>
+    <unit id="Y9L7lOd">
+      <segment>
+        <source>abut.page.container.text.columns2</source>
+        <target>But we are not just winery behind closed doors—our aim is to give fans of wine, food, and culture the chance to touch and feel all the aspects of the winemaking process—the crush, the fermenting, the blend and ultimately, the opportunity to create your own private barrel, or on a smaller scale to bottle a few cases of our wine with your custom designed label. Our facility is designed to integrate the winemaking process with consumption and enjoyment of wine. Wander from the winery into our Barrel Room tasting bar and restaurant, where you can try our house wines served fresh on tap, straight from the cellar. Our cuisine pairs the wines with flavorful dishes prepared to complement your glass. Tasting flights are offered to sample our many wines made in house, along with an award-winning wine list featuring over 400 wines from many of the top producers from all over the world. Whether for a concert, wine class, tasting dinner, or private party, you are never out of view of either the stainless steel tanks or French Oak barrels. The results are terrific: world-class wines being produced in the city, our urban wine country. This is an unparalleled experience with unique insight into wine. Sample any of our house wines - the proof is on tap or in the bottle. Tasting flights are offered to sample our many wines made in house, along with an award-winning wine list featuring over 400 wines from many of the top producers from all over the world. Whether for a concert, wine class, tasting dinner, or private party, you are never out of view of either the stainless steel tanks or French Oak barrels.The results are terrific: world-class wines being produced in the city, our urban wine country. This is an unparalleled experience with unique insight into wine. Sample any of our house wines - the proof is on tap or in the bottle.</target>
+      </segment>
+    </unit>
+    <unit id="WqQXQjS">
+      <segment>
+        <source>abut.page.container.label.our.team</source>
+        <target>OUR TEAM</target>
+      </segment>
+    </unit>
+    <unit id="Cu6YRcE">
+      <segment>
+        <source>partnership.page.description.part3</source>
+        <target>objectives and delivers exceptional results.</target>
+      </segment>
+    </unit>
+    <unit id="LnaDn9H">
+      <segment>
+        <source>partnership.page.button.become_partner</source>
+        <target>Become partner</target>
+      </segment>
+    </unit>
+    <unit id="kPFSV6i">
+      <segment>
+        <source>partnership.page.title.steps</source>
+        <target>What a wine club can do for your organization</target>
+      </segment>
+    </unit>
+    <unit id="KkhKzWY">
+      <segment>
+        <source>partnership.page.step1.stepnumber</source>
+        <target>01/03</target>
+      </segment>
+    </unit>
+    <unit id="yNFE8dl">
+      <segment>
+        <source>partnership.page.step2.stepnumber</source>
+        <target>02/03</target>
+      </segment>
+    </unit>
+    <unit id="EFJg5zf">
+      <segment>
+        <source>partnership.page.step2.title</source>
+        <target>Enhance member relations</target>
+      </segment>
+    </unit>
+    <unit id="vwSHI61">
+      <segment>
+        <source>partnership.page.step2.description</source>
+        <target><![CDATA[We work hand-in-hand with the growers and vineyard managers to ensure<br>grapes are harvested at the optimum brix and maturity. Incoming grapes are<br>then hand-sorted so that only the ripest, most intact berries make it to our<br>crusher/destemmer. Be as involved in the winemaking process as you like.]]></target>
+      </segment>
+    </unit>
+    <unit id="MQa0hxi">
+      <segment>
+        <source>partnership.page.step1.description</source>
+        <target><![CDATA[You don’t need to own a vineyard to make wine. We are able to secure<br>premium grapes from finest vineyards. All you need is to choose a wine that<br>you want to receive.]]></target>
+      </segment>
+    </unit>
+    <unit id="QzVoQPU">
+      <segment>
+        <source>partnership.page.title.main</source>
+        <target><![CDATA[Start a Wine Partnership<br>with Us Today !]]></target>
+      </segment>
+    </unit>
+    <unit id="nWS_E2P">
+      <segment>
+        <source>partnership.page.description.main</source>
+        <target><![CDATA[We view every partnership as an opportunity to engage at all levels of your business,<br>and are keen to work closely with you to tailor a partnership that suits your]]></target>
+      </segment>
+    </unit>
+    <unit id="bVCCcga">
+      <segment>
+        <source>partnership.page.step1.title</source>
+        <target><![CDATA[Prepayment at the beginning<br>of the season]]></target>
+      </segment>
+    </unit>
+    <unit id="wFXXRcc">
+      <segment>
+        <source>partnership.page.step3.stepnumber</source>
+        <target>03/03</target>
+      </segment>
+    </unit>
+    <unit id="matrXa8">
+      <segment>
+        <source>partnership.page.step3.title</source>
+        <target>Provide luxury platform</target>
+      </segment>
+    </unit>
+    <unit id="DBs.adU">
+      <segment>
+        <source>partnership.page.step3.description</source>
+        <target><![CDATA[We have developed a label individually for you and deliver your wine straight home<br>Enjoy the best wine made by yourself.]]></target>
+      </segment>
+    </unit>
+    <unit id="K30gypt">
+      <segment>
+        <source>partnership.page.title.start</source>
+        <target>Start a Wine Partnership with us</target>
+      </segment>
+    </unit>
+    <unit id="nUlxdtU">
+      <segment>
+        <source>partnership.page.scroll.title1</source>
+        <target>About</target>
+      </segment>
+    </unit>
+    <unit id="325mXI4">
+      <segment>
+        <source>partnership.page.scroll.title2</source>
+        <target>Payment</target>
+      </segment>
+    </unit>
+    <unit id="Y.QgYmI">
+      <segment>
+        <source>partnership.page.scroll.title3</source>
+        <target>Member relations</target>
+      </segment>
+    </unit>
+    <unit id="S2PqU6Z">
+      <segment>
+        <source>partnership.page.scroll.title4</source>
+        <target>Luxury platform</target>
+      </segment>
+    </unit>
+    <unit id="jnWimI6">
+      <segment>
+        <source>contact.page.container.title</source>
+        <target>Contact Us</target>
+      </segment>
+    </unit>
+    <unit id="_CSdgmb">
+      <segment>
+        <source>contact.page.container.text</source>
+        <target><![CDATA[Got a questions about 2makewine? Have some suggestions or just<br>want to say hi? Contact us:]]></target>
+      </segment>
+    </unit>
+    <unit id="LsTnzH2">
+      <segment>
+        <source>contact.page.container.assistance</source>
+        <target>Need Assistance?</target>
+      </segment>
+    </unit>
+    <unit id="PVqR9yA">
+      <segment>
+        <source>contact.page.container.assistance.range</source>
+        <target>Monday - Tuesday</target>
+      </segment>
+    </unit>
+    <unit id="KLR5w1N">
+      <segment>
+        <source>contact.page.form.usernameplaceholder</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="cC5vyNi">
+      <segment>
+        <source>messages|contact.page.form.usernameplaceholder</source>
+        <target>Username can't be empty</target>
+      </segment>
+    </unit>
+    <unit id="Swa1Ng6">
+      <segment>
+        <source>username_placeholder</source>
+        <target>First Name</target>
+      </segment>
+    </unit>
+    <unit id="d5gPAW1">
+      <segment>
+        <source>lastname_placeholder</source>
+        <target>Last Name</target>
+      </segment>
+    </unit>
+    <unit id="Zg_tmjg">
+      <segment>
+        <source>comment_placeholder</source>
+        <target>Comment</target>
+      </segment>
+    </unit>
+    <unit id="JVDZYuU">
+      <segment>
+        <source>E-mail</source>
+        <target>E-mail</target>
+      </segment>
+    </unit>
+    <unit id="42uz.Ok">
+      <segment>
+        <source>confirm_value</source>
+        <target>Confirm</target>
+      </segment>
+    </unit>
+    <unit id="ag48Voo">
+      <segment>
+        <source>contact.page.form.message.success</source>
+        <target>Thank you for your feedback! We will answer to you soon.</target>
+      </segment>
+    </unit>
+    <unit id="MKyys64">
+      <segment>
+        <source>learn.page.title</source>
+        <target>Welcome at 2makewine!</target>
+      </segment>
+    </unit>
+    <unit id=".IRnNli">
+      <segment>
+        <source>learn.page.description</source>
+        <target><![CDATA[You are few steps away from living the dream of managing your vineyard and becoming a real winemaker in some of the most amazing wine areas in the world.<br>Perhaps you always wanted to own a Chateau in the Loire valley or Bordeaux, or maybe that Italian winery on the gently sloped Tuscan hills.<br>Whether your dream is a winery in Oregon or in the Barossa, Tuscany or Provence we’ve got you covered.]]></target>
+      </segment>
+    </unit>
+    <unit id="_w3zPW4">
+      <segment>
+        <source>learn.page.button.start</source>
+        <target>let`s start make wine</target>
+      </segment>
+    </unit>
+    <unit id="kR_m3vv">
+      <segment>
+        <source>learn.page.expirience.title</source>
+        <target>The experience of winemaking has never been so accessible and real.</target>
+      </segment>
+    </unit>
+    <unit id="l6dr1hy">
+      <segment>
+        <source>learn.page.expirience.text1</source>
+        <target>But we are not just winery behind closed doors—our aim is to give fans of wine, food, and culture the chance to touch and feel all the aspects of the winemaking process—the crush, the fermenting the blend and ultimately, the opportunity to create your own private barrel, or on a smaller scale to bottle a few cases of our wine with your custom designed label.</target>
+      </segment>
+    </unit>
+    <unit id="muHKmnt">
+      <segment>
+        <source>learn.page.expirience.text2</source>
+        <target>So if you dream of making your own wine let’s share this dream. It is affordable, you can rent as little as 10 vines from a vineyard of your choice and be directly involved in the process, from overseeing the growing of your grapes to pressing and bottling.</target>
+      </segment>
+    </unit>
+    <unit id="M4Nx1ZY">
+      <segment>
+        <source>learn.page.choose.title</source>
+        <target><![CDATA[Firstly, lets choose the style of wine<br>that you want to produce]]></target>
+      </segment>
+    </unit>
+    <unit id=".96GdT0">
+      <segment>
+        <source>learn.page.choose.description</source>
+        <target>Lets get you in contact with wineries that suits your needs.</target>
+      </segment>
+    </unit>
+    <unit id="rIog9.S">
+      <segment>
+        <source>learn.page.choose.description2</source>
+        <target><![CDATA[Follow the steps in the next few pages and we will help you find the right vineyard for you, or if you already know<br>what you are looking for, type it in and we will guide you there.]]></target>
+      </segment>
+    </unit>
+    <unit id="dUBZ60i">
+      <segment>
+        <source>learn.page.video.button</source>
+        <target>Let's start this journey together</target>
+      </segment>
+    </unit>
+    <unit id="tu1UdrO">
+      <segment>
+        <source>learn.page.video.title</source>
+        <target>It is simpler than you think.</target>
+      </segment>
+    </unit>
+    <unit id="co4_UF1">
+      <segment>
+        <source>learn.page.video.description</source>
+        <target>Let us guide you in the magical world of wine.</target>
+      </segment>
+    </unit>
+    <unit id="8HwwrVo">
+      <segment>
+        <source>makewine.page.label.wine.map</source>
+        <target>Your wine</target>
+      </segment>
+    </unit>
+    <unit id="OkViIpy">
+      <segment>
+        <source>makewine.page.searchbar.title</source>
+        <target>Search wine</target>
+      </segment>
+    </unit>
+    <unit id="N5zdxTP">
+      <segment>
+        <source>makewine.page.searchbar.placeholder</source>
+        <target>search...</target>
+      </segment>
+    </unit>
+    <unit id="TvDehbK">
+      <segment>
+        <source>makewine.page.produce.title</source>
+        <target>I Want to Produce...</target>
+      </segment>
+    </unit>
+    <unit id="L6l2hzZ">
+      <segment>
+        <source>makewine.page.choose.subtitle.wine_examples</source>
+        <target>WINE:</target>
+      </segment>
+    </unit>
+    <unit id="Cs3V8il">
+      <segment>
+        <source>makewine.page.choose.submit</source>
+        <target>Choose</target>
+      </segment>
+    </unit>
+    <unit id="8DSptbg">
+      <segment>
+        <source>security.login.remember_me</source>
+        <target>Remember me</target>
+      </segment>
+    </unit>
+    <unit id="_iITWH2">
+      <segment>
+        <source>app.page.auth.registration.title</source>
+        <target>Registration</target>
+      </segment>
+    </unit>
+    <unit id="kMmvSRe">
+      <segment>
+        <source>app.page.auth.registration.submit</source>
+        <target>Register</target>
+      </segment>
+    </unit>
+    <unit id="tKHUQVS">
+      <segment>
+        <source>passwordplaceholder</source>
+        <target>Password</target>
+      </segment>
+    </unit>
+    <unit id="VFnnf.B">
+      <segment>
+        <source>app.page.auth.registration.submit.login</source>
+        <target>Log In</target>
+      </segment>
+    </unit>
+    <unit id="KnsGJgz">
+      <segment>
+        <source>app.page.auth.registration.submit.register</source>
+        <target>Register</target>
+      </segment>
+    </unit>
+    <unit id="B.ZozIs">
+      <segment>
+        <source>registration.confirmed</source>
+        <target>Your account was activated successfuly.</target>
+      </segment>
+    </unit>
+    <unit id="qVGlrmO">
+      <segment>
+        <source>app.registration.page.confirm.title</source>
+        <target>Congratulations</target>
+      </segment>
+    </unit>
+    <unit id="h4aXpvo">
+      <segment>
+        <source>app.registration.page.confirmed.success.message</source>
+        <target>Thank you for being with us!</target>
+      </segment>
+    </unit>
+    <unit id="5Bc908D">
+      <segment>
+        <source>app.registration.page.confirmed.success.profile.name</source>
+        <target>Profile</target>
+      </segment>
+    </unit>
+    <unit id="ci5Tbzf">
+      <segment>
+        <source>profile.edit.submit</source>
+        <target>Update Now</target>
+      </segment>
+    </unit>
+    <unit id="sXeMk_g">
+      <segment>
+        <source>profile.page.menu.wine</source>
+        <target>Wine</target>
+      </segment>
+    </unit>
+    <unit id="sTgvrS7">
+      <segment>
+        <source>profile.page.menu.notifications</source>
+        <target>Notifications</target>
+      </segment>
+    </unit>
+    <unit id="BlH_JrT">
+      <segment>
+        <source>profile.page.menu.chat</source>
+        <target>Chat</target>
+      </segment>
+    </unit>
+    <unit id="rZJPp7b">
+      <segment>
+        <source>profile.page.menu.settings</source>
+        <target>Settings</target>
+      </segment>
+    </unit>
+    <unit id="NAOIuiw">
+      <segment>
+        <source>profile.page.menu.logout</source>
+        <target>Log out</target>
+      </segment>
+    </unit>
+    <unit id="a3HbnKZ">
+      <segment>
+        <source>page.profile.edit.menu.account</source>
+        <target>Account</target>
+      </segment>
+    </unit>
+    <unit id="uoMLlBm">
+      <segment>
+        <source>page.profile.edit.menu.personal</source>
+        <target>Personal</target>
+      </segment>
+    </unit>
+    <unit id="G40Jg0V">
+      <segment>
+        <source>page.profile.edit.menu.billing</source>
+        <target>Billing</target>
+      </segment>
+    </unit>
+    <unit id="rJWptNN">
+      <segment>
+        <source>page.profile.edit.profile.photo</source>
+        <target>Profile photo</target>
+      </segment>
+    </unit>
+    <unit id="PcaH.FT">
+      <segment>
+        <source>page.profile.edit.profile.submit.update.label</source>
+        <target>Update Photo</target>
+      </segment>
+    </unit>
+    <unit id="JJuOP7p">
+      <segment>
+        <source>page.profile.edit.profile.account.information</source>
+        <target>Account information</target>
+      </segment>
+    </unit>
+    <unit id="mEY30hz">
+      <segment>
+        <source>page.profile.edit.profile.personal.information</source>
+        <target>Personal information</target>
+      </segment>
+    </unit>
+    <unit id="GwO3Zf1">
+      <segment>
+        <source>page.profile.edit.profile.billing</source>
+        <target>BILLING (COMING SOON)</target>
+      </segment>
+    </unit>
+    <unit id="Q07rVD2">
+      <segment>
+        <source>makewine.page.produce.description</source>
+        <target><![CDATA[The first step&nbsp; is key to every successful journey. And this is not different if you want your perfect vineyard to make your dream wine reality. Follow the infographic to select your favourite style of wine.&nbsp; We will match you with the wineries perfect for you. Lets start.]]></target>
+      </segment>
+    </unit>
+    <unit id="GQAv8lL">
+      <segment>
+        <source>makewine.page.searchresult.title</source>
+        <target>Search results for </target>
+      </segment>
+    </unit>
+    <unit id="ldI0rKY">
+      <segment>
+        <source>makewine.page.searchresult.notfound</source>
+        <target>Wines not found</target>
+      </segment>
+    </unit>
+    <unit id="xbezxsA">
+      <segment>
+        <source>vineyard_map.page.maintitle</source>
+        <target>Choose a vineyard where you can make the wine</target>
+      </segment>
+    </unit>
+    <unit id="KUKBEgs">
+      <segment>
+        <source>vineyard_map.page.link.makewine</source>
+        <target>Choose other wine</target>
+      </segment>
+    </unit>
+    <unit id="3YOsdGm">
+      <segment>
+        <source>vineyard_map.page.button.open_vineyards</source>
+        <target>Open all vineyards</target>
+      </segment>
+    </unit>
+    <unit id="lQlCvOE">
+      <segment>
+        <source>vineyard_map.page.sidebar.title</source>
+        <target>Vineyards</target>
+      </segment>
+    </unit>
+    <unit id="j534SMt">
+      <segment>
+        <source>vineyard_map.page.sidebar.rating_hint</source>
+        <target>rating</target>
+      </segment>
+    </unit>
+    <unit id="wiw7pSg">
+      <segment>
+        <source>vineyard_map.page.sidebar.button_make</source>
+        <target>Make it my vineyard</target>
+      </segment>
+    </unit>
+    <unit id="Fmsb2KE">
+      <segment>
+        <source>vineyard_map.page.sidebar.about_title</source>
+        <target>About vineyard</target>
+      </segment>
+    </unit>
+    <unit id="OMDvcZ7">
+      <segment>
+        <source>vineyard_map.page.sidebar.item_title</source>
+        <target>Your wine in</target>
+      </segment>
+    </unit>
+    <unit id=".eSc8n3">
+      <segment>
+        <source>vineyard_map.page.sidebar.vines_hint</source>
+        <target>* 10 vines ~ 6 bottles of wine</target>
+      </segment>
+    </unit>
+    <unit id="H.Yv7Xm">
+      <segment>
+        <source>page.profile.info</source>
+        <target>ACCOUNT INFORMATION</target>
+      </segment>
+    </unit>
+    <unit id="m0DzpKu">
+      <segment>
+        <source>page.profile.info.username</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="xfkVXRv">
+      <segment>
+        <source>page.profile.info.email</source>
+        <target>Email</target>
+      </segment>
+    </unit>
+    <unit id="op2h1os">
+      <segment>
+        <source>page.profile.info.lastname</source>
+        <target>Last Name</target>
+      </segment>
+    </unit>
+    <unit id="_4Vklut">
+      <segment>
+        <source>page.profile.info.phone</source>
+        <target>Phone</target>
+      </segment>
+    </unit>
+    <unit id="7M9djFD">
+      <segment>
+        <source>page.profile.address</source>
+        <target>Address</target>
+      </segment>
+    </unit>
+    <unit id="6oIiV5Q">
+      <segment>
+        <source>page.profile.info.country</source>
+        <target>Country</target>
+      </segment>
+    </unit>
+    <unit id="EGfYm9x">
+      <segment>
+        <source>page.profile.info.state</source>
+        <target>State</target>
+      </segment>
+    </unit>
+    <unit id="N_qlwiA">
+      <segment>
+        <source>page.profile.info.city</source>
+        <target>City</target>
+      </segment>
+    </unit>
+    <unit id="K_SliWY">
+      <segment>
+        <source>page.profile.info.zipCode</source>
+        <target>Zip Code</target>
+      </segment>
+    </unit>
+    <unit id="XYUnYb2">
+      <segment>
+        <source>page.profile.info.address</source>
+        <target>Address</target>
+      </segment>
+    </unit>
+    <unit id="f6zJjQm">
+      <segment>
+        <source>chat.page.conversation.create.message.success</source>
+        <target>Conversation was created successfully, now you can write message  to relatedUser.</target>
+      </segment>
+    </unit>
+    <unit id="mYa24sn">
+      <segment>
+        <source>chat.page.conversation.failure.create.message.success</source>
+        <target>Conversation has been created, please wait until you are answered.</target>
+      </segment>
+    </unit>
+    <unit id="2vMfkuW">
+      <segment>
+        <source>chat.page.dialog.message.select</source>
+        <target>Please select a chat to start messaging</target>
+      </segment>
+    </unit>
+    <unit id="RcrnCuC">
+      <segment>
+        <source>chat.page.dialog.unread.title</source>
+        <target>Unread</target>
+      </segment>
+    </unit>
+    <unit id="LY_LK6T">
+      <segment>
+        <source>chat.page.dialog.people.title</source>
+        <target>All peoples</target>
+      </segment>
+    </unit>
+    <unit id="rbZuooH">
+      <segment>
+        <source>label.admin.wineproduct.fruit</source>
+        <target>Fruit</target>
+      </segment>
+    </unit>
+    <unit id="Ejzi1t8">
+      <segment>
+        <source>chat.page.user.administration.title</source>
+        <target>Administration</target>
+      </segment>
+    </unit>
+    <unit id="w7sJpK6">
+      <segment>
+        <source>index.page.menu.contactus</source>
+        <target>Contact Us</target>
+      </segment>
+    </unit>
+    <unit id="v.EXAhJ">
+      <segment>
+        <source>winecard.page.button.order</source>
+        <target>Order now</target>
+      </segment>
+    </unit>
+    <unit id="txKSf_h">
+      <segment>
+        <source>winecard.page.button.cart</source>
+        <target>Add to cart</target>
+      </segment>
+    </unit>
+    <unit id="Xl2.Mdx">
+      <segment>
+        <source>winecard.page.description.soil</source>
+        <target>Soil</target>
+      </segment>
+    </unit>
+    <unit id="zTpSbbS">
+      <segment>
+        <source>winecard.page.description.vinification</source>
+        <target>Vinification</target>
+      </segment>
+    </unit>
+    <unit id="2IXgOoc">
+      <segment>
+        <source>winecard.page.title.block_taste</source>
+        <target>How Does It Look and Taste?</target>
+      </segment>
+    </unit>
+    <unit id="y4csMeE">
+      <segment>
+        <source>winecard.page.hint.winemaker</source>
+        <target>Winemaker</target>
+      </segment>
+    </unit>
+    <unit id="tRG3PYW">
+      <segment>
+        <source>winecard.page.title.block_process</source>
+        <target>Wine creation process</target>
+      </segment>
+    </unit>
+    <unit id="LupiUKM">
+      <segment>
+        <source>winecard.page.block_process.field</source>
+        <target>Field</target>
+      </segment>
+    </unit>
+    <unit id="xn617UQ">
+      <segment>
+        <source>winecard.page.block_process.cellar</source>
+        <target>Cellar</target>
+      </segment>
+    </unit>
+    <unit id="57uxplX">
+      <segment>
+        <source>winecard.page.title.grape_variety</source>
+        <target>Grape Variety</target>
+      </segment>
+    </unit>
+    <unit id="tiJu2Dg">
+      <segment>
+        <source>winecard.page.description.temperature</source>
+        <target>Serving temperature</target>
+      </segment>
+    </unit>
+    <unit id="Tt1ZIPv">
+      <segment>
+        <source>winecard.page.description.age</source>
+        <target>Ageing potential</target>
+      </segment>
+    </unit>
+    <unit id="EM2pPXS">
+      <segment>
+        <source>winecard.page.description.block_process</source>
+        <target>The workflows shown below are typical, and there are many options you can choose at each stage. But you have to start somewhere! This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="6_kFrGU">
+      <segment>
+        <source>winecard.page.steps.step1</source>
+        <target>Step 1</target>
+      </segment>
+    </unit>
+    <unit id="vZvBQtw">
+      <segment>
+        <source>winecard.page.steps.step2</source>
+        <target>Step 2</target>
+      </segment>
+    </unit>
+    <unit id="khoEVKJ">
+      <segment>
+        <source>winecard.page.steps.step3</source>
+        <target>Step 3</target>
+      </segment>
+    </unit>
+    <unit id="S1yr3pC">
+      <segment>
+        <source>winecard.page.steps.step4</source>
+        <target>Step 4</target>
+      </segment>
+    </unit>
+    <unit id="qJUTrWX">
+      <segment>
+        <source>winecard.page.steps.field.step1_title</source>
+        <target>Crushing / destemming</target>
+      </segment>
+    </unit>
+    <unit id="w.KFh_A">
+      <segment>
+        <source>winecard.page.steps.field.step1_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="Et0LxEK">
+      <segment>
+        <source>winecard.page.steps.field.step2_title</source>
+        <target>Select the method</target>
+      </segment>
+    </unit>
+    <unit id="BQPbaPr">
+      <segment>
+        <source>winecard.page.steps.field.step2_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="LRIcc5w">
+      <segment>
+        <source>winecard.page.steps.field.step3_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="QsjVYKe">
+      <segment>
+        <source>winecard.page.steps.field.step3_title</source>
+        <target>Maceration / alcoholic fermentation</target>
+      </segment>
+    </unit>
+    <unit id="NgyF0gE">
+      <segment>
+        <source>winecard.page.steps.field.step4_title</source>
+        <target>Pressing</target>
+      </segment>
+    </unit>
+    <unit id="8RVNA9Z">
+      <segment>
+        <source>winecard.page.steps.field.step4_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="dSqOmQo">
+      <segment>
+        <source>winecard.page.steps.cellar.step1_title</source>
+        <target>Agging (optional)</target>
+      </segment>
+    </unit>
+    <unit id="0yUihbR">
+      <segment>
+        <source>winecard.page.steps.cellar.step1_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="3qc5w4U">
+      <segment>
+        <source>winecard.page.steps.cellar.step2_title</source>
+        <target>Select the method</target>
+      </segment>
+    </unit>
+    <unit id=".TMJuBZ">
+      <segment>
+        <source>winecard.page.steps.cellar.step2_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="eygfgZn">
+      <segment>
+        <source>winecard.page.steps.cellar.step3_title</source>
+        <target>Racking</target>
+      </segment>
+    </unit>
+    <unit id="koVHIfC">
+      <segment>
+        <source>winecard.page.steps.cellar.step3_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="idmn_0k">
+      <segment>
+        <source>winecard.page.steps.cellar.step4_title</source>
+        <target>Bottle filing</target>
+      </segment>
+    </unit>
+    <unit id="mAwpIg2">
+      <segment>
+        <source>winecard.page.steps.cellar.step4_description</source>
+        <target>This is what makes wine making so "personalized". Depending on the chosen options, you can make different tasting wine using the exact same juice or fresh grapes. Uniquely yours, you can do yourself to make decisions and coordinating them with the winemaker</target>
+      </segment>
+    </unit>
+    <unit id="DVsNZXi">
+      <segment>
+        <source>winecard.page.link.back_to_map</source>
+        <target>Choose other vineyard</target>
+      </segment>
+    </unit>
+    <unit id="HeOKgfK">
+      <segment>
+        <source>wine_completed.page.title.main</source>
+        <target><![CDATA[Winemaking process<br />is completed]]></target>
+      </segment>
+    </unit>
+    <unit id="1vjbMVt">
+      <segment>
+        <source>wine_completed.page.title.vineyard</source>
+        <target>Vineyard</target>
+      </segment>
+    </unit>
+    <unit id="ac84_Z2">
+      <segment>
+        <source>wine_completed.page.title.winemaker</source>
+        <target>Winemaker</target>
+      </segment>
+    </unit>
+    <unit id="juHBeuj">
+      <segment>
+        <source>wine_completed.page.rateblock.title</source>
+        <target>Rate your experience:</target>
+      </segment>
+    </unit>
+    <unit id="jcoVzAx">
+      <segment>
+        <source>wine_completed.page.rateblock.comment_hint</source>
+        <target>Leave a comment</target>
+      </segment>
+    </unit>
+    <unit id="PO8GMUn">
+      <segment>
+        <source>wine_completed.page.rateblock.button_share</source>
+        <target>Share</target>
+      </segment>
+    </unit>
+    <unit id="VVmfHXR">
+      <segment>
+        <source>wine_completed.page.rateblock.button_done</source>
+        <target>Done</target>
+      </segment>
+    </unit>
+    <unit id="YHsdaFe">
+      <segment>
+        <source>wine_completed.page.sharemodal.title</source>
+        <target>Share the process with your friends!</target>
+      </segment>
+    </unit>
+    <unit id="P66OedG">
+      <segment>
+        <source>wine_completed.page.sharemodal.description</source>
+        <target><![CDATA[Let your friends know when the wine is ready.<br>Share joy with your friends.]]></target>
+      </segment>
+    </unit>
+    <unit id="EDIFYdv">
+      <segment>
+        <source>wine_completed.page.sharemodal.twit</source>
+        <target>Stop Dreaming About Making Your Own Wine — Do It at http://2makewine.lenal.work/</target>
+      </segment>
+    </unit>
+    <unit id="PTn7aJH">
+      <segment>
+        <source>wine_completed.page.title.meta</source>
+        <target>Winemaking process is completed</target>
+      </segment>
+    </unit>
+    <unit id="gzTtmgi">
+      <segment>
+        <source>page.profile.empty.process</source>
+        <target>You do not have any active processes</target>
+      </segment>
+    </unit>
+    <unit id="VI7gQM3">
+      <segment>
+        <source>page.profile.product.label.winery</source>
+        <target>MY WINERY</target>
+      </segment>
+    </unit>
+    <unit id="VrptDQH">
+      <segment>
+        <source>page.profile.product.label.active</source>
+        <target>active PROCESS</target>
+      </segment>
+    </unit>
+    <unit id="EWOhhfj">
+      <segment>
+        <source>page.profile.product.label.vinemaking</source>
+        <target>VINEMAKING PROCESS</target>
+      </segment>
+    </unit>
+    <unit id="ffSy64T">
+      <segment>
+        <source>label.back</source>
+        <target>Back</target>
+      </segment>
+    </unit>
+    <unit id="JShHski">
+      <segment>
+        <source>label.wineryField</source>
+        <target>Field</target>
+      </segment>
+    </unit>
+    <unit id="BOsOjJc">
+      <segment>
+        <source>page.product.label.vinemaking.process</source>
+        <target>Vinemaking process</target>
+      </segment>
+    </unit>
+    <unit id="jz7FDU3">
+      <segment>
+        <source>page.product.days.before.decision</source>
+        <target>day(s) before the decision</target>
+      </segment>
+    </unit>
+    <unit id="BINvVBW">
+      <segment>
+        <source>label.wineryCellar</source>
+        <target>Cellar</target>
+      </segment>
+    </unit>
+    <unit id="ffTcr9x">
+      <segment>
+        <source>page.product.label.forecast</source>
+        <target>The forecast for the harvest</target>
+      </segment>
+    </unit>
+    <unit id="y26LbWY">
+      <segment>
+        <source>page.product.label.color.taste</source>
+        <target>Color / Taste profile</target>
+      </segment>
+    </unit>
+    <unit id="q3u73PC">
+      <segment>
+        <source>label.Low-low</source>
+        <target>Low-low</target>
+      </segment>
+    </unit>
+    <unit id="ZF8fXbh">
+      <segment>
+        <source>label.Low</source>
+        <target>Low</target>
+      </segment>
+    </unit>
+    <unit id="dauFGcp">
+      <segment>
+        <source>label.Low-high</source>
+        <target>Low-high</target>
+      </segment>
+    </unit>
+    <unit id="e0sHN_A">
+      <segment>
+        <source>label.Medium-low</source>
+        <target>Medium-low</target>
+      </segment>
+    </unit>
+    <unit id="Ay6AEeP">
+      <segment>
+        <source>label.Medium</source>
+        <target>Medium</target>
+      </segment>
+    </unit>
+    <unit id="Iw8Fegt">
+      <segment>
+        <source>label.Medium-high</source>
+        <target>Medium-high</target>
+      </segment>
+    </unit>
+    <unit id="SxDcZov">
+      <segment>
+        <source>label.High-low</source>
+        <target>High-low</target>
+      </segment>
+    </unit>
+    <unit id="72JHcgL">
+      <segment>
+        <source>label.High</source>
+        <target>High</target>
+      </segment>
+    </unit>
+    <unit id="9MRoSmK">
+      <segment>
+        <source>label.High-high</source>
+        <target>High-high</target>
+      </segment>
+    </unit>
+    <unit id="iz3P1l1">
+      <segment>
+        <source>page.product.label.fruit</source>
+        <target>Fruit</target>
+      </segment>
+    </unit>
+    <unit id="CvNWYOA">
+      <segment>
+        <source>page.product.label.body</source>
+        <target>Body</target>
+      </segment>
+    </unit>
+    <unit id="eqOkvFT">
+      <segment>
+        <source>page.product.label.tannin</source>
+        <target>Tannin</target>
+      </segment>
+    </unit>
+    <unit id="yuOvMtd">
+      <segment>
+        <source>page.product.label.acidity</source>
+        <target>Acidity</target>
+      </segment>
+    </unit>
+    <unit id="b4bubfY">
+      <segment>
+        <source>page.product.label.alcohol</source>
+        <target>Alcohol</target>
+      </segment>
+    </unit>
+    <unit id="QguRWt6">
+      <segment>
+        <source>page.product.label.sweetness</source>
+        <target>Sweetness</target>
+      </segment>
+    </unit>
+    <unit id="k5R_8E1">
+      <segment>
+        <source>page.product.flavor.profile</source>
+        <target>Flavor profile</target>
+      </segment>
+    </unit>
+    <unit id="Nf68Uus">
+      <segment>
+        <source>page.product.flavor.dominant.flavor</source>
+        <target>Dominant flavor</target>
+      </segment>
+    </unit>
+    <unit id="Py9G1nh">
+      <segment>
+        <source>page.product.label.donthave</source>
+        <target>Don't have</target>
+      </segment>
+    </unit>
+    <unit id="Zu1GKiL">
+      <segment>
+        <source>page.product.label.astringency</source>
+        <target>Astringency</target>
+      </segment>
+    </unit>
+    <unit id="uoUe1iQ">
+      <segment>
+        <source>page.product.label.lether</source>
+        <target>LETHER</target>
+      </segment>
+    </unit>
+    <unit id="vk3BBOV">
+      <segment>
+        <source>page.product.label.bakingSpice</source>
+        <target>BAKING SPICE</target>
+      </segment>
+    </unit>
+    <unit id="GMETPZ2">
+      <segment>
+        <source>page.product.label.pepper</source>
+        <target>PEPPER</target>
+      </segment>
+    </unit>
+    <unit id="gDFeJ6S">
+      <segment>
+        <source>page.product.label.flavorHerbaceous</source>
+        <target>Herbaceous</target>
+      </segment>
+    </unit>
+    <unit id=".hTdsYC">
+      <segment>
+        <source>page.product.label.flavorFloral</source>
+        <target>FLORAL</target>
+      </segment>
+    </unit>
+    <unit id="igiMa0M">
+      <segment>
+        <source>page.product.label.flavorBlackFruit</source>
+        <target>BLACK FRUIT</target>
+      </segment>
+    </unit>
+    <unit id="mH3yqDv">
+      <segment>
+        <source>page.product.label.flavorRedFruit</source>
+        <target>RED FRUIT</target>
+      </segment>
+    </unit>
+    <unit id="2mqx.d6">
+      <segment>
+        <source>page.product.label.winemaker</source>
+        <target>Winemaker</target>
+      </segment>
+    </unit>
+    <unit id="FZcSYp1">
+      <segment>
+        <source>page.field.label.wineworkflow</source>
+        <target>Your wine workflow</target>
+      </segment>
+    </unit>
+    <unit id="sjeob2f">
+      <segment>
+        <source>page.field.label.step</source>
+        <target>Step</target>
+      </segment>
+    </unit>
+    <unit id="07PyvmW">
+      <segment>
+        <source>page.field.label.done</source>
+        <target>DONE</target>
+      </segment>
+    </unit>
+    <unit id="CeJjWU.">
+      <segment>
+        <source>page.field.label.nodecision</source>
+        <target>No Decision</target>
+      </segment>
+    </unit>
+    <unit id="L1_dsqQ">
+      <segment>
+        <source>page.field.label.decide</source>
+        <target>Decide</target>
+      </segment>
+    </unit>
+    <unit id="fylXlE2">
+      <segment>
+        <source>page.field.label.decideignore</source>
+        <target>Decide ignore</target>
+      </segment>
+    </unit>
+    <unit id="PeQ6dQZ">
+      <segment>
+        <source>{0} There are no days left
+        </source>
+        <target>one</target>
+      </segment>
+    </unit>
+    <unit id="sW4XUos">
+      <segment>
+        <source>page.profile.label.days</source>
+        <target>day(s) left</target>
+      </segment>
+    </unit>
+    <unit id="smMU1Ep">
+      <segment>
+        <source>page.profile.label.timefordecision</source>
+        <target>Time for decision</target>
+      </segment>
+    </unit>
+    <unit id="bWl3Lf8">
+      <segment>
+        <source>page.field.label.current.step</source>
+        <target>Current step</target>
+      </segment>
+    </unit>
+    <unit id="VZgSuwd">
+      <segment>
+        <source>page.profile.label.button.choose</source>
+        <target>Choose</target>
+      </segment>
+    </unit>
+    <unit id="lCaj2el">
+      <segment>
+        <source>page.profile.label.button.loading</source>
+        <target>Saving..</target>
+      </segment>
+    </unit>
+    <unit id="JfZ_scw">
+      <segment>
+        <source>page.profile.label.button.saved</source>
+        <target>Saved!</target>
+      </segment>
+    </unit>
+    <unit id="FwJ8bru">
+      <segment>
+        <source>page.profile.label.button.not_save</source>
+        <target>Not saved! Try later</target>
+      </segment>
+    </unit>
+    <unit id="rMQKtbi">
+      <segment>
+        <source>payment.form.button.submit</source>
+        <target>Pay</target>
+      </segment>
+    </unit>
+    <unit id="SSNop.F">
+      <segment>
+        <source>payment.form.field.cardholder</source>
+        <target>Card Holder Name</target>
+      </segment>
+    </unit>
+    <unit id="2M8QGxZ">
+      <segment>
+        <source>payment.form.field.cardnumber</source>
+        <target>Card number</target>
+      </segment>
+    </unit>
+    <unit id="N7WqeOr">
+      <segment>
+        <source>payment.form.field.cardexpdate</source>
+        <target>Card expiry date</target>
+      </segment>
+    </unit>
+    <unit id="lLicnQX">
+      <segment>
+        <source>payment.form.field.cvv_hint</source>
+        <target>Code on the back of your credit card</target>
+      </segment>
+    </unit>
+    <unit id="hikzueZ">
+      <segment>
+        <source>payment.page.link.back</source>
+        <target>Back</target>
+      </segment>
+    </unit>
+    <unit id="lnWM9N9">
+      <segment>
+        <source>payment.page.title</source>
+        <target>PAYMENT</target>
+      </segment>
+    </unit>
+    <unit id="kGt_9yq">
+      <segment>
+        <source>payment.form.submit.loading</source>
+        <target>Paying...</target>
+      </segment>
+    </unit>
+    <unit id="UmE_YZi">
+      <segment>
+        <source>vineyard_map.error.not_found</source>
+        <target>Sorry, no vineyards found. Please, try another wines</target>
+      </segment>
+    </unit>
+    <unit id="oQA_jMh">
+      <segment>
+        <source>page.notification.label.notification</source>
+        <target>Notification</target>
+      </segment>
+    </unit>
+    <unit id="XcUxGz3">
+      <segment>
+        <source>page.notification.label.enabled</source>
+        <target>For approval</target>
+      </segment>
+    </unit>
+    <unit id="PmAF7dK">
+      <segment>
+        <source>page.notification.label.disabled</source>
+        <target>Approved</target>
+      </segment>
+    </unit>
+    <unit id="XPXtHhK">
+      <segment>
+        <source>sonata.basket.message_basket_is_empty</source>
+        <target>Your basket is empty</target>
+      </segment>
+    </unit>
+    <unit id="1QF3fCV">
+      <segment>
+        <source>ecommerce.basket.menuitem.cart</source>
+        <target>Cart</target>
+      </segment>
+    </unit>
+    <unit id="SYtFoD.">
+      <segment>
+        <source>ecommerce.basket.menuitem.authorisation</source>
+        <target>Authorisation</target>
+      </segment>
+    </unit>
+    <unit id="AC62D7p">
+      <segment>
+        <source>ecommerce.basket.menuitem.delivery</source>
+        <target>Delivery</target>
+      </segment>
+    </unit>
+    <unit id="sOhNWvU">
+      <segment>
+        <source>ecommerce.basket.menuitem.quantity</source>
+        <target>Quantity</target>
+      </segment>
+    </unit>
+    <unit id="10HflRL">
+      <segment>
+        <source>ecommerce.basket.menuitem.wine</source>
+        <target>Wine</target>
+      </segment>
+    </unit>
+    <unit id="UJxQ8Li">
+      <segment>
+        <source>ecommerce.basket.menuitem.payment</source>
+        <target>Payment</target>
+      </segment>
+    </unit>
+    <unit id="Uox4yig">
+      <segment>
+        <source>ecommerce.basket.menuitem.price</source>
+        <target>Price</target>
+      </segment>
+    </unit>
+    <unit id="cQdycmJ">
+      <segment>
+        <source>ecommerce.basket.menuitem.total</source>
+        <target>Total</target>
+      </segment>
+    </unit>
+    <unit id="jA_LoUl">
+      <segment>
+        <source>ecommerce.basket.menuitem.next</source>
+        <target>Next step</target>
+      </segment>
+    </unit>
+    <unit id="l1YPJyU">
+      <segment>
+        <source>ecommerce.basket.menuitem.login_link</source>
+        <target>I already have an account</target>
+      </segment>
+    </unit>
+    <unit id="kZx2I9c">
+      <segment>
+        <source>ecommerce.basket.order_done.title</source>
+        <target><![CDATA[Winemaking process<br>started!]]></target>
+      </segment>
+    </unit>
+    <unit id="vB6ScZz">
+      <segment>
+        <source>ecommerce.basket.order_done.congrats</source>
+        <target>Congratulation!</target>
+      </segment>
+    </unit>
+    <unit id="Kniy.Ou">
+      <segment>
+        <source>ecommerce.basket.order_done.track</source>
+        <target>Track order</target>
+      </segment>
+    </unit>
+    <unit id="g5rM4CT">
+      <segment>
+        <source>page.aboutus.team.person.one.name</source>
+        <target>David Lecomte</target>
+      </segment>
+    </unit>
+    <unit id="206UPZp">
+      <segment>
+        <source>page.aboutus.team.person.two.name</source>
+        <target>Ben Riccardi</target>
+      </segment>
+    </unit>
+    <unit id="oWeCRDK">
+      <segment>
+        <source>page.aboutus.team.person.three.name</source>
+        <target>Sicou Nikate</target>
+      </segment>
+    </unit>
+    <unit id="crT4iWX">
+      <segment>
+        <source>page.aboutus.team.person.two.three</source>
+        <target>Cellar Hand</target>
+      </segment>
+    </unit>
+    <unit id="hAZYl7C">
+      <segment>
+        <source>page.aboutus.team.person.one.descr</source>
+        <target>As far as David is concerned, winemaking is an endless learning process, not a science. As testimony to this philosophy, David has devoted the past 16 years to learning all he can from the finest in the industry, working at some of the best-known wineries in the world. He continues this process - and shares his knowledge - at City Winery, Manhattan's first fully operational winery, as its Head Winemaker.</target>
+      </segment>
+    </unit>
+    <unit id="hqAvzqs">
+      <segment>
+        <source>page.aboutus.team.person.two.descr</source>
+        <target>Ben worked with California’s premier Pinot vineyards including City Winery’s source- the Bacigalupi vineyard. Now home again in New York, Ben is excited for the future at City Winery where he hopes to show the culmination of his world experience in the world’s city.</target>
+      </segment>
+    </unit>
+    <unit id="PXHEpCJ">
+      <segment>
+        <source>page.aboutus.team.person.thre.descr</source>
+        <target>Cellar Hand Sikou Nikate was born in Mali, Africa and spent half of his life there before moving to France, where many of his family members live. While Sikou doesn’t drink alcohol, including wine, he enjoys the winemaking process and working with wine.</target>
+      </segment>
+    </unit>
+    <unit id="KY70dkF">
+      <segment>
+        <source>page.aboutus.team.person.one.email</source>
+        <target>david@citywinery.com</target>
+      </segment>
+    </unit>
+    <unit id="znCQ4w4">
+      <segment>
+        <source>page.aboutus.team.person.two.email</source>
+        <target>david@citywinery.com</target>
+      </segment>
+    </unit>
+    <unit id="LTc0Grj">
+      <segment>
+        <source>page.aboutus.team.person.three.email</source>
+        <target>david@citywinery.com</target>
+      </segment>
+    </unit>
+    <unit id="Hd38OlT">
+      <segment>
+        <source>page.aboutus.team.person.one.position</source>
+        <target>Chief Wine Maker</target>
+      </segment>
+    </unit>
+    <unit id="g54sin_">
+      <segment>
+        <source>page.aboutus.team.person.two.position</source>
+        <target>Assistant Wine Maker</target>
+      </segment>
+    </unit>
+    <unit id="0DiU.42">
+      <segment>
+        <source>firstname_placeholder</source>
+        <target>Firstname</target>
+      </segment>
+    </unit>
+    <unit id="4Iyc6es">
+      <segment>
+        <source>form.label_price_including_vat</source>
+        <target>Price inc. VAT</target>
+      </segment>
+    </unit>
+    <unit id="3bR6Inl">
+      <segment>
+        <source>form.label_stock</source>
+        <target>Stock</target>
+      </segment>
+    </unit>
+    <unit id="C7sQDZ3">
+      <segment>
+        <source>form.label_vat_rate</source>
+        <target>VAT</target>
+      </segment>
+    </unit>
+    <unit id="O4FCzWd">
+      <segment>
+        <source>form.label_product_type</source>
+        <target>Product type</target>
+      </segment>
+    </unit>
+    <unit id="TXGji8g">
+      <segment>
+        <source>form.label_enabled</source>
+        <target>Enabled</target>
+      </segment>
+    </unit>
+    <unit id="_gmRNpR">
+      <segment>
+        <source>form.label_vineyard</source>
+        <target>Vineyard</target>
+      </segment>
+    </unit>
+    <unit id="tnjs2z.">
+      <segment>
+        <source>breadcrumb.link_wine_product_list</source>
+        <target>Product</target>
+      </segment>
+    </unit>
+    <unit id="UDfXwla">
+      <segment>
+        <source>list.label_enabled</source>
+        <target>Enabled</target>
+      </segment>
+    </unit>
+    <unit id="sCHvQ7F">
+      <segment>
+        <source>filter.label_enabled</source>
+        <target>Enabled</target>
+      </segment>
+    </unit>
+    <unit id="ZtPEucJ">
+      <segment>
+        <source>filter.label_id</source>
+        <target>ID</target>
+      </segment>
+    </unit>
+    <unit id="kMpx0L3">
+      <segment>
+        <source>filter.label_title</source>
+        <target>Title</target>
+      </segment>
+    </unit>
+    <unit id="mpXwasH">
+      <segment>
+        <source>sonata.ecommerce.wine.product</source>
+        <target>Wine Product</target>
+      </segment>
+    </unit>
+    <unit id="X1rYJsw">
+      <segment>
+        <source>breadcrumb.link_wine_product_create</source>
+        <target>Product Create</target>
+      </segment>
+    </unit>
+    <unit id="gaCcshV">
+      <segment>
+        <source>winecard.page.steps.step</source>
+        <target>Step</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

@@ -1,0 +1,194 @@
+sonata_block:
+#    profiler:
+#        enabled: true
+#    default_contexts: [cms]
+    default_contexts: [sonata_page_bundle]
+    context_manager: sonata.page.block.context_manager
+    blocks:
+        sonata.admin.block.stats:
+            contexts:   [admin]
+
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.admin.block.search_result:
+            contexts:   [admin]
+
+        #sonata.admin_doctrine_orm.block.audit:
+        #    contexts:   [admin]
+
+        # Builtin Block
+        sonata.block.service.text:
+        sonata.block.service.container:
+        sonata.block.service.rss:
+        sonata.block.service.menu:
+        sonata.block.service.template:
+
+        # PageBundle's Blocks
+        sonata.page.block.container:
+            # cache: sonata.cache.memcached
+            # cache: sonata.cache.predis
+            # cache: sonata.page.cache.esi # if you are using the PageBundle
+            # cache: sonata.block.cache.esi # if you are using the BlockBundle without the PageBundle
+        sonata.page.block.children_pages:
+        sonata.page.block.breadcrumb:
+
+
+        # TimelineBundle's Blocks
+        sonata.timeline.block.timeline:
+            contexts:   [admin]
+
+        sonata.user.block.menu: ~
+        sonata.block.basket.top: ~
+        app.block.social.widget.initialize: ~
+
+        # UserBundle's Blocks
+        sonata.user.block.account:
+            cache: sonata.page.cache.js_async
+            #cache: sonata.page.cache.esi
+            contexts: [user]
+        sonata.user.block.menu:
+            contexts: [user]
+
+        # SeoBundle's Blocks
+        sonata.seo.block.email.share_button:
+        sonata.seo.block.facebook.like_box:
+        sonata.seo.block.facebook.like_button:
+        sonata.seo.block.facebook.send_button:
+        sonata.seo.block.facebook.share_button:
+        sonata.seo.block.pinterest.pin_button:
+        sonata.seo.block.twitter.share_button:
+        sonata.seo.block.twitter.follow_button:
+        sonata.seo.block.twitter.hashtag_button:
+        sonata.seo.block.twitter.mention_button:
+        sonata.seo.block.twitter.embed:
+
+        sonata.demo.block.newsletter:
+
+
+        # Formatter
+        sonata.formatter.block.formatter:
+
+        sonata.seo.block.breadcrumb.homepage:
+
+sonata_media:
+    # if you don't use default namespace configuration
+    #class:
+    #    media:        MyVendor\MediaBundle\Entity\Media
+    #    gallery:      MyVendor\MediaBundle\Entity\Gallery
+    #    gallery_item: MyVendor\MediaBundle\Entity\GalleryItem
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
+    default_context: default # you need to set a context
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+                - sonata.media.provider.vimeo
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+sonata_customer:
+    class:
+        customer:             EcommerceBundle\CustomerBundle\Entity\Customer
+        address:              EcommerceBundle\CustomerBundle\Entity\Address
+        order:                EcommerceBundle\OrderBundle\Entity\Order
+        user:                 AppBundle\Entity\User
+
+        # You can also implement custom components classes
+        customer_selector:     AppBundle\Provider\CustomerSelector
+        # customer_selector:    Sonata\Component\Customer\CustomerSelector
+
+sonata_price:
+    currency: USD
+
+sonata_delivery:
+    selector: sonata.delivery.selector.default
+    services:
+        free_address_required:
+            name: Free
+            priority: 1
+            code: free
+#        app_delivery_custom:
+#            name: Custom
+#            priority: 2
+#            code: custom
+    methods:
+        free_address_required: sonata.delivery.method.free_address_required     # This is a provided method, we don't need to specify its service id
+        app_delivery_custom: app.delivery.custom    # Custom delivery method, we specify the service id
+
+sonata_basket:
+
+    # Services
+    builder:            sonata.basket.builder.standard
+#    factory:            sonata.basket.session.factory       #  store in session, but is fail because https://bugs.php.net/bug.php?id=6147
+    factory:            sonata.basket.entity.factory       # store in db
+    loader:             sonata.basket.loader.standard
+
+    # Model
+    class:
+        basket:         EcommerceBundle\BasketBundle\Entity\Basket
+        basket_element: EcommerceBundle\BasketBundle\Entity\BasketElement
+        customer:       EcommerceBundle\CustomerBundle\Entity\Customer
+
+    # Forms
+    basket:
+        form:
+            type:       sonata_basket_basket
+            name:       sonata_basket_basket_form
+    shipping:
+        form:
+            type:       app_basket_shipping
+            name:       app_basket_shipping_form
+#            type:       sonata_basket_shipping
+#            name:       sonata_basket_shipping_form
+    payment:
+        form:
+            type:       app_basket_payment
+            name:       app_basket_payment_form
+
+sonata_formatter:
+    default_formatter: text
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig #keep this commented unless you are using media bundle.
+
+
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        twig:
+            service: sonata.formatter.text.twigengine
+            extensions: [] # Twig formatter cannot have extensions

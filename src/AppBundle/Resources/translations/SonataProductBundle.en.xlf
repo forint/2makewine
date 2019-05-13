@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="SonataProductBundle.en">
+    <unit id="i0iiJTs">
+      <segment>
+        <source>breadcrumb.link_wine product list_list</source>
+        <target>Product List</target>
+      </segment>
+    </unit>
+    <unit id="aA2otH5">
+      <segment>
+        <source>breadcrumb.link_wine product list_create</source>
+        <target>Product Create</target>
+      </segment>
+    </unit>
+    <unit id="tpMxmoe">
+      <segment>
+        <source>list.label_id</source>
+        <target>ID</target>
+      </segment>
+    </unit>
+    <unit id="st7Bacd">
+      <segment>
+        <source>list.label_product</source>
+        <target>Title</target>
+      </segment>
+    </unit>
+    <unit id="4l9MG0P">
+      <segment>
+        <source>form.label_product</source>
+        <target>Product</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

@@ -1,0 +1,336 @@
+{% extends '@FOSUser/layout.html.twig' %}
+{% block title %}2MakeWine | Winery | {{ winery.id }} {% endblock %}
+
+
+{% block main %}
+    {% include '@App/Profile/preloader.html.twig' %}
+    <div class="profile-header-topbar">
+        <div class="profile-header__triggers">
+            {#<a class="back-trigger" href="{{ app.request.headers.get('referer') }}">Back</a>#}
+            <a class="back-trigger" href="{{ path('product_all') }}">{{ 'label.back'|trans }}</a>
+        </div>
+        <div class="profile-header-wine">
+            <div class="profile-header-wine__name">{{ winery.wineProduct.title }}</div>
+            <div class="profile-header-wine__desc">
+                ({{ winery.wineProduct.productionRecipe.wineConstructor.getBreadcrumbsString }})
+            </div>
+        </div>
+    </div>
+    <div class="profile-blocks">
+        <a href="{{ path('field_page', {id: winery.id }) }}"
+           class="profile-block profile-block--left"
+           style="background-image: url({{ asset('images/profile/bg-field.jpg') }});">
+            <div class="profile-block-main">
+                <div class="profile-block-header">
+                    <div class="weather-wrapper" id="weather"></div>
+                </div>
+                <div class="profile-block-titles">
+
+                    {% if notifierDate.field is not null  and notifierDate.field < 6 %}
+                        <div class="profile-block-label">{{ notifierDate.field }} {{ 'page.product.days.before.decision'|trans }}</div>
+                    {% endif %}
+
+                    <div class="profile-block-title">{{ 'label.wineryField'|trans }}</div>
+                    <div class="progress-b">
+                        <div class="progress-b__name">{{ 'page.product.label.vinemaking.process'|trans }}</div>
+                        <div class="progress-b__body">
+                            <div class="progress-b__bar">
+                                <div class="progress-b__inner" style="width: {{ winery.wineryField.progress }}%;"></div>
+                            </div>
+                            <div class="progress-b__value">- {{ winery.wineryField.progress }}%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="{{ path('cellar_page', {id: winery.id }) }}" class="profile-block profile-block--right"
+           style="background-image: url({{ asset('images/profile/bg-cellar.jpg') }});">
+            <div class="profile-block-main">
+                <div class="profile-block-header"></div>
+                <div class="profile-block-titles">
+
+
+                    {% if notifierDate.cellar is not null  and notifierDate.cellar< 6 %}
+                        <div class="profile-block-label">{{ notifierDate.cellar }} {{ 'page.product.days.before.decision'|trans }}</div>
+                    {% endif %}
+
+
+                    <div class="profile-block-title">{{ 'label.wineryCellar'|trans }}</div>
+                    <div class="progress-b">
+                        <div class="progress-b__name">{{ 'page.product.label.vinemaking.process'|trans }}</div>
+                        <div class="progress-b__body">
+                            <div class="progress-b__bar">
+                                <div class="progress-b__inner"
+                                     style="width: {{ winery.wineryCellar.progress }}%;"></div>
+                            </div>
+                            <div class="progress-b__value">- {{ winery.wineryCellar.progress }}%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="profile-page-title-center">{{ 'page.product.label.forecast'|trans }}</div>
+    <div class="main-profile-page">
+        <div class="mp-wrapper clearfix">
+            <div class="row">
+                <div class="col-sm-6 mp-gutter--right">
+                    <div class="mp-table-wrap">
+                        <div class="mp-title">{{ 'page.product.label.color.taste'|trans }}</div>
+                        <ul class="mp-table">
+                            <li class="mp-table__item">
+                                <span class="mp-table__thing">{{ 'page.product.label.fruit'|trans }}</span>
+
+                                <span class="mp-table__value">{{ "label.#{winery.wineProduct.tasteFruit}" |trans }}</span>
+                            </li>
+                            <li class="mp-table__item">
+                                <span class="mp-table__thing">{{ 'page.product.label.body'|trans }}</span>
+                                <span class="mp-table__value">{{ ('label.'~ winery.wineProduct.tasteBody) | trans }}</span>
+                            </li>
+                            <li class="mp-table__item">
+                                <span class="mp-table__thing">{{ 'page.product.label.tannin'|trans }}</span>
+                                <span class="mp-table__value">{{ ('label.'~ winery.wineProduct.tasteTannin) | trans }}</span>
+                            </li>
+                            <li class="mp-table__item">
+                                <span class="mp-table__thing">{{ 'page.product.label.acidity'|trans }}</span>
+                                <span class="mp-table__value">{{ ('label.'~ winery.wineProduct.tasteAcidity) | trans }}</span>
+                            </li>
+                            <li class="mp-table__item">
+                                <span class="mp-table__thing">{{ 'page.product.label.alcohol'|trans }}</span>
+                                <span class="mp-table__value">{{ ('label.'~ winery.wineProduct.tasteAlcohol) | trans }}</span>
+                            </li>
+                            <li class="mp-table__item">
+                                <span class="mp-table__thing">{{ 'page.product.label.sweetness'|trans }}</span>
+                                <span class="mp-table__value">{{ ('label.'~ winery.wineProduct.tasteSweetness) | trans }}</span>
+                            </li>
+                        </ul>
+                        <div class="mp-title">{{ 'page.product.flavor.profile'|trans }}</div>
+                        <div class="mp-dominant">
+                            <div class="mp-dominant__title">{{ 'page.product.flavor.dominant.flavor'|trans }}</div>
+                            <div class="mp-dominants">
+
+                                {% for flavor in  winery.wineProduct.flavorDominant %}
+                                    <div class="mp-dominants__item">
+                                        <div class="mp-dominants__figure">
+                                            <img src="{{ vich_uploader_asset(flavor, 'previewFile') }}"
+                                                 alt="{{ flavor.name }}"/>
+                                        </div>
+                                        <div class="mp-dominants__name">
+                                            {{ flavor.translate.title }}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <span class="mp-person__desc">{{ 'page.product.label.donthave'|trans }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="mp-graph-section">
+                            <div class="mp-graph">
+                                <div class="mp-graph__row">
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorAstringency > i %}
+                                                <span class="mp-graph__dot" style="background-color: #856f62;"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="mp-graph__title">{{ 'page.product.label.astringency'|trans }}</div>
+                                </div>
+                                <div class="mp-graph__row">
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorLether > i %}
+                                                <span class="mp-graph__dot" style="background-color: #fdc47d;"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="mp-graph__title">{{ 'page.product.label.lether'|trans }}</div>
+                                </div>
+                                <div class="mp-graph__row">
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorBakingSpice > i %}
+                                                <span class="mp-graph__dot" style="background-color: #cd776a;"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="mp-graph__title">{{ 'page.product.label.bakingSpice'|trans }}</div>
+
+                                </div>
+                                <div class="mp-graph__row">
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorPepper > i %}
+                                                <span class="mp-graph__dot" style="background-color: #85a2a6;"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="mp-graph__title">{{ 'page.product.label.pepper'|trans }}</div>
+
+                                </div>
+                            </div>
+                            <div class="mp-graph">
+                                <div class="mp-graph__row">
+
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorHerbaceous > i %}
+                                                <span class="mp-graph__dot" style="background-color: #7e924a;"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="mp-graph__title">{{ 'page.product.label.flavorHerbaceous'|trans }}</div>
+                                </div>
+                                <div class="mp-graph__row">
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorFloral > i %}
+                                                <span class="mp-graph__dot" style="background-color: tomato"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="mp-graph__title">{{ 'page.product.label.flavorFloral'|trans }}</div>
+                                </div>
+                                <div class="mp-graph__row">
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorBlackFruit > i %}
+                                                <span class="mp-graph__dot" style="background-color: #875781;"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="mp-graph__title">{{ 'page.product.label.flavorBlackFruit'|trans }}</div>
+                                </div>
+                                <div class="mp-graph__row">
+
+                                    <div class="mp-graph__dots">
+                                        {% for i in range(low=0, high=4, step=1) %}
+                                            {% if winery.wineProduct.flavorRedFruit > i %}
+                                                <span class="mp-graph__dot" style="background-color: #e15559;"></span>
+                                            {% else %}
+                                                <span class="mp-graph__dot"></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="mp-graph__title">{{ 'page.product.label.flavorRedFruit'|trans }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mp-gutter--left">
+                    <div class="mp-person">
+                        <div class="mp-person__figure">
+
+
+                            <img src="{{ vich_uploader_asset(winery.vineyard.winemaker, 'imageFile') }}"
+                                 alt="{{ winery.vineyard.winemaker.firstname }}"/>
+
+                        </div>
+                        <div class="mp-person__body">
+                            <div class="mp-person__name">- {{ winery.vineyard.winemaker.firstname }}</div>
+                            <div class="mp-person__divider"></div>
+                            <div class="mp-person__prof">{{ 'page.product.label.winemaker'|trans }}</div>
+                        </div>
+                        <p class="mp-person__desc">
+                            {{ winery.vineyard.winemaker.winemakerDescription }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts_call_to_function_block %}
+    <script>
+
+        $(function () {
+            //SIMPLE WEATHER SCRIPT START
+            function loadWeather(location, woeid) {
+                $.simpleWeather({
+                    location: location,
+                    woeid: woeid,
+                    unit: "c",
+                    success: function (weather) {
+                        var html = `<div class="header-location">
+                <div class="header-location__place">${weather.city}</div>
+                <div class="header-location__country">${weather.region}</div>
+              </div>
+
+      <div class="weather-block">
+                <div class="weather-block__fugure"><i class="icon-${weather.code}
+        "></i></div>
+                <div class="weather-block__content">
+                  <div class="weather-block__temp">${weather.temp}&deg;${weather
+                            .units.temp}</div>
+                  <div class="weather-block__hum">Humidity   ${weather.humidity}%</div>
+                </div>
+              </div>`;
+
+                        $("#weather").html(html);
+                    },
+                    error: function (error) {
+                        $("#weather").html("<p>" + error + "</p>");
+                    }
+                });
+            };
+            //SIMPLE WEATHER SCRIPT END
+
+
+            loadWeather({{ winery.vineyard.latitude }} +',' + {{ winery.vineyard.longitude }});
+        });
+
+        /*  $(
+              (function (location) {
+                      return function () {
+                          $.simpleWeather({
+                              location: location,
+                              // woeid: woeid,
+                              unit: "c",
+                              success: function (weather) {
+                                  var html = `<div class="header-location">
+                  <div class="header-location__place">${weather.city}</div>
+                  <div class="header-location__country">${weather.region}</div>
+                </div>
+        <div class="weather-block">
+                  <div class="weather-block__fugure"><i class="icon-${weather.code}
+          "></i></div>
+                  <div class="weather-block__content">
+                    <div class="weather-block__temp">${weather.temp}&deg;${weather
+                                      .units.temp}</div>
+                    <div class="weather-block__hum">Humidity   ${weather.humidity}%</div>
+                  </div>
+                </div>`;
+
+                                  $("#weather").html(html);
+                              },
+                              error: function (error) {
+                                  $("#weather").html("<p>" + error + "</p>");
+                              }
+                          });
+                      }
+                  }
+              )('50.475498, 30.369415')
+          );*/
+
+    </script>
+{% endblock %}
+

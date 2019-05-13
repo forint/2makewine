@@ -1,0 +1,64 @@
+sonata_payment:
+    selector:             sonata.payment.selector.simple
+    generator:            sonata.payment.generator.mysql
+    transformers:
+        basket:               sonata.payment.transformer.basket     # The service to transform a basket into an order
+        order:                sonata.payment.transformer.order      # The service to transform an order into a basket
+    services:
+        # Which payment methods are enabled?
+        paypal:
+            name:                 Paypal
+            code:                 paypal
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            options:
+                shop_secret_key:      whiterabbit
+                web_connector_name:   curl
+                account:              yura.kralya-facilitator@gmail.com
+                cert_id:              5009806BAFFDF7000A3658AACB26383D
+                debug:                true
+                paypal_cert_file:     %kernel.root_dir%/secure/paypal_cert_pem.txt
+                url_action:           https://www.sandbox.paypal.com/cgi-bin/webscr
+                class_order:          EcommerceBundle\OrderBundle\Entity\Order
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+                method:               encryptViaBuffer
+                key_file:             %kernel.root_dir%/secure/my-private-key.pem
+                cert_file:            %kernel.root_dir%/secure/my-public-certificate.pem
+                openssl:              /Applications/MAMP/Library/bin/openssl
+        pass:
+            name:                 Pass
+            code:                 pass
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            browser:              sonata.payment.browser.curl
+            options:
+                shop_secret_key:      clue
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+        check:
+            name:                 Check
+            code:                 check
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            browser:              sonata.payment.browser.curl
+            options:
+                shop_secret_key:      clue
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+
+    class:
+        order:                EcommerceBundle\OrderBundle\Entity\Order
+        transaction:          EcommerceBundle\PaymentBundle\Entity\Transaction
+
+    # Here you will enable the payment methods you wish to provide
+    # and add your custom ones
+    methods:
+        stripe: sonata.payment.method.stripe   # Custom payment method, we specify the service id
+        paypal: ~     # This is a provided method, we don't need to specify its service id

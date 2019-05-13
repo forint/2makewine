@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="ru" trgLang="ru">
+  <file id="messages.ru">
+    <unit id="hkSPzeX">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Resources/views/Default/index.html.twig:22</note>
+      </notes>
+      <segment>
+        <source>Stop Dreaming About Making</source>
+        <target>Остановить мечту о создании</target>
+      </segment>
+    </unit>
+    <unit id="mStaTfK">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Resources/views/Default/index.html.twig:22</note>
+      </notes>
+      <segment>
+        <source>Your Own Wine — Do It!</source>
+        <target>Ваше собственное вино - сделайте это!</target>
+      </segment>
+    </unit>
+    <unit id="tLWAqa2">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Resources/views/Default/about.html.twig:29</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>About us</source>
+        <target>О нас</target>
+      </segment>
+    </unit>
+    <unit id="eJoif8_">
+      <segment>
+        <source>learn.page.title.html</source>
+        <target><![CDATA[<p>
+    Welcome at 2makewine!
+</p>]]></target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

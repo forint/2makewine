@@ -1,0 +1,10 @@
+{# AppBundle:CRUD:list__action_count.html.twig #}
+{% extends '@App/CRUD/base_list_flat_inner_row.html.twig' %}
+
+{% block row %}
+
+    <div class="sonata__admin-message_list__counter_wrapper">
+        <span class="read">{{ object.counter.read }}</span> / <span class="unread">{{ object.counter.unread }}</span>
+    </div>
+
+{% endblock %}

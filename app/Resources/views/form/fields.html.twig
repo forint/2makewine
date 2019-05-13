@@ -1,0 +1,11 @@
+{# app/Resources/views/form/fields.html.twig #}
+
+{% block form_row %}
+    {% spaceless %}
+        {{ form_label(form) }}
+        {#<div class="flash-error">
+            {{ form_errors(form) }}
+        </div>#}
+        {{ form_widget(form) }}
+    {% endspaceless %}
+{% endblock form_row %}

@@ -1,0 +1,285 @@
+#
+# more information can be found here http://sonata-project.org/bundles/admin
+#
+sonata_admin:
+    global_search:
+        empty_boxes: fade
+#    security:
+#        handler: sonata.admin.security.handler.role
+
+#    title:      %sonata_admin.title%
+#    title_logo: %sonata_admin.logo_title%
+    title:      2makewine
+    title_logo: images/logo-red.png
+    show_mosaic_button:   false
+    options:
+        html5_validate: false # does not use html5 validation
+        pager_links: 5 # pager max links to display
+
+    templates:
+        layout: AppBundle::standard_layout.html.twig
+        dashboard: AppBundle:Core:dashboard.html.twig
+        filter: SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+        # default global templates
+        # the layout template include javascript/stylesheet to the formatter bundle,
+        # if you don't need it use the default one: SonataAdminBundle::standard_layout.html.twig
+#        layout:  admin/layout.html.twig # SonataAdminBundle::standard_layout.html.twig
+#        ajax:    SonataAdminBundle::ajax_layout.html.twig
+        # default value if done set, actions templates, should extends a global templates
+#        list:    SonataAdminBundle:CRUD:list.html.twig
+        list:    AppBundle:Core:list.html.twig
+#        show:    SonataAdminBundle:CRUD:show.html.twig
+        show:    AppBundle:CRUD:show.html.twig
+#        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        edit:    AppBundle:CRUD:edit.html.twig
+        user_block:   AppBundle:Sonata:user_block.html.twig
+#        search:              '@SonataAdmin/Core/search.html.twig'
+#        search_result_block: '@SonataAdmin/Block/block_search_result.html.twig'
+
+    security:
+        handler: sonata.admin.security.handler.role
+
+        # role security information
+        information:
+            EDIT: EDIT
+            LIST: LIST
+            CREATE: CREATE
+            VIEW: VIEW
+            DELETE: DELETE
+            EXPORT: EXPORT
+            OPERATOR: OPERATOR
+            MASTER: MASTER
+
+    dashboard:
+        groups:
+            user_role_block:
+                label: User Role and Group
+                icon: '<i class="fa fa-users"></i>'
+                items:
+                    - app.admin.role
+                    - app.admin.group
+                roles: [ ROLE_SUPER_ADMIN ]
+            user_block:
+                label: User
+                label_catalogue: ~
+                items:
+                    - app.admin.user
+                icon: '<i class="fa fa-user"></i>'
+            message:
+                label: Messages
+                items:
+                    - app.admin.message
+                    - app.admin.conversation
+                icon: '<i class="fa fa-comments"></i>'
+    #                roles: [ ROLE_ADMIN ]
+            constructor:
+                label: Decisions tree
+                label_catalogue:      ~
+                items:
+                    - app.admin.step
+                    - app.admin.wine_constructor
+#                    - app.admin.recipe
+                icon: '<i class="fa fa-sitemap"></i>'
+            vineyard:
+                label: Vineyards
+                label_catalogue: ~
+                items:
+                    - app.admin.vineyard
+                icon: '<i class="fa fa-map-marker"></i>'
+            wineProduct:
+                label: Wine
+                label_catalogue: ~
+                items:
+#                    - app.admin.wine_product
+                    - app.admin.production_recipe
+                    - app.admin.flavor
+                    - app.admin.icon
+            winery:
+                label: Winery
+                items:
+                    - app.admin.winery
+                    - app.admin.winery_field
+                    - app.admin.winery_cellar
+                    - app.admin.winery_field_step
+                    - app.admin.winery_cellar_step
+                    - app.admin.field_step
+                    - app.admin.cellar_step
+                    - app.admin.step_decide
+                    - app.admin.cellar_step_decide
+            shop:
+                label: Shop
+                items:
+#                    - sonata.product.admin.product
+#                    - route: admin_ecommercebundle_product_productcategory_list
+#                      label: Product
+                    - sonata.product.admin.product
+                    - sonata.invoice.admin.invoice
+                    - sonata.order.admin.order
+                    - route: admin_ecommercebundle_order_orderelement_list
+                      label: Order Element
+#                    - sonata.order.admin.order_element
+                    - sonata.customer.admin.customer
+                    - sonata.customer.admin.address
+                    - app.admin.product_delivery
+#                    - sonata.product.admin.delivery
+#                    - app.admin.customer_address
+            contact:
+                label: Support
+                label_catalogue: ~
+                items:
+                    - app.admin.contact
+                icon: '<i class="fa fa-life-ring"></i>'
+        blocks:
+            -
+                position: left
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>Welcome to 2makewine admin panel!</h3></div><div class='panel-body'>You can customize this dashboard by editing the <code>sonata_admin.yml</code> file.</div></div>
+
+            - { position: right, type: sonata.block.service.text, settings: { content: "<div class='panel panel-success'><div class='panel-heading'><h3 class='panel-title'>Welcome to 2makewine admin panel!</h3></div><div class='panel-body'>You can customize this dashboard by editing the <code>sonata_admin.yml</code> file.</div></div>"} }
+            - { position: center, type: sonata.block.service.text, settings: { content: "<div class='panel panel-info'><div class='panel-heading'><h3 class='panel-title'>Welcome to 2makewine admin panel!</h3></div><div class='panel-body'>You can customize this dashboard by editing the <code>sonata_admin.yml</code> file.</div></div>"} }
+#            -
+#                position: right
+#                type: sonata.block.service.rss
+#                roles: [ROLE_ADMIN]
+#                settings:
+#                    title: Sonata Project's RSS
+#                    url: https://sonata-project.org/blog/archive.rss
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [constructor, vineyard, wineProduct]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [user_block, user_role_block, winery]
+            -
+                position: center
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [shop, message, contact]
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  app.admin.user           # admin code - service id
+                    icon:  fa-user                  # font awesome icon
+                    text:  Inactive users
+                    color: bg-yellow                 # colors: bg-green, bg-red and bg-aqua
+                    filters:                      # filter values
+                        enabled: { value: 2 }
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  app.admin.message           # admin code - service id
+                    icon:  fa-rss                  # font awesome icon
+                    text:  Unread messages
+                    color: bg-olive-active                 # colors: bg-green, bg-red and bg-aqua
+                    filters:                      # filter values
+                        isRead: { value: 2 }
+            -
+                position: top
+                class:    col-lg-3 col-xs-6
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  app.admin.winery_field_step          # admin code - service id
+                    icon:  fa-calendar-times-o                  # font awesome icon
+                    text:  Field deadline
+                    color: bg-yellow-active   # colors: bg-green, bg-red and bg-aqua
+                    filters:                      # filter values
+                        deadline: { type: 6, value: "yes" }
+#                        / value 1 - number 1 | value 2 - number 2
+#                        / value 1 - true | value 2 - false
+#                        type 0 --> default | value like 2018-01-09 ( if not string "2018-01-09" be transform to timestamp)
+#                        type 1 --> >=
+#                        type 2 --> >
+#                        type 3 --> =
+#                        type 4 --> <=
+#                        type 5 --> <
+#                        type 6 --> is empty | value - int or string equivalent true
+#                        type 7 --> is not empty | value - int or string equivalent true
+#                        isStepConfirm: { value: 2 }
+            -
+                position: top
+                class:    col-lg-3 col-xs-6
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  app.admin.winery_cellar_step          # admin code - service id
+                    icon:  fa-calendar-times-o                  # font awesome icon
+                    text:  Cellar deadline
+                    color: bg-maroon-active  # colors: bg-green, bg-red and bg-aqua
+                    filters:                      # filter values
+                        deadline: { type: 6, value: "yes" }
+
+#        groups:
+#            sonata.admin.group.entities:
+#                label:           Wine
+#                icon:            '<i class="fa fa-tag"></i>'
+#                items:
+#                    - admin.wine
+#                on_top: true
+
+#    assets:
+#        stylesheets:
+#            - assetic/sonata_admin_css.css
+#            - assetic/sonata_formatter_css.css
+#
+#        javascripts:
+#            - assetic/sonata_admin_js.js
+#            - assetic/sonata_formatter_js.js
+
+sonata_doctrine_orm_admin:
+    # default value is null, so doctrine uses the value defined in the configuration
+    entity_manager: ~
+
+    audit:
+        force: true
+
+    templates:
+        form:
+            - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+        filter:
+            - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+        types:
+            list:
+                array:      SonataAdminBundle:CRUD:list_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:list_date.html.twig
+                time:       SonataAdminBundle:CRUD:list_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:list_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_list_field.html.twig
+                trans:      SonataAdminBundle:CRUD:list_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_list_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                identifier: SonataAdminBundle:CRUD:base_list_field.html.twig
+                currency:   SonataAdminBundle:CRUD:list_currency.html.twig
+                percent:    SonataAdminBundle:CRUD:list_percent.html.twig
+                choice:     SonataAdminBundle:CRUD:list_choice.html.twig
+                url:        SonataAdminBundle:CRUD:list_url.html.twig
+
+            show:
+                array:      SonataAdminBundle:CRUD:show_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:show_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:show_date.html.twig
+                time:       SonataAdminBundle:CRUD:show_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:show_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_show_field.html.twig
+                trans:      SonataAdminBundle:CRUD:show_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_show_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
+                currency:   SonataAdminBundle:CRUD:base_currency.html.twig
+                percent:    SonataAdminBundle:CRUD:base_percent.html.twig
+                choice:     SonataAdminBundle:CRUD:show_choice.html.twig
+                url:        SonataAdminBundle:CRUD:show_url.html.twig

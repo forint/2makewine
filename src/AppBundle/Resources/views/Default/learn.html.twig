@@ -1,0 +1,84 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block main %}
+
+    <div class="bc flex-container flex-center" style="background:url({{ asset('images/bc-learn.jpg') }});">
+        <h2 class="bc-title title">{{ 'learn.page.title'|trans }}</h2>
+        <div class="decore-wrapper decore-white">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="6px" viewBox="0 0 16 6" version="1.1"> <defs/> <g id="Spritelist" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Illustration" transform="translate(-899.000000, -1059.000000)" fill="#2C2D2D"> <path d="M905.827071,1060.73684 C903.85741,1061.89474 902.294317,1062.47368 901.139828,1062.47368 C900.596719,1062.47368 899.98534,1062.29789 899.30569,1061.94737 L899.101897,1061.94737 L899,1062.26211 C899.203793,1063.38632 900.426552,1063.94737 902.668277,1063.94737 C903.55172,1063.94737 904.825428,1063.78947 906.489399,1063.47368 C908.15337,1063.15789 909.427077,1062.99895 910.309502,1062.99895 C912.348452,1062.99895 913.707753,1063.56105 914.386384,1064.68526 L914.79397,1065 L914.997764,1064.47368 C915.066034,1060.82421 913.571211,1059 910.514314,1059 C909.359826,1059 907.797751,1059.57895 905.827071,1060.73684 Z" id="leaf-icon"/> </g> </g> </svg>
+        </div>
+        <p class="bc__text basic-text">
+            {{ 'learn.page.description'|trans }}
+        </p>
+        <a class="bc__mybtn mybtn transition" href="{{ path('make-wine') }}" id="toFix">{{ 'learn.page.button.start'|trans }}</a>
+    </div>
+    <div class="content content-learn">
+        <div class="container">
+            <div class="row">
+                <div class="flex-container flex-side content-learn-flex">
+                    <div class="flex-container content-learn__quote">
+                        <img class="content-learn__quote-img" title="wine" alt="wine" src="{{ asset('images/learn-illustration1.png') }}">
+                        <div class="content-learn__quote-text">
+                            {{ 'learn.page.expirience.title'|trans }}
+                        </div>
+                    </div>
+                    <div class="flex-container flex-center content-learn__description">
+                        <hr class="content-learn__line">
+                        <div class="content-learn__description-wrapper">
+                            <img class="content-learn__description-img" title="wine" alt="wine" src="{{ asset('images/learn-illustration3.png') }}">
+                        </div>
+                        <div class="content-learn__description-columns2 columns2 basic-text">
+                            {{ 'learn.page.expirience.text1'|trans }}
+                        </div>
+                        <img class="content-learn__description-img img-full" title="wine" alt="wine" src="{{ asset('images/learn-illustration2.png') }}">
+                        <div class="content-learn__description-text">
+                            <p class="basic-text">
+                                {{ 'learn.page.expirience.text2'|trans }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-container flex-center choose">
+                    <div class="decore-wrapper decore-grey">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="6px" viewBox="0 0 16 6" version="1.1"> <defs/> <g id="Spritelist" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Illustration" transform="translate(-899.000000, -1059.000000)" fill="#2C2D2D"> <path d="M905.827071,1060.73684 C903.85741,1061.89474 902.294317,1062.47368 901.139828,1062.47368 C900.596719,1062.47368 899.98534,1062.29789 899.30569,1061.94737 L899.101897,1061.94737 L899,1062.26211 C899.203793,1063.38632 900.426552,1063.94737 902.668277,1063.94737 C903.55172,1063.94737 904.825428,1063.78947 906.489399,1063.47368 C908.15337,1063.15789 909.427077,1062.99895 910.309502,1062.99895 C912.348452,1062.99895 913.707753,1063.56105 914.386384,1064.68526 L914.79397,1065 L914.997764,1064.47368 C915.066034,1060.82421 913.571211,1059 910.514314,1059 C909.359826,1059 907.797751,1059.57895 905.827071,1060.73684 Z" id="leaf-icon"/> </g> </g> </svg>
+                    </div>
+                    <h2 class="title choose__title">
+                        {{ 'learn.page.choose.title'|trans }}
+                    </h2>
+                    <p class="basic-text choose__text">
+                        {{ 'learn.page.choose.description'|trans }}
+                    </p>
+                    <div class="choose__bottle bottle flex-container">
+                        {% for item in items %}
+                            <a class="flex-end transition" href="{{ item.url }}">
+                                <img class="wine__bottle-img wine__bottle" src="{{ item.imagePath }}" alt="{{ item.translate.title }}" title="{{ item.translate.title }}">
+                                <img class="bubble" src="{{ asset('images/bubble.png') }}" alt="bubble" title="bubble">
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <p class="basic-text choose__text">
+                        {{ 'learn.page.choose.description2'|trans }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container flex-center video-map">
+      <div class="container">
+        <div class="row">
+          <div class="flex-container flex-center main-video-wrapper">
+            <!-- add class ".main-video-wrapper"-->
+            <div class="flex-container flex-center flex-column video-map__wrapper">
+              <iframe width="610" height="340" src="https://www.youtube.com/embed/8IiVqwpQLYw?rel=0" frameborder="0" allowfullscreen></iframe>
+              <!-- add tag a--><a class="mybtn btn-second" href="{{ path('make-wine') }}">{{ 'learn.page.video.button'|trans }}</a>
+            </div>
+            <div class="flex-container flex-column video-map__wrapper">
+              <h2 class="title">{{ 'learn.page.video.title'|trans }}</h2>
+              <p class="basic-text">{{ 'learn.page.video.description'|trans }}</p>
+                <a class="mybtn btn-second" href="{{ path('make-wine') }}">{{ 'learn.page.video.button'|trans }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

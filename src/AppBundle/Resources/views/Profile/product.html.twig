@@ -1,0 +1,72 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block title %}2MakeWine | Product{% endblock %}
+
+{% block main %}
+    <section class="active-process flex-container flex-column">
+        <ul class="active-process__nav-tabs nav nav-tabs flex-container" role="tablist">
+            <li class="active" role="presentation">
+                <a class="basic-text" href="#home" aria-controls="home" role="tab"
+                   data-toggle="tab">{{ 'page.profile.product.label.winery'|trans }}</a>
+            </li>
+        </ul>
+
+        <div class="tab-content active-process__tab-content">
+            {% for message in app.flashes('product.notice') %}
+                <div class="flash-notice">
+                    <div class="alert alert-danger alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Warning!</strong> {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="tab-pane active" role="tabpanel" id="home">
+                <p class="basic-text text--normal active-process__tab-content-text">{{ 'page.profile.product.label.active'|trans }}</p>
+                {% for winery in wineries %}
+                    <div class="active-process__item-wrapper">
+                        <div class="flex-container active-process__item-flex flex-column">
+                            <div class="flex-container flex-side flex-center">
+                                <div class="flex-cart-item flex-cart-item-wine flex-container flex-wrap">
+                                    <a href="{{ path('product_page', {id: winery.id}) }}">
+                                        <div class="flex-container flex-center flex-cart-item__square">
+                                            <img src="{{ vich_uploader_asset(winery.wineProduct, 'previewFile') }}"
+                                                 title="{{ winery.wineProduct.img }}"
+                                                 alt="{{ winery.wineProduct.img }}"/>
+                                        </div>
+                                    </a>
+                                    <div class="flex-container flex-cart-item__description flex-column">
+                                        <h2 class="title">{{ winery.wineProduct.title }}</h2>
+                                        <p class="basic-text">{{ winery.wineProduct.productionRecipe.wineConstructor.getBreadcrumbsString }}</p>
+                                        <div class="flex-container">
+
+                                            <p class="active-process__quantity">{{ winery.wineryField.vines }} x</p>
+                                            <img class="active-process__quantity-img"
+                                                 src="{{ asset('images/vines.png') }}"
+                                                 alt="quantity">
+                                        </div>
+                                    </div>
+                                    <div class="flex-container active-process__progressbar-wrapper flex-column">
+                                        <p>{{ 'page.profile.product.label.vinemaking'|trans }} </p>
+                                        <div class="progress-b__bar">
+                                            <div class="progress-b__inner" style="width: {{ winery.progress }}%;"></div>
+                                        </div>
+                                        <!--.active-process__progressbar.progressbar-->
+                                    </div>
+                                    <div class="flex-container flex-center active-process__status-wrapper">
+                                        <div class="active-process__status status">
+                                            <p>- {{ winery.progress }} %</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <h2 class="title" style="padding: 30px">{{ 'page.profile.empty.process'|trans }}</h2>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

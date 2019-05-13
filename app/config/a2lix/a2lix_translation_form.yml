@@ -1,0 +1,7 @@
+a2lix_translation_form:
+    locale_provider: default
+    locales: [en, it]
+    default_locale: en
+    required_locales: [en]
+#   templating: "A2lixTranslationFormBundle::def.html.twig"      # Enable it language
+    templating: "A2lixTranslationFormBundle::default.html.twig"

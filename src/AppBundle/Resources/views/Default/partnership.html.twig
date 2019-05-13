@@ -1,0 +1,173 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block header %}
+    {% set notifications_count  = notificationService.getCount(app.user) %}
+    {% set unread_messages_count_for_current_user  = notificationService.getCountMessage(app.user) %}
+    {% set unread_messages_count_for_not_current_user  = notificationService.getCountMessageForNotCurrentUser(app.user) %}
+
+    {% if unread_messages_count_for_not_current_user == 0 or app.user.hasGroup('User') %}
+        {% set unread_messages_count  = unread_messages_count_for_current_user %}
+    {% else %}
+        {% set unread_messages_count  = unread_messages_count_for_current_user ~ '/' ~ unread_messages_count_for_not_current_user %}
+    {% endif %}
+    {#<div>{{  app.request.attributes.get('_route')  }}</div>#}
+    <header class="header header-white flex-container flex-side" id="header">
+        <!-- add new tag (a)--><a id="toggle-menu" href="#"><span></span></a>
+        <div class="logo-wrapper header__logo-wrapper"><a href="{{ path('homepage') }}">
+                <img class="logo header-logo" src="{{ asset('images/logo.png') }}"
+                     title="logo" alt="logo">
+            </a>
+        </div>
+        <nav class="nav header__nav" id="nav">
+            <ul class="menu-list header__menu-list flex-container">
+                <li class="menu-item header__menu-item">
+                    <a class="menu-link header__menu-link flex-container flex-center"
+                       href="{{ path('homepage') }}">{{ 'index.page.menu.home'|trans }}</a>
+                </li>
+                <li class="menu-item header__menu-item">
+                    <a class="menu-link header__menu-link flex-container flex-center"
+                       href="{{ path('about-us') }}">{{ 'index.page.menu.about'|trans }}</a>
+                </li>
+                <li class="menu-item header__menu-item">
+                    <a class="menu-link header__menu-link flex-container flex-center"
+                       href="{{ path('learn') }}">{{ 'index.page.menu.learn'|trans }}</a>
+                </li>
+                <li class="menu-item header__menu-item">
+                    <a class="menu-link header__menu-link flex-container flex-center"
+                       href="{{ path('contact-us') }}">{{ 'index.page.menu.contact'|trans }}</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="mybtn-wrapper header__mybtn-wrapper">
+            <a class="mybtn header__mybtn transition"
+               href="{{ path('partnership') }}">{{ 'index.page.menu.partnership'|trans }}</a>
+        </div>
+        <div class="sign header__sign flex-container flex-center">
+            {% if  app.user %}
+                <a href="{{ path('product_all') }}" class="sign-link header__sign-link flex-container flex-center">
+                    <div class="user-icon-wrap
+                        {% if notifications_count > 0 or unread_messages_count > 0 %}
+                        is-active-number-user
+                                {% endif %} ">
+                        <svg class="user-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28"
+                             height="28"
+                             viewBox="0 0 28 28">
+                            <path d="M14 0c7.734 0 14 6.266 14 14 0 7.688-6.234 14-14 14-7.75 0-14-6.297-14-14 0-7.734 6.266-14 14-14zM23.672 21.109c1.453-2 2.328-4.453 2.328-7.109 0-6.609-5.391-12-12-12s-12 5.391-12 12c0 2.656 0.875 5.109 2.328 7.109 0.562-2.797 1.922-5.109 4.781-5.109 1.266 1.234 2.984 2 4.891 2s3.625-0.766 4.891-2c2.859 0 4.219 2.312 4.781 5.109zM20 11c0-3.313-2.688-6-6-6s-6 2.688-6 6 2.688 6 6 6 6-2.688 6-6z"></path>
+                        </svg>
+                    </div>
+                    <span>{{ app.user.firstname }}</span>
+                </a>
+            {% else %}
+                <a href="{{ path('security_login') }}" class="sign-link header__sign-link flex-container flex-center">
+                    <span>{{ 'index.page.menu.login'|trans }}</span>
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="cart header__cart flex-container flex-center">
+            <a class="cart-link header__cart-link flex-container flex-center" href="{{ path('sonata_basket_index') }}">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                    <path d="M17.016 18c1.078 0 1.969 0.938 1.969 2.016s-0.891 1.969-1.969 1.969-2.016-0.891-2.016-1.969 0.938-2.016 2.016-2.016zM0.984 2.016h3.281l0.938 1.969h14.813c0.563 0 0.984 0.469 0.984 1.031 0 0.188-0.047 0.328-0.141 0.469l-3.563 6.469c-0.328 0.609-0.984 1.031-1.734 1.031h-7.453l-0.891 1.641-0.047 0.141c0 0.141 0.094 0.234 0.234 0.234h11.578v2.016h-12c-1.078 0-1.969-0.938-1.969-2.016 0-0.328 0.094-0.656 0.234-0.938l1.359-2.484-3.609-7.594h-2.016v-1.969zM6.984 18c1.078 0 2.016 0.938 2.016 2.016s-0.938 1.969-2.016 1.969-1.969-0.891-1.969-1.969 0.891-2.016 1.969-2.016z"></path>
+                </svg>
+                <span class="quantity-top-circle" id="quantity-top">{% if basket.cptElements > 0 %}{{ basket.cptElements }}{% endif %}</span>
+            </a>
+            {{ sonata_block_render({ 'type': 'sonata.block.basket.top' }, {
+                'template' : 'AppBundle:WineProduct:top_block_basket.html.twig',
+                'attr' : {
+                    'form':         form,
+                    'basket':         basket,
+                    'provider': provider
+                }
+            }) }}
+        </div>
+    </header>
+{% endblock %}
+
+{% block main %}
+    <div class="maincontent">
+        <div class="wrapper">
+            <div class="full full-partnership flex-container flex-center scroll-item active" id="about">
+                <div class="full__content flex-container flex-center">
+                    <h1 class="full__title title">
+                        {{ 'partnership.page.title.main'|trans }}
+                    </h1>
+                    <p class="full__text text-white basic-text">
+                        {{ 'partnership.page.description.main'|trans }}
+                    </p>
+                    <a class="full__mybtn mybtn transition" href="{{ path('contact-us') }}">
+                        {{ 'partnership.page.button.become_partner'|trans }}
+                    </a>
+                    <!--a.flex-container.flex-column.flex-center(href="#payment")-->
+                    <!--    img(alt="scroll" src="./images/bubble-scroll.png")-->
+                    <!--    p.title.scroll-title Scroll-->
+                </div>
+            </div>
+            <div class="myrow myrow-white">
+                <p class="myrow-text" id="payment">{{ 'partnership.page.title.steps'|trans }}</p>
+            </div>
+            <section class="flex-block step1 partnership-step1 scroll-item">
+                <div class="flex-container flex-center flex-block__content" style="background-image:url('{{ asset('images/big-bg1.png') }}'); background-size:cover;">
+                    <img class="flex-block__icon" alt="icon" title="icon" src="{{ asset('images/partnership-icon1.png') }}">
+                    <p class="flex-block__num">{{ 'partnership.page.step1.stepnumber'|trans }}</p>
+                    <h2 class="flex-block__title title">
+                        {{ 'partnership.page.step1.title'|trans }}
+                    </h2>
+                    <p class="flex-block__text basic-text" id="member">
+                        {{ 'partnership.page.step1.description'|trans }}
+                    </p>
+                </div>
+            </section>
+            <section class="flex-block step2 partnership-step2 scroll-item" >
+                <div class="flex-container flex-center flex-block__content" style="background-image:url('{{ asset('images/big-bg2.png') }}'); background-size:cover;">
+                    <img class="flex-block__icon" alt="icon" title="icon" src="{{ asset('images/partnership-icon2.png') }}">
+                    <p class="flex-block__num">{{ 'partnership.page.step2.stepnumber'|trans }}</p>
+                    <h2 class="flex-block__title title">
+                        {{ 'partnership.page.step2.title'|trans }}
+                    </h2>
+                    <p class="flex-block__text basic-text" id="platform">
+                        {{ 'partnership.page.step2.description'|trans }}
+                    </p>
+                </div>
+            </section>
+            <section class="flex-block step3 partnership-step3 scroll-item">
+                <div class="flex-container flex-center flex-block__content" style="background-image:url('{{ asset('images/big-bg3.png') }}'); background-size:cover;">
+                    <img class="flex-block__icon" alt="icon" title="icon" src="{{ asset('images/partnership-icon3.png') }}">
+                    <p class="flex-block__num">{{ 'partnership.page.step3.stepnumber'|trans }}</p>
+                    <h2 class="flex-block__title title">
+                        {{ 'partnership.page.step3.title'|trans }}
+                    </h2>
+                    <p class="flex-block__text basic-text">
+                        {{ 'partnership.page.step3.description'|trans }}
+                    </p>
+                </div>
+            </section>
+            <div class="myrow myrow-grey">
+                <h3 class="myrow-title">
+                    {{ 'partnership.page.title.start'|trans }}
+                </h3>
+                <a class="mybtn myrow-mybtn transition btn-second" href="{{ path('contact-us') }}">
+                    {{ 'partnership.page.button.become_partner'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="pageScroll">
+        <nav class="pageScroll-block bs-docs-sidebar" id="navbar-example">
+            <ul class="pageScroll__menu nav bs-docs-sidenav">
+                <li class="active pageScroll__menu-item transition basic-text">
+                    <a href="#about"><span>{{ 'partnership.page.scroll.title1'|trans }}</span></a>
+                </li>
+                <li class="pageScroll__menu-item pageScroll__menu-item-dark transition basic-text">
+                    <a href="#payment"><span>{{ 'partnership.page.scroll.title2'|trans }}</span></a>
+                </li>
+                <li class="pageScroll__menu-item transition basic-text">
+                    <a href="#member"><span>{{ 'partnership.page.scroll.title3'|trans }}</span></a>
+                </li>
+                <li class="pageScroll__menu-item pageScroll__menu-item-dark transition basic-text">
+                    <a href="#platform"><span>{{ 'partnership.page.scroll.title4'|trans }}</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+{% endblock %}

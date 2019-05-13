@@ -1,0 +1,40 @@
+<div class="cart-drop">
+    <section class="flex-container flex-baseline flex-column">
+
+        {#<input id="quantity" type="hidden" name="quantity" value="{{ basket.cptElements }}" />#}
+
+        {% if basket.hasBasketElements %}
+
+            <div class="flex-container flex-side cart-wrapper cart-wrapper-title">
+                <div class="flex-cart-item flex-cart-item-wine">
+                    <p class="text-basic">Wine (<span id="header-section__quantity-top">{% if basket.cptElements > 0 %}{{ basket.cptElements }}{% endif %}</span>)</p>
+                </div>
+            </div>
+
+            {% for basketElement in basket.getBasketElements %}
+
+                {{ render(controller(
+                    'AppBundle:WineProduct:renderFormBasketElement', {
+                        'formView':       formView,
+                        'basketElement':  basketElement,
+                        'basket':         basket,
+                        'provider':       provider,
+                        'mode': 'top'
+                    }
+                )) }}
+
+            {% endfor %}
+
+            <div class="cart-total">
+                <p class="basic-text">{{ 'index.page.basket.total'|trans }} : <span id="total-price">{{ basket.getTotal(true)|number_format_currency(basket.currency.label, {}, {}, basket.locale) }}</span></p>
+            </div>
+
+            <div class="cart-checkout">
+                <a href="{{ path('sonata_basket_index') }}">{{ 'index.page.basket.checkout'|trans }}</a>
+            </div>
+
+        {% else %}
+            <p class="basket_is_empty">{{ 'sonata.basket.message_basket_is_empty'|trans }}</p>
+        {% endif %}
+    </section>
+</div>

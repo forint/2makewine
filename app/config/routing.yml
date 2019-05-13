@@ -1,0 +1,122 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+app_extra:
+    resource: .
+    type: advanced_extra
+
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+    options: { i18n: false }
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+    options: { i18n: false }
+
+logout:
+    path: /logout
+
+#chat_conversation:
+#    path: /conversation/{user}
+#    defaults:
+#        _controller: AppBundle:Chat:getConversation
+
+add_conversation:
+    path: /user/{user}/conversation/add/
+    defaults:
+        _controller: AppBundle:Chat:create
+
+#app_wine_render_basket_element:
+#    path: /{formView}/{basketElement}/{basket}
+#    defaults:
+#        _controller: AppBundle:WineProduct:renderFormBasketElement
+
+_translation_edit_in_place:
+    resource: '@TranslationBundle/Resources/config/routing_edit_in_place.yml'
+    prefix:  /admin/webui
+    options: { i18n: false }
+
+_translation_webui:
+    resource: "@TranslationBundle/Resources/config/routing_webui.yml"
+    prefix:  /admin/webui
+    options: { i18n: false }
+
+fos_user_profile:
+    resource: "@AppBundle/Resources/config/routing/profile.xml"
+#    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+#fos_user_register:
+#    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+#    prefix: /register
+
+#app_user_register:
+#    resource: "@AppBundle/Resources/config/routing/registration.xml"
+#    prefix: /shop
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+# sonata front controller
+sonata_customer:
+    resource: "@SonataCustomerBundle/Resources/config/routing/customer.xml"
+    prefix: /shop/user
+
+sonata_basket:
+    resource: "@SonataBasketBundle/Resources/config/routing/basket.xml"
+    prefix: /shop/basket
+
+sonata_order:
+    resource: "@SonataOrderBundle/Resources/config/routing/order.xml"
+    prefix: /shop/user/invoice
+
+sonata_product_catalog:
+    resource: "@SonataProductBundle/Resources/config/routing/catalog.xml"
+    prefix: /shop/catalog
+
+sonata_product:
+    resource: "@SonataProductBundle/Resources/config/routing/product.xml"
+    prefix: /shop/product
+
+sonata_payment:
+    resource: "@SonataPaymentBundle/Resources/config/routing/payment.xml"
+    prefix: /shop/payment
+
+sonata_invoice:
+    resource: "@SonataInvoiceBundle/Resources/config/routing/invoice.xml"
+    prefix: /shop/user/invoice
+
+_sonata_invoice:
+    resource: "@EcommerceBundleSonataInvoiceBundle/Resources/config/routing/invoice.xml"
+    prefix: /invoice
+
+# advanced front controllers for basket
+app_basket_security_login:
+    resource: "@EcommerceBundleSonataBasketBundle/Resources/config/routing/login.xml"
+
+sonata_page_exceptions:
+    resource: '@SonataPageBundle/Resources/config/routing/exceptions.xml'
+    prefix: /
+
+sonata_page_cache:
+    resource: '@SonataPageBundle/Resources/config/routing/cache.xml'
+    prefix: /

@@ -1,0 +1,392 @@
+services:
+    app.admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~ , AppBundle\Entity\User, SonataAdminBundle:CRUD, "@service_container"]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Entities, label: User }
+        public: true
+
+    app.admin.group:
+        class: AppBundle\Admin\GroupAdmin
+        arguments: [~, AppBundle\Entity\Group, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Entities, label: Group }
+        public: true
+
+    app.admin.step:
+        class: AppBundle\Admin\StepAdmin
+        arguments: [~, AppBundle\Entity\Step, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Decisions tree, label: Steps }
+        public: true
+
+    app.admin.wine_constructor:
+        class: AppBundle\Admin\WineConstructorAdmin
+        arguments: [~, AppBundle\Entity\WineConstructor, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Decisions tree, label: Parameters }
+        public: true
+
+    app.security.login_form_authenticator:
+        class: AppBundle\Security\LoginFormAuthenticator
+        arguments: [ "@service_container","@security.user.provider.concrete.in_memory","@form.factory", "@doctrine.orm.entity_manager","@jms_i18n_routing.router","@security.authorization_checker","@security.password_encoder","@security.encoder_factory","@request_stack"]
+        autowire: true
+
+    app.security.user_register_listener:
+        class: AppBundle\EventListener\UserRegisterListener
+        arguments: ["@fos_user.group_manager"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.security.clear_flashbag_after_registration:
+        class: AppBundle\EventListener\ClearBagEmailConfirmationListener
+        arguments: ["@session.flash_bag"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.doctrine.hash_password_listener:
+        class: AppBundle\Doctrine\HashPasswordListener
+        arguments: ["@security.encoder_factory","@security.token_storage"]
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    app.doctrine.update_message_listener:
+        class: AppBundle\Doctrine\UpdateConversationMessageListener
+        arguments: ["@session", "@doctrine.orm.entity_manager", "@service_container"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.doctrine.update_related_user_listener:
+        class: AppBundle\Doctrine\UpdateConversationRelatedUserListener
+        arguments: ["@service_container", "@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kernel.event_listener, event: sonata.admin.event.persistence.post_update, method: onUpdateConversationRelatedUser, priority: 14 }
+
+    app.form.registration:
+        class: AppBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+    app.form.change_password:
+        class: AppBundle\Form\ChangePasswordFormType
+        tags:
+            - { name: form.type, alias: app_user_change_password }
+
+    app.form.resetting_password:
+        class: AppBundle\Form\ResettingFormType
+        tags:
+            - { name: form.type, alias: app_user_resetting }
+
+    app.form.profile:
+        class: AppBundle\Form\ProfileFormType
+        tags:
+            - { name: form.type, alias: app_user_profile }
+
+    app.admin.role:
+        class: AppBundle\Admin\RoleAdmin
+        arguments: [~, AppBundle\Entity\Role, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Entities, label: Role }
+        public: true
+
+    app.admin.vineyard:
+        class: AppBundle\Admin\VineyardAdmin
+        arguments: [~, AppBundle\Entity\Vineyard, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Vineyards, label: Vineyards }
+        public: true
+
+#    app.admin.winelabel:
+#        class: AppBundle\Admin\WineLabelAdmin
+#        arguments: [~, AppBundle\Entity\WineLabel, SonataAdminBundle:CRUD]
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, group: Wine constructor, label: Wine labels }
+#        public: true
+
+    app.admin.flavor:
+        class: AppBundle\Admin\FlavorAdmin
+        arguments: [~, AppBundle\Entity\Flavor, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: WineProduct, label: Dominant Flavor }
+        public: true
+
+    app.admin.wine_product:
+        class: AppBundle\Admin\WineProductAdmin
+        arguments: [~, AppBundle\Entity\WineProduct, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: WineProduct, label: Product }
+        public: true
+
+    app.admin.customer_address:
+        class: AppBundle\Admin\AddressAdmin
+        arguments: [~, EcommerceBundle\CustomerBundle\Entity\Address, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: WineProduct, label: Address }
+        public: true
+
+    app.admin.product_delivery:
+        class: AppBundle\Admin\DeliveryAdmin
+        arguments: [~, EcommerceBundle\ProductBundle\Entity\Delivery, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: WineProduct, label: Delivery }
+        public: true
+
+    app.admin.winery:
+        class: AppBundle\Admin\WineryAdmin
+        arguments: [~, AppBundle\Entity\Winery, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: WineProduct, label: Winery }
+        public: true
+
+    app.admin.recipe:
+        class: AppBundle\Admin\RecipeAdmin
+        arguments: [~, AppBundle\Entity\Recipe, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Decisions tree, label: Wines }
+        public: true
+
+    app.admin.winery_field:
+        class: AppBundle\Admin\WineryFieldAdmin
+        arguments: [~, AppBundle\Entity\WineryField, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Winery Field }
+        public: true
+
+    app.admin.winery_cellar:
+        class: AppBundle\Admin\WineryCellarAdmin
+        arguments: [~, AppBundle\Entity\WineryCellar, SonataAdminBundle:CRUD]
+#        arguments: [~, AppBundle\Entity\WineryCellar, AppBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Winery Cellar }
+        public: true
+
+    app.admin.conversation:
+        class: AppBundle\Admin\ConversationAdmin
+        arguments: [~, AppBundle\Entity\Conversation, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Conversation }
+        public: true
+
+    app.admin.message:
+        class: AppBundle\Admin\MessageAdmin
+        arguments: [~, AppBundle\Entity\Message, AppBundle:CRUD, "@service_container"]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Message, label: Message }
+        public: true
+
+#    app.twig.asset_is_image_extension:
+#        class: 'AppBundle\Twig\Extension\AssetIsImageExtension'
+#        arguments: ['@kernel']
+#        tags:
+#          - { name: twig.extension }
+
+#    app.twig.left_day:
+#        class: AppBundle\Twig\Extension\DateExtension
+#        tags:
+#          - { name: twig.extension }
+
+    app.admin.contact:
+        class: AppBundle\Admin\ContactAdmin
+        arguments: [~, AppBundle\Entity\Contact, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Feedback }
+        public: true
+
+    app.admin.icon:
+        class: AppBundle\Admin\IconAdmin
+        arguments: [~, AppBundle\Entity\Icon, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Wine, label: Icons }
+        public: true
+
+    app.name_service:
+        class: AppBundle\Service\FillLevelNameService
+
+    app.admin.field_step:
+        class: AppBundle\Admin\FieldStepAdmin
+        arguments:
+            - ~
+            - AppBundle\Entity\FieldStep
+            - SonataAdminBundle:CRUD
+#            - "@service_container"
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Field Step }
+        public: true
+        calls:
+            - ["setCreateNameService", ["@app.name_service"]]
+
+    app.admin.cellar_step:
+        class: AppBundle\Admin\CellarStepAdmin
+        arguments: [~, AppBundle\Entity\CellarStep, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Cellar Step }
+        public: true
+        calls:
+            - ["setCreateNameService", ["@app.name_service"]]
+
+    app.admin.winery_field_step:
+        class: AppBundle\Admin\WineryFieldStepAdmin
+        arguments: [~, AppBundle\Entity\WineryFieldStep, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Winery Field Step }
+        public: true
+
+    app.admin.winery_cellar_step:
+        class: AppBundle\Admin\WineryCellarStepAdmin
+        arguments: [~, AppBundle\Entity\WineryCellarStep, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Winery Cellar Step }
+        public: true
+
+    app.admin.step_decide:
+        class: AppBundle\Admin\FieldStepDecideAdmin
+        arguments: [~, AppBundle\Entity\FieldStepDecide, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Field Step Decide }
+        public: true
+
+    app.admin.cellar_step_decide:
+        class: AppBundle\Admin\CellarStepDecideAdmin
+        arguments: [~, AppBundle\Entity\CellarStepDecide, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Cellar Step Decide }
+        public: true
+
+    app.admin.production_recipe:
+        class: AppBundle\Admin\ProductionRecipeAdmin
+        arguments: [~, AppBundle\Entity\ProductionRecipe, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Production Recipe }
+        public: true
+
+#    app.stripe:
+#        class: AppBundle\Entity\StripeClient
+#        arguments: ['%stripe_secret_key%', '%payment%', '@doctrine.orm.entity_manager', '@logger']
+
+    sonata.ecommerce.wine.product.manager:
+        class: Sonata\ProductBundle\Entity\ProductManager
+        arguments:
+            - AppBundle\Entity\WineProduct
+            - '@doctrine'
+
+    sonata.ecommerce.wine.product.type:
+        class: AppBundle\Provider\WineProductProvider
+        arguments:
+            - '@serializer'
+
+    subscriber.doctrine_event_subscriber:
+        class: AppBundle\EventSubscriber\DoctrineEventSubscriber
+        tags:
+            - { name: doctrine.event_subscriber }
+
+#    twig.add.global.variables.listener:
+#        class: AppBundle\EventListener\ControllerListener
+#        tags:
+#            - {name: kernel.event_listener, event: kernel.response, method: onKernelResponse, priority: -128}
+#            - {name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
+#            - {name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: -128}
+#            - {name: kernel.event_listener, event: kernel.controller, method: onKernelController}
+#        arguments: [ "@service_container", "@form.factory" ]
+
+    sonata.block.basket.top:
+        class: EcommerceBundle\BasketBundle\Block\DropBasketBlock
+        arguments:
+            - sonata.block.basket.top
+            - "@templating"
+        tags:
+            - { name: sonata.block }
+
+    app.block.social.widget.initialize:
+        class: EcommerceBundle\BasketBundle\Block\SocialWidgetBlock
+        arguments:
+            - app.block.social.widget.initialize
+            - "@templating"
+        tags:
+            - { name: sonata.block }
+
+    fos_user.listener.email_confirmation:
+        class: AppBundle\EventListener\EmailConfirmationListener
+        arguments: [ "@fos_user.mailer", "@fos_user.util.token_generator", "@router", "@session" ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+#    fos_user.user_listener:
+#        class: AppBundle\Doctrine\UserListener
+#        arguments: [ "@fos_user.util.password_updater", "@fos_user.util.canonical_fields_updater" ]
+#        public: false
+
+    app.delivery.custom:
+        class: AppBundle\Delivery\CustomDelivery
+        arguments: [ ~ ]
+        tags:
+            - { name: sonata.delivery.method }
+
+    app_basket_shipping:
+        class: AppBundle\Form\AppShippingType
+        arguments: [ "@sonata.delivery.pool", "@sonata.delivery.selector" ]
+        tags:
+            - { name: form.type, alias: 'app_basket_shipping' }
+#        tags:
+#            - { name: form.type_extension, extended_type: Sonata\BasketBundle\Form\ShippingType, priority: 1024 }
+
+    app_sonata_address_type:
+        class: AppBundle\Form\AppAddressType
+        arguments: [ '%sonata.customer.address.class%', "@sonata.basket" , "@request_stack","@controller_resolver","@service_container"]
+        tags:
+            - { name: form.type, alias: 'sonata_basket_address' }
+
+    app.delivery.choice.type:
+        class: AppBundle\Form\Extension\AppDeliveryChoiceTypeExtension
+        arguments: [ "@sonata.delivery.pool" ]
+        tags:
+            - { name: form.type_extension, extended_type: Sonata\Component\Form\Type\DeliveryChoiceType, priority: 128 }
+
+    app.wine.product.provider:
+        class: AppBundle\Provider\WineProductProvider
+        arguments: [ "@serializer" ]
+
+#    ecommerce.delivery.choice.type:
+#        class: EcommerceBundle\DeliveryBundle\Form\ShopDeliveryChoiceTypeExtension
+#        tags:
+#            - { name: form.type_extension, extended_type: Sonata\Component\Form\Type\DeliveryChoiceType, priority: 128 }
+
+
+    app.routing.loader:
+        class: AppBundle\Routing\AppLoader
+        tags:
+            - { name: routing.loader }
+
+    shop.login.update_path_info.request_listener:
+        class: AppBundle\EventListener\ShopLoginUpdatePathInfoListener
+        arguments: [ "@service_container" ]
+        tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest , priority: 9}
+
+    app.customer.persist_user_relation.listener:
+        class: AppBundle\EventListener\FlashUserInCustomerListener
+        arguments: [ "@annotations.reader" ]
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+
+    app.customer.persist_user_relation_listener:
+        class: AppBundle\EventListener\UserCheckCustomerPersistListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+
+    shop.ecommerce.invoice_generate_listener:
+        class: AppBundle\EventListener\GenerateInvoiceListener
+        arguments: [ "@service_container" ]
+        tags:
+          - { name: kernel.event_listener, event: sonata.ecommerce.payment.post_sendbank, method: onInvokePostSendBank , priority: 8}
+
+    shop.ecommerce.invoice_after_payment_listener:
+        class: AppBundle\EventListener\InvoiceAfterPaymentListener
+        arguments: [ "@service_container", "@event_dispatcher" ]
+        tags:
+          - { name: kernel.event_listener, event: sonata.ecommerce.payment.post_callback, method: onInvokePostCallback , priority: 7}
+
+#    app.product.generate_sku_listener:
+#        class: AppBundle\EventListener\GenerateProductSkuListener
+#        tags:
+#            - { name: doctrine.event_listener, event: prePersist }

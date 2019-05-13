@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="it">
+  <file id="messages.it">
+    <unit id="z2Bkal7">
+      <segment>
+        <source>index.page.menu.home</source>
+        <target>Casa</target>
+      </segment>
+    </unit>
+    <unit id="IysILfS">
+      <segment>
+        <source>index.page.menu.learn</source>
+        <target>Imparare</target>
+      </segment>
+    </unit>
+    <unit id="P5Y0Keg">
+      <segment>
+        <source>index.page.menu.contact</source>
+        <target>Contattaci</target>
+      </segment>
+    </unit>
+    <unit id="5YMamSo">
+      <segment>
+        <source>index.page.menu.partnership</source>
+        <target>Associazione</target>
+      </segment>
+    </unit>
+    <unit id="levIQSL">
+      <segment>
+        <source>index.page.title</source>
+        <target><![CDATA[Smetti di sognare di fare<br>Il tuo vino - farlo!]]></target>
+      </segment>
+    </unit>
+    <unit id="ICDi.xX">
+      <segment>
+        <source>index.page.menu.about</source>
+        <target>Riguardo a noi</target>
+      </segment>
+    </unit>
+    <unit id="jJGK5VF">
+      <segment>
+        <source>index.page.menu.login</source>
+        <target>ACCESSO</target>
+      </segment>
+    </unit>
+    <unit id="iIY8vv0">
+      <segment>
+        <source>about.page.title</source>
+        <target>Riguardo a noi</target>
+      </segment>
+    </unit>
+    <unit id="jnWimI6">
+      <segment>
+        <source>contact.page.container.title</source>
+        <target>Contattaci</target>
+      </segment>
+    </unit>
+    <unit id="_CSdgmb">
+      <segment>
+        <source>contact.page.container.text</source>
+        <target><![CDATA[Hai domande su 2makewine? Hai qualche suggerimento o semplicemente<br>voglio dire hi? Contattaci:]]></target>
+      </segment>
+    </unit>
+    <unit id="LsTnzH2">
+      <segment>
+        <source>contact.page.container.assistance</source>
+        <target>Hai bisogno di assistenza?</target>
+      </segment>
+    </unit>
+    <unit id="PVqR9yA">
+      <segment>
+        <source>contact.page.container.assistance.range</source>
+        <target>Lunedi - Martedì</target>
+      </segment>
+    </unit>
+    <unit id="E.Z2s9N">
+      <segment>
+        <source>layout.page.copyright</source>
+        <target>© 2016 Fai il tuo vino. Tutti i diritti riservati.</target>
+      </segment>
+    </unit>
+    <unit id="Swa1Ng6">
+      <segment>
+        <source>username_placeholder</source>
+        <target>Nome utente</target>
+      </segment>
+    </unit>
+    <unit id="d5gPAW1">
+      <segment>
+        <source>lastname_placeholder</source>
+        <target>Cognome</target>
+      </segment>
+    </unit>
+    <unit id="Zg_tmjg">
+      <segment>
+        <source>comment_placeholder</source>
+        <target>Commento</target>
+      </segment>
+    </unit>
+    <unit id="JVDZYuU">
+      <segment>
+        <source>E-mail</source>
+        <target>E-mail</target>
+      </segment>
+    </unit>
+    <unit id="42uz.Ok">
+      <segment>
+        <source>confirm_value</source>
+        <target>Conferma</target>
+      </segment>
+    </unit>
+    <unit id="ag48Voo">
+      <segment>
+        <source>contact.page.form.message.success</source>
+        <target>Congratulazioni per l'acquisto di vini.</target>
+      </segment>
+    </unit>
+    <unit id="h4aXpvo">
+      <segment>
+        <source>app.registration.page.confirmed.success.message</source>
+        <target>Thank you for being with us!</target>
+      </segment>
+    </unit>
+    <unit id="5Bc908D">
+      <segment>
+        <source>app.registration.page.confirmed.success.profile.name</source>
+        <target>Profilo</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

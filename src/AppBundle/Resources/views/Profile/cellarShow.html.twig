@@ -1,0 +1,572 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% block title %}2MakeWine | Winery | Cellar | {{ winery.wineryField.id }} {% endblock %}
+
+{% set currentPath = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+{% block facebooksharing %}
+
+    <meta property="og:title" content="{{ site.name }}"/>
+    <meta property="og:description" content="{{ site.metaDescription }}"/>
+    <meta property="og:type" content="page"/>
+    <meta property="og:url" content="{{ absolute_url(path('homepage')) }}"/>
+    <meta property="og:image" content="{{ absolute_url(asset('images/full-bg.jpg')) }}"/>
+    <meta property="og:site_name" content="{{ site.name }}"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ site.name }}">
+    <meta name="twitter:title" content="{{ site.title }}">
+    <meta name="twitter:description" content="{{ site.metaDescription }}">
+    <meta name="twitter:image" content="{{ absolute_url(asset('images/full-bg.jpg')) }}">
+
+{% endblock %}
+
+{% block main %}
+
+    {% include '@App/Profile/preloader.html.twig' %}
+
+    {{ sonata_block_render({ 'type': 'app.block.social.widget.initialize' }, { 'template' : 'AppBundle:Social:initialize.html.twig' }) }}
+
+    <section class="workflow workflow-for-single">
+        <div class="profile-header-topbar">
+            <div class="profile-header__triggers">
+                <a class="back-trigger" href="{{ path('product_page', {id: winery.wineryField.id }) }}">Back</a>
+            </div>
+            <div class="profile-header-wine">
+                <div class="profile-header-wine__name">{{ winery.wineProduct.title }}</div>
+                <div class="profile-header-wine__desc">
+                    ({{ winery.wineProduct.productionRecipe.wineConstructor.getBreadcrumbsString }})
+                </div>
+            </div>
+        </div>
+        <div class="profile-blocks">
+            <div class="profile-block profile-block--left"
+                 style="background-image: url({{ asset('images/cellar-single.jpg') }});">
+                <div class="profile-block-main">
+
+                    <div class="profile-block-titles">
+                        <div class="profile-block-title">{{ 'label.wineryCellar'|trans }}</div>
+                        <div class="progress-b">
+                            <div class="progress-b__name">{{ 'page.product.label.vinemaking.process'|trans }}</div>
+                            <div class="progress-b__body">
+                                <div class="progress-b__bar">
+                                    <div class="progress-b__inner"
+                                         style="width: {{ winery.wineryCellar.progress }}%;"></div>
+                                </div>
+                                <div class="progress-b__value">- {{ winery.wineryCellar.progress }}%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-page-title-center">{{ 'page.field.label.wineworkflow'|trans }}</div>
+        <form id="decision-field-form" action="#">
+            <div class="flex-container field">
+                {% for item in winery.wineryCellar.steps %}
+                    <h3>
+                        {{ 'page.field.label.step'|trans }} {{ loop.index }}
+                        <br/>
+                        <span class="title">{{ item.cellarStep.translate.stepTitle }}</span>
+                        <br/>
+
+                        {% set decideClass = 'no-decision' %}
+                        {% set decideTitle = "page.field.label.nodecision" %}
+
+                        {% if item.paymentStatus %}
+                            {% set decideClass='' %}
+                            {% set decideTitle='page.field.label.decide' %}
+                        {% endif %}
+
+                        {% if item.isStepConfirm and not item.paymentStatus %}
+                            {% set decideClass='decide-ignore' %}
+                            {% set decideTitle='page.field.label.decideignore' %}
+                        {% endif %}
+
+                        {#{% if ( fields | length > 0 ) or ( trans_fields | length > 0 ) %}#}
+                        <span class="decide {{ decideClass }}">
+                        {{ decideTitle|trans }}
+                        </span>
+                        <br/>
+
+                        {% if item.isStepConfirm %}
+                            <span class="bold"> {{ 'page.field.label.done'|trans }}:</span>
+                            <span class="done-description">
+                                {{ item.chosenSolution.translate.stepTitle }}
+                                <br>
+                                {{ item.chosenSolution.translate.stepDescription }}
+                        </span>
+                        {% endif %}
+
+                    </h3>
+                    {% set stepDone = item.isStepConfirm ? 1 :0 %}
+                    <section class="current flex-container flex-column" data-confirm="{{ stepDone }}">
+                        <div class="flex-container flex-column intro">
+                            <div class="intro-wrapper intro-wrapper__row intro-wrapper-1">
+                                <div class="intro__img-wrapper">
+                                    <img alt="{{ item.cellarStep.description }}"
+                                         title="{{ item.cellarStep.description }}"
+                                         src="{{ vich_uploader_asset(item.cellarStep, 'previewFile') }}">
+                                </div>
+                                <style>
+                                    #decision-cellar-form .wizard .steps > ul[role="tablist"] > li:nth-child({{ loop.index }}):before, #decision-field-form .wizard .steps > ul[role="tablist"] > li:nth-child({{ loop.index }}):before {
+                                        background: url({{ vich_uploader_asset(item.cellarStep, 'previewFile') }}) no-repeat #fff;
+                                        background-size: contain;
+                                    }
+                                </style>
+                                <div class="intro__text-wrapper">
+                                    <p class="intro-text basic-text">{{ 'page.field.label.current.step'|trans }} {{ loop.index }}</p>
+                                    <h2 class="title intro-title">{{ item.cellarStep.translate.stepTitle }}</h2>
+                                    <p class="intro-text intro-text-o basic-text">
+                                        {{ item.cellarStep.translate.stepDescription }}
+                                    </p>
+                                </div>
+                            </div>
+                            {#{% if  not item.isStepConfirm %}#}
+                            <div class="intro-wrapper intro-wrapper-2 ">
+                                {#<p class="basic-text intro-text intro-text-sb">Decide 1</p>#}
+                                <p class="basic-text intro-text intro-text-r intro-text-up">
+                                    {{ item.cellarStep.translate.stepAdditionalTitle }}
+                                </p>
+                                <p class="basic-text intro-text intro-text-o">
+                                    {{ item.cellarStep.translate.stepAdditionalDescription }}
+                                </p>
+                            </div>
+
+                            {% if item.deadline %}
+                                <div class="intro-wrapper intro-wrapper-3">
+
+                                    <p class="basic-text intro-text intro-text-r">
+                                        {{ 'page.profile.label.timefordecision'|trans }}
+                                    </p>
+                                    <div class="countdownHolder time-for-decision" {#id="countdown"#}>
+
+                                        {#{% set days  = item.deadline|leftdays %}#}
+                                        {#{% transchoice days %}#}
+                                        {#{0} There are no days left#}
+                                        {#| {1} There is one apple#}
+                                        {#| ]1,Inf[ There are %count% days left#}
+                                        {#{% endtranschoice %}#}
+                                        <span class="countDays">
+                                            {{ item.deadline|leftdays }} {{ 'page.profile.label.days'|trans }}
+                                        </span>
+
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="intro-wrapper intro-wrapper-3 countDays-empty">
+                                    <div class="countdownHolder time-for-decision">
+                                        <span class="countDays ">Deadline not set</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <div class="intro-wrapper intro-wrapper-4">
+
+                                <h4 class="title intro-title">{{ item.cellarStep.translate.decideTitle }}</h4>
+                                <div class="decision-wrapper flex-container flex-column">
+                                    {% if item.isStepConfirm %}
+                                        <div class="decision-item flex-container flex-side">
+                                            <div class="decision-item-img-wrapper">
+                                                <img class="decision-item-img"
+                                                     src="{{ vich_uploader_asset(item.chosenSolution, 'previewFile') }}">
+                                            </div>
+
+                                            <div class="decision-item-text-wrapper">
+                                                <p class="basic-text intro-text intro-text-sb">
+                                                    {{ item.chosenSolution.translate.stepTitle }}
+                                                </p>
+                                                <p class="basic-text intro-text intro-text-l">
+                                                    {{ item.chosenSolution.translate.stepDescription }}
+                                                </p>
+                                            </div>
+
+                                            <div class="decision-item-price-wrapper">
+                                                {% if item.chosenSolution.isStepGratis %}
+                                                    <h4 class="title intro-title">
+                                                        FREE
+                                                    </h4>
+                                                {% else %}
+                                                    <h4 class="title intro-title js-intro-title-paid">
+                                                        {{ item.chosenSolution.stepPrice * (winery.wineryField.vines // 10) }}$
+                                                    </h4>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="decision-item-btn-wrapper">
+                                                <input class="checkbox"
+                                                       id="chooseBarrel-level-{{ item.cellarStep.stepLevel }}-id-{{ item.chosenSolution.id }}"
+                                                       type="radio"
+
+                                                       data-stepid="{{ item.cellarStep.id }}"
+                                                       data-title="{{ item.chosenSolution.translate.stepTitle }}"
+                                                       data-subtitle="{{ item.chosenSolution.translate.stepDescription }}"
+                                                       data-decide="{{ item.chosenSolution.id }}"
+                                                       data-price="{{ item.chosenSolution.stepPrice * (winery.wineryField.vines // 10) }}"
+                                                       name="decide-level-{{ item.cellarStep.stepLevel }}-id-{{ item.cellarStep.id }}"
+                                                       checked
+                                                >
+                                                <label style="cursor: auto" for="chooseBarrel-level-{{ item.cellarStep.stepLevel }}-id-{{ item.chosenSolution.id }}"></label>
+                                            </div>
+
+                                        </div>
+                                    {% else %}
+                                        {% for decide in item.cellarStep.stepDecide %}
+                                            <div class="decision-item flex-container flex-side">
+                                                <div class="decision-item-img-wrapper">
+                                                    <img class="decision-item-img"
+                                                         src="{{ vich_uploader_asset(decide, 'previewFile') }}">
+                                                </div>
+
+                                                <div class="decision-item-text-wrapper">
+                                                    <p class="basic-text intro-text intro-text-sb">
+                                                        {{ decide.translate.stepTitle }}
+                                                    </p>
+                                                    <p class="basic-text intro-text intro-text-l">
+                                                        {{ decide.translate.stepDescription }}
+                                                    </p>
+                                                </div>
+
+                                                <div class="decision-item-price-wrapper">
+                                                    {% if decide.isStepGratis %}
+                                                        <h4 class="title intro-title">
+                                                            FREE
+                                                        </h4>
+                                                    {% else %}
+                                                        <h4 class="title intro-title js-intro-title-paid">
+                                                            {{ decide.stepPrice * (winery.wineryField.vines // 10) }}$
+                                                        </h4>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="decision-item-btn-wrapper">
+                                                    {% set checkedStatus = loop.index == 1 ? 'checked' : '' %}
+                                                    <input class="checkbox"
+                                                           id="chooseBarrel-level-{{ item.cellarStep.stepLevel }}-id-{{ decide.id }}"
+                                                           type="radio"
+
+                                                           data-stepid="{{ item.cellarStep.id }}"
+                                                           data-title="{{ decide.translate.stepTitle }}"
+                                                           data-subtitle="{{ decide.translate.stepDescription }}"
+                                                           data-decide="{{ decide.id }}"
+                                                           data-price="{{ decide.stepPrice * (winery.wineryField.vines // 10) }}"
+                                                           name="decide-level-{{ item.cellarStep.stepLevel }}-id-{{ item.cellarStep.id }}"
+                                                            {{ checkedStatus }}
+                                                    >
+                                                    <label for="chooseBarrel-level-{{ item.cellarStep.stepLevel }}-id-{{ decide.id }}"></label>
+                                                </div>
+
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                </div>
+                            </div>
+
+                            <div class="intro-wrapper intro-wrapper-5">
+                                <div class="cart-total">
+                                    {#                                  <p class="basic-text">
+                                                                          Total :
+                                                                          <span id="total-price">
+                                                                              $ - этот блок нужно убрать в нем нет смысла - услуга можеть быть только одно
+                                                                          </span>
+                                                                      </p>#}
+                                </div>
+                            </div>
+
+                            <div class="intro-wrapper intro-wrapper-6">
+                                <div class="flex-container flex-center">
+
+                                    <a href="#" class="mybtn intro-mybtn"
+                                            {#data-cellar="{{ item.cellarStep.id }}"#}
+                                            {#data-winery="{{ winery.wineryCellar.id }}"#}
+                                       data-target="#confirmChoose-{{ item.cellarStep.id }}"
+                                       data-toggle="modal"
+                                    >
+                                        {{ 'page.profile.label.button.choose'|trans }}
+                                    </a>
+                                    <a class="mybtn intro-mybtn share-mybtn" data-target="#shareWine"
+                                       data-toggle="modal"
+                                       data-step-id="{{ stepDone }}" data-meta-step-id="{{ item.id }}">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                             viewBox="0 0 32 32">
+                                            <path d="M27 22c-1.411 0-2.685 0.586-3.594 1.526l-13.469-6.734c0.041-0.258 0.063-0.522 0.063-0.791s-0.022-0.534-0.063-0.791l13.469-6.734c0.909 0.94 2.183 1.526 3.594 1.526 2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5c0 0.269 0.022 0.534 0.063 0.791l-13.469 6.734c-0.909-0.94-2.183-1.526-3.594-1.526-2.761 0-5 2.239-5 5s2.239 5 5 5c1.411 0 2.685-0.586 3.594-1.526l13.469 6.734c-0.041 0.258-0.063 0.522-0.063 0.791 0 2.761 2.239 5 5 5s5-2.239 5-5c0-2.761-2.239-5-5-5z">
+
+                                            </path>
+                                        </svg>
+                                        Share
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="confirmChoose-{{ item.cellarStep.id }}">
+                                <div class="flex-container flex-center">
+                                    <div class="modal-block">
+                                        <div class="modal-close-wrapper flex-container flex-center">
+                                            <button class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <h3 class="title modal-title confirm-title">Confirm your choice</h3>
+                                        <p class="modal-text basic-text confirm-text">
+                                            <span class="js-title">American Oak</span>
+                                            <br/>
+                                            <span class="js-subtitle">
+                                                    Found in Missouri and the midwest
+                                                </span>
+                                        </p>
+                                        <p class="modal-text basic-text confirm-text js-price">
+                                            Free
+                                        </p>
+                                        <div class="modal-footer flex-container flex-center">
+                                            <a class="mybtn mybtn-confirm"
+                                               data-cellar="{{ item.cellarStep.id }}"
+                                               data-winery="{{ winery.wineryCellar.id }}"
+                                            >Confirm</a>
+                                            <a class="mybtn cancel" data-dismiss="modal">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            {#{% endif %}#}
+                            <div class="intro-wrapper intro-wrapper-7">
+                                <h4 class="title">{{ item.cellarStep.translate.stepFooterTitle | nl2br }}</h4>
+
+                                <p class="basic-text">
+                                    {{ item.cellarStep.translate.stepFooterDescription | nl2br }}
+                                </p>
+                                <p class="basic-text mySpoiler-block">
+                                    {{ item.cellarStep.translate.stepFooterReadMoText | nl2br }}
+                                </p>
+                                <a class="read-more mySpoiler-btn">Read more</a>
+                            </div>
+
+                        </div>
+                    </section>
+
+                {% endfor %}
+            </div>
+        </form>
+        <div class="modal fade" id="shareWine">
+            <div class="flex-container flex-center">
+                <div class="modal-block">
+                    <div class="modal-close-wrapper flex-container flex-center">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <img class="modal-img" title="modal" alt="modal" src="{{ asset('images/share.png') }}"/>
+                    <h3 class="title modal-title">Share the process with your friends!</h3>
+                    <p class="modal-text basic-text">
+                        Let your friends know when the wine is ready.<br/>
+                        Share joy with your friends.
+                    </p>
+                    <div class="modal-footer flex-container flex-center">
+
+                        <a class="mybtn facebook">
+                            <span class="shareBtn" id="fb-btn">
+                                Facebook
+                            </span>
+                        </a>
+                        <a href="{{ url('homepage') }}" class="mybtn twitter" id="tw-btn" target="_blank">
+                            <span id="tw-btn__wrap-btn" class="shareBtn">
+                                Twitter
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts_call_to_function_block %}
+    <script>
+
+        $(function () {
+
+            let sectionArr = $('section[data-confirm]');
+            let decision;
+            for (let k = 0; sectionArr.length > k; k++) {
+                decision = $(sectionArr[k]).attr('data-confirm');
+                if (Number(decision) === 0) {
+                    $(sectionArr[k]).addClass('waitDecision');
+                }
+            }
+            let sectionId = $('section.waitDecision').attr('id');
+
+
+            let element = $("[aria-controls=" + sectionId + "]");
+            // element.trigger('click');
+            element.click();
+
+            $('.tablist li').removeClass('current');
+            let currentItem = $('.tablist li > a[href=' + sectionId + ']').parent().addClass('current');
+
+            let arrDecision = $('.waitDecision');
+            arrDecision.first().addClass('currentDecision');
+
+
+            $('.mybtn.intro-mybtn').on('click', function (e) {
+                e.preventDefault();
+
+                let modalStepId = $(this).data('step-id')
+                let modalMetaStepId = $(this).data('meta-step-id')
+
+                let decideTitle = $(this).closest('section').find('input:checked').data('title');
+                let decideSubtitle = $(this).closest('section').find('input:checked').data('subtitle');
+                let decidePrice = $(this).closest('section').find('input:checked').data('price');
+                let stepid = $(this).closest('section').find('input:checked').data('stepid');
+
+                let modal = $('#confirmChoose-' + stepid);
+
+
+                modal.find('.js-title').text(decideTitle);
+                modal.find('.js-subtitle').text(decideSubtitle);
+                modal.find('.js-price').text('FREE');
+                if (decidePrice > 0) {
+                    modal.find('.js-price').text(decidePrice + '$');
+                }
+
+                var stepId = modalStepId;
+                var stepMetaId = modalMetaStepId;
+
+                var encodedUriContent = encodeURIComponent($(stepSection).find('.intro-text-o').html())
+                var encodedContent = trim(encodedUriContent, '%0A');
+                var content = trim(encodedContent, '%20');
+
+
+                var stepSection = document.getElementById('steps-uid-0-p-' + stepId);
+
+                var encodedUriContent = encodeURIComponent($(stepSection).find('.intro-text-o').html())
+                var encodedContent = trim(encodedUriContent, '%0A');
+                var content = trim(encodedContent, '%20');
+
+                /** Pass step-id attribute into modal window */
+                $(".shareBtn").each(function () {
+                    $(this).attr('data-step-id', modalStepId);
+                    $(this).attr('data-meta-step-id', modalMetaStepId);
+                    $(this).parent().attr('href', '{{ url('homepage') }}?stepId=' + stepId + '&stepCellarId=' + stepMetaId + '');
+                });
+
+            });
+
+
+            $('ul[role="tablist"] li a').on('click', function () {
+                $('.content section:not(#' + $(this).attr('aria-controls') + ')').css('display', 'none');
+            });
+
+            // Send choose decide
+
+            $('.mybtn.mybtn-confirm').on('click', function (e) {
+                e.preventDefault();
+
+
+                let decideId = $(this).closest('section').find('input:checked').data('decide');
+                let decidePrice = $(this).closest('section').find('input:checked').data('price');
+
+                let cellarStepId = $(this).data('cellar');
+                let wineryId = $(this).data('winery');
+
+                let data = {
+                    decideId: decideId,
+                    cellarStepId: cellarStepId,
+                    wineryId: wineryId
+                };
+
+                let url = "{{ path('approve_winery_cellar_decide') }}";
+                if (decidePrice > 0) {
+                    url = "{{ path('payment') }}";
+                    // submit to pay
+                    $(".mybtn.mybtn-confirm").text("{{ 'page.profile.label.button.loading'|trans }}");
+                    $(".mybtn.cancel").hide();
+                    $('<form action="' + url + '" method="POST">' +
+                        '<input type="hidden" name="winery" value="' + data.wineryId + '">' +
+                        '<input type="hidden" name="wineryStep" value="' + data.cellarStepId + '">' +
+                        '<input type="hidden" name="stepDecide" value="' + data.decideId + '">' +
+                        '<input type="hidden" name="stepType" value="cellar">' +
+                        '</form>').appendTo('body').submit();
+                    return false;
+                }
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+                    beforeSend: function () {
+                        $(".mybtn.mybtn-confirm").text("{{ 'page.profile.label.button.loading'|trans }}");
+                        $(".mybtn.cancel").hide();
+                    },
+                    success: function (data, textStatus) {
+                        $(".mybtn.mybtn-confirm").text("{{ 'page.profile.label.button.saved'|trans }}");
+                        window.location.reload();
+                    },
+                    error: function (data, textStatus) {
+                        $(".mybtn.mybtn-confirm").text("{{ 'page.profile.label.button.choose'|trans }}");
+                    }
+                });
+
+
+            });
+
+            $(document).on('click', '#tw-btn', function (e) {
+                e.preventDefault();
+
+                var stepId = $(this).children('.shareBtn').attr('data-step-id');
+                var stepSection = document.getElementById('steps-uid-0-p-' + stepId);
+
+                var encodedUriContentTitle = encodeURIComponent($(stepSection).find('.intro-title').html())
+                var encodedContentTitle = trim(encodedUriContentTitle, '%0A');
+                var contentTitle = trim(encodedContentTitle, '%20');
+
+                var encodedUriContent = encodeURIComponent($(stepSection).find('.intro-text-o').html())
+                var encodedContent = trim(encodedUriContent, '%0A');
+                var content = trim(encodedContent, '%20');
+
+                var output = contentTitle + " - " + content;
+
+                PopupCenter('http://twitter.com/share?url=' + encodeURIComponent($(this).attr('href')) + '&text=' + output.truncString(130, '...'), 'Twitter', '550', '450');
+                // window.open('http://twitter.com/share?url='+encodeURIComponent($(this).attr('href'))+'&text='+encodeURIComponent('Overwhelming'), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+            });
+
+            document.getElementById('fb-btn').onclick = function (e) {
+
+                e.preventDefault();
+                // let meta = document.getElementsByTagName('meta');
+                var stepId = this.dataset.stepId;
+                var metaStepId = this.dataset.metaStepId;
+                var stepSection = document.getElementById('steps-uid-0-p-' + stepId);
+                var stepImageWrapBlock = stepSection.getElementsByClassName('intro__img-wrapper')[0];
+
+                var stepTitle = document.querySelector("meta[property='og:title']");
+                var stepDescription = document.querySelector("meta[property='og:description']");
+                var stepImage = document.querySelector("meta[property='og:image']");
+
+                stepTitle.setAttribute("content", stepTitle);
+                stepDescription.setAttribute("content", stepDescription);
+                stepImage.setAttribute("content", stepImageWrapBlock.firstElementChild.src);
+
+
+                FB.ui({
+                    display: 'popup',
+                    method: 'share_open_graph',
+                    action_type: 'og.shares',
+                    action_properties: JSON.stringify({
+                        object: {
+                            'og:url': '{{ currentPath }}', // your url to share
+                            'og:title': $(stepSection).find('.intro-title').html(),
+                            'og:description': $(stepSection).find('.intro-text-o').html(),
+                            'og:image': stepImageWrapBlock.firstElementChild.src
+                        }
+                    })
+                }, function (response) {
+                    if (response && !response.error_message) {
+                        console.log('Posting completed.');
+                    } else {
+                        console.log('Error while posting.');
+                    }
+                });
+
+            }
+        });
+
+    </script>
+{% endblock %}

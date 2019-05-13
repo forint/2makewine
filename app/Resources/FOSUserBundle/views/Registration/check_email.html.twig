@@ -1,0 +1,16 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block profilemenu %}{% endblock %}
+
+{% block main %}
+
+    <section class="flex-container flex-center flex-column cart login-page" style="margin-top: 60px;">
+        <div class="flex-container flex-center flex-column become-content-step3">
+            <h2 class="user-name">{{ user.firstname }} {{ user.lastname }}</h2>
+            <p class="basic-text step2-auth-text">{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+        </div>
+    </section>
+
+{% endblock main %}
